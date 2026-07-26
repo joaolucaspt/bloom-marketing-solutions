@@ -1,12 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
-import teamWhiteboard from "@/assets/team-whiteboard.jpg";
-import portraitMan from "@/assets/portrait-man.jpg";
-import portraitWoman from "@/assets/portrait-woman.jpg";
-import heroBg from "@/assets/hero-bg.jpg";
-import brandingFlat from "@/assets/branding-flat.jpg";
-import socialImg from "@/assets/social.jpg";
-import audiovisualImg from "@/assets/audiovisual.jpg";
+import { useState, useEffect } from "react";
+import bgTeam from "@/assets/bg-team.jpg";
+import bgBranding from "@/assets/bg-branding.jpg";
+import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
+import bgPerformance from "@/assets/bg-performance.jpg";
+import bgPortrait from "@/assets/bg-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,21 +29,16 @@ const PHONE_DISPLAY = "(31) 97116-9912";
 const WHATSAPP_URL =
   "https://wa.me/5531971169912?text=" +
   encodeURIComponent("Olá! Vim pelo site da LS Agência de Marketing e quero falar com um especialista.");
-const EMAIL = "contato@lsagenciademarketing.com.br";
 
 /* Logo — inline SVG, wordmark "LS" + divider + stacked "AGÊNCIA / DE MARKETING" */
 function LogoMark({ className = "h-10 w-auto" }: { className?: string }) {
   return (
     <svg viewBox="0 0 260 60" className={className} aria-label="LS Agência de Marketing" role="img">
       <g fill="currentColor">
-        {/* L */}
         <path d="M8 8 h14 v36 h24 v8 H8 z" />
-        {/* S — stylized angular */}
         <path d="M56 8 h40 v8 H66 v10 h26 c4 0 8 4 8 8 v10 c0 4 -4 8 -8 8 H54 v-8 h34 v-10 H62 c-4 0 -8 -4 -8 -8 V16 c0 -4 4 -8 8 -8 z" />
       </g>
-      {/* divider */}
       <line x1="115" y1="12" x2="115" y2="48" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-      {/* stacked text */}
       <g fill="currentColor" fontFamily="Inter, sans-serif" fontWeight="400" letterSpacing="2">
         <text x="125" y="26" fontSize="10">AGÊNCIA</text>
         <text x="125" y="42" fontSize="10">DE MARKETING</text>
@@ -62,17 +55,27 @@ function Logo({ className = "" }: { className?: string }) {
   );
 }
 
-/* Rotating word slot like the MARQ hero */
+/* Rotating words: vertical slide, italic serif, like the reference */
 function RotatingWords({ words }: { words: string[] }) {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2200);
+    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2400);
     return () => clearInterval(t);
   }, [words.length]);
   return (
-    <span className="relative inline-block align-bottom overflow-hidden" style={{ minWidth: "6ch" }}>
-      <span key={i} className="inline-block text-primary animate-[fadeUp_.6s_ease-out]">
-        {words[i]}
+    <span
+      className="relative inline-flex align-bottom overflow-hidden text-primary italic"
+      style={{ fontFamily: "var(--font-display)", height: "1.1em", minWidth: "5ch" }}
+    >
+      <span
+        className="flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
+        style={{ transform: `translateY(-${i * 1.1}em)` }}
+      >
+        {words.map((w) => (
+          <span key={w} style={{ height: "1.1em", lineHeight: "1.1em" }} className="whitespace-nowrap">
+            {w}
+          </span>
+        ))}
       </span>
     </span>
   );
@@ -137,13 +140,23 @@ function Nav() {
   );
 }
 
+/* Reusable ambient background so every section has an image */
+function SectionBg({ src, opacity = 0.18 }: { src: string; opacity?: number }) {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <img src={src} alt="" className="w-full h-full object-cover" style={{ opacity }} loading="lazy" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
+    </div>
+  );
+}
+
 function Hero() {
   const words = ["Branding", "Marketing", "Vendas", "Crescimento"];
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>
       <div className="relative mx-auto max-w-7xl px-6 w-full">
         <div className="max-w-4xl">
@@ -171,15 +184,14 @@ function Hero() {
 function About() {
   return (
     <section id="sobre" className="relative py-24 md:py-32">
-      <div className="absolute inset-0">
-        <img src={teamWhiteboard} alt="" className="w-full h-full object-cover opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
-      </div>
+      <SectionBg src={bgBranding} opacity={0.14} />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
             O que impede <br />
-            <span className="text-primary">o seu crescimento?</span>
+            <span className="text-primary italic" style={{ fontFamily: "var(--font-display)" }}>
+              o seu crescimento?
+            </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed">
             Muitas empresas lutam para conectar estratégias de marketing e vendas de maneira eficaz.
@@ -195,8 +207,8 @@ function About() {
         <div className="relative">
           <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
           <img
-            src={teamWhiteboard}
-            alt="Equipe da LS Agência de Marketing em sessão de branding"
+            src={bgTeam}
+            alt="Equipe da LS Agência de Marketing"
             loading="lazy"
             className="relative rounded-2xl w-full object-cover aspect-[4/3]"
           />
@@ -239,11 +251,12 @@ function Offer() {
   const words = ["Integradas", "com Resultados", "Sustentáveis"];
   return (
     <section id="areas" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
+      <SectionBg src={bgPerformance} opacity={0.12} />
+      <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
             O Que Oferecemos? <br />
-            <span className="text-primary"><RotatingWords words={words} /></span>
+            <RotatingWords words={words} />
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
             A LS ajuda empresas a se posicionarem de forma profissional no mercado. Nosso ecossistema de
@@ -260,10 +273,10 @@ function Offer() {
             aria-hidden
           />
           <img
-            src={portraitMan}
+            src={bgPortrait}
             alt="Especialista LS Agência de Marketing"
             loading="lazy"
-            className="relative rounded-2xl w-full object-cover aspect-[4/5] grayscale"
+            className="relative rounded-2xl w-full object-cover aspect-[4/5]"
           />
         </div>
       </div>
@@ -275,7 +288,7 @@ function Pillars() {
   const pillars = [
     {
       t: "Marketing Digital",
-      d: "A LS ajuda empresas a se posicionarem de forma profissional no mercado. Nosso ecossistema de serviços inclui presença digital, branding, performance, audiovisual, jornada do cliente, vendas, treinamentos e mentorias.",
+      d: "Presença digital, branding, performance, audiovisual, jornada do cliente, vendas, treinamentos e mentorias.",
     },
     { t: "Vendas", d: "Melhoramos a eficiência entre o comercial e o marketing do seu negócio." },
     {
@@ -287,14 +300,15 @@ function Pillars() {
       d: "Estruturamos e aceleramos produtos e negócios com dados, processos e treinamentos.",
     },
   ];
-  const words = ["crescer", "melhorar seu branding", "otimizar resultados", "gerar mais leads", "aumentar as vendas"];
+  const words = ["crescer", "melhorar o branding", "otimizar resultados", "gerar mais leads", "aumentar as vendas"];
   return (
-    <section className="py-24 md:py-32 border-t border-border">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative py-24 md:py-32 border-t border-border">
+      <SectionBg src={bgTeam} opacity={0.1} />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
-            Como ajudamos sua empresa <br />
-            <span className="text-primary"><RotatingWords words={words} /></span>
+            Como ajudamos sua empresa a <br />
+            <RotatingWords words={words} />
           </h2>
           <div className="mt-8">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
@@ -307,7 +321,7 @@ function Pillars() {
           {pillars.map((p, i) => (
             <article
               key={p.t}
-              className="group p-8 md:p-10 rounded-3xl bg-card border border-border hover:border-primary/60 transition-colors"
+              className="group p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur border border-border hover:border-primary/60 transition-colors"
             >
               <div className="flex items-baseline gap-6">
                 <span className="text-6xl font-black text-primary/30 group-hover:text-primary transition-colors">
@@ -328,32 +342,32 @@ const SERVICES = [
   {
     t: "Identidade Visual e Branding",
     d: "Naming, logotipo, personalidade, tom de voz, manifesto, arquétipo, definição de posicionamento.",
-    img: brandingFlat,
+    img: bgBranding,
   },
   {
     t: "Redes Sociais",
     d: "Gestão completa de rede social, planejamento, conteúdo, lives, podcasts, influência e colabs.",
-    img: socialImg,
+    img: bgTeam,
   },
   {
     t: "Produção Audiovisual",
     d: "Captação e edição de fotos, shooting, vídeos curtos, motions, filmes e locução.",
-    img: audiovisualImg,
+    img: bgAudiovisual,
   },
   {
     t: "Tech",
-    d: "Desenvolvimento de Sites e Landing Pages (páginas de conversão), e-commerce, aplicativos e UX Design.",
-    img: brandingFlat,
+    d: "Desenvolvimento de Sites, Landing Pages, e-commerce, aplicativos e UX Design.",
+    img: bgPerformance,
   },
   {
     t: "Educação",
-    d: "Consultoria Estratégica, treinamentos e mentorias.",
-    img: teamWhiteboard,
+    d: "Consultoria estratégica, treinamentos e mentorias.",
+    img: bgTeam,
   },
   {
     t: "Performance",
     d: "Campanhas patrocinadas, SEO, mídia programática e merchandising.",
-    img: socialImg,
+    img: bgPerformance,
   },
 ];
 
@@ -362,11 +376,12 @@ function Services() {
   const words = ["de Growth", "de Branding", "de Vendas", "de Experiências", "de Treinamentos"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
-      <div className="mx-auto max-w-7xl px-6">
+      <SectionBg src={bgAudiovisual} opacity={0.1} />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
             Aproveite o nosso ecossistema <br />
-            <span className="text-primary"><RotatingWords words={words} /></span>
+            <RotatingWords words={words} />
           </h2>
           <p className="mt-6 text-foreground/70">
             Como podemos ajudar a sua empresa a crescer de forma sustentável? Formamos um ecossistema
@@ -406,7 +421,7 @@ function Services() {
               src={SERVICES[active].img}
               alt={SERVICES[active].t}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover rounded-2xl grayscale animate-[fadeUp_.5s_ease-out]"
+              className="w-full aspect-[4/3] object-cover rounded-2xl animate-[fadeUp_.5s_ease-out]"
             />
           </div>
         </div>
@@ -417,11 +432,16 @@ function Services() {
 
 function Belief() {
   return (
-    <section className="py-24 md:py-32 bg-foreground text-background">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+    <section className="relative py-24 md:py-32 bg-foreground text-background overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <img src={bgBranding} alt="" className="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
           Não acreditamos... <br />
-          <span className="italic font-light">em hacks milagrosos</span>
+          <span className="italic font-normal" style={{ fontFamily: "var(--font-display)" }}>
+            em hacks milagrosos
+          </span>
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-background/80">
           Nossa cultura vem da mentalidade Growth, da experimentação através de testes com inteligência de
@@ -445,14 +465,15 @@ function Methodology() {
     { t: "Otimização", d: "Analisamos dados, testamos hipóteses e escalamos o que funciona." },
   ];
   return (
-    <section className="py-24 md:py-32 border-t border-border">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="relative py-24 md:py-32 border-t border-border">
+      <SectionBg src={bgPerformance} opacity={0.1} />
+      <div className="relative mx-auto max-w-7xl px-6">
         <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wide text-center">
           Como funciona nossa metodologia
         </h2>
         <div className="mt-16 grid md:grid-cols-4 gap-8">
           {steps.map((s, i) => (
-            <div key={s.t} className="relative p-8 rounded-2xl bg-card border border-border">
+            <div key={s.t} className="relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border">
               <div className="text-5xl font-black text-primary">{String(i + 1).padStart(2, "0")}</div>
               <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
               <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
@@ -464,97 +485,40 @@ function Methodology() {
   );
 }
 
+/* Final contact section — logo + WhatsApp only, no form */
 function Contact() {
-  const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const formRef = useRef<HTMLFormElement>(null);
-
-  function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setState("sending");
-    const text =
-      `Olá! Sou ${form.name}.%0A` +
-      `Email: ${form.email}%0A` +
-      `Telefone: ${form.phone}%0A%0A` +
-      encodeURIComponent(form.message);
-    const url = `https://wa.me/5531971169912?text=${text}`;
-    setTimeout(() => {
-      window.open(url, "_blank");
-      setState("sent");
-      formRef.current?.reset();
-      setForm({ name: "", email: "", phone: "", message: "" });
-      setTimeout(() => setState("idle"), 3000);
-    }, 300);
-  }
-
   return (
-    <section id="contato" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tight">
-            Vamos <br />
-            <span className="text-primary">Conversar?</span>
-          </h2>
-          <p className="mt-8 text-foreground/80 max-w-md">
-            Entre em contato agora e descubra como podemos transformar seu marketing.
-          </p>
-          <p className="mt-4 text-foreground/80 max-w-md">
-            Oferecemos uma consulta gratuita para entender suas necessidades e desenvolver uma estratégia
-            personalizada.
-          </p>
+    <section id="contato" className="relative py-24 md:py-32 overflow-hidden border-t border-border">
+      <SectionBg src={bgTeam} opacity={0.15} />
+      <div className="relative mx-auto max-w-5xl px-6 text-center">
+        <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tight">
+          Vamos <br />
+          <span className="italic font-normal text-primary" style={{ fontFamily: "var(--font-display)" }}>
+            conversar?
+          </span>
+        </h2>
+        <p className="mt-8 text-foreground/80 max-w-xl mx-auto">
+          Entre em contato e descubra como podemos transformar seu marketing. Oferecemos uma consulta
+          gratuita para entender suas necessidades e desenvolver uma estratégia personalizada.
+        </p>
 
-          <div className="mt-10 relative">
-            <img
-              src={portraitWoman}
-              alt=""
-              loading="lazy"
-              className="rounded-2xl w-full max-w-sm object-cover aspect-[4/5]"
-            />
+        <div className="mt-14 inline-flex flex-col items-center gap-6 p-10 md:p-14 rounded-3xl bg-card/80 backdrop-blur border border-border">
+          <LogoMark className="h-14 md:h-16 w-auto text-foreground" />
+          <div className="mt-2">
+            <p className="text-xs uppercase tracking-[0.3em] text-foreground/60">Telefone e WhatsApp</p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 block text-3xl md:text-5xl font-black hover:text-primary transition-colors"
+            >
+              {PHONE_DISPLAY}
+            </a>
           </div>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-2">
+            Falar agora no WhatsApp
+          </a>
         </div>
-
-        <form
-          ref={formRef}
-          onSubmit={onSubmit}
-          className="p-8 md:p-10 rounded-3xl bg-card border border-border"
-        >
-          <h3 className="text-2xl font-bold">Envie sua mensagem</h3>
-          <p className="text-sm text-foreground/60 mt-2">Responderemos direto no seu WhatsApp.</p>
-
-          <div className="mt-6 space-y-4">
-            {[
-              { k: "name", l: "Nome", t: "text", p: "Seu nome completo" },
-              { k: "email", l: "E-mail", t: "email", p: "voce@email.com" },
-              { k: "phone", l: "Telefone", t: "tel", p: "(00) 00000-0000" },
-            ].map((f) => (
-              <div key={f.k}>
-                <label className="text-xs uppercase tracking-wider text-foreground/60">{f.l}</label>
-                <input
-                  required
-                  type={f.t}
-                  value={(form as any)[f.k]}
-                  onChange={(e) => setForm({ ...form, [f.k]: e.target.value })}
-                  placeholder={f.p}
-                  className="mt-2 w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition"
-                />
-              </div>
-            ))}
-            <div>
-              <label className="text-xs uppercase tracking-wider text-foreground/60">Mensagem</label>
-              <textarea
-                required
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="Conte um pouco sobre o seu projeto..."
-                className="mt-2 w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition resize-none"
-              />
-            </div>
-            <button type="submit" disabled={state === "sending"} className="btn-primary w-full">
-              {state === "sending" ? "Enviando..." : state === "sent" ? "Enviado ✓" : "Enviar mensagem"}
-            </button>
-          </div>
-        </form>
       </div>
     </section>
   );
@@ -562,38 +526,20 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-16">
-      <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-10">
-        <div>
-          <Logo />
-          <p className="mt-6 text-sm text-foreground/60 max-w-xs">
-            Ecossistema de crescimento — branding, marketing, vendas e tecnologia.
-          </p>
-        </div>
-        <div>
-          <h4 className="text-xs uppercase tracking-widest text-foreground/60">Navegue</h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><a href="#sobre" className="hover:text-primary transition">Sobre</a></li>
-            <li><a href="#areas" className="hover:text-primary transition">Áreas de Atuação</a></li>
-            <li><a href="#servicos" className="hover:text-primary transition">Serviços</a></li>
-            <li><a href="#contato" className="hover:text-primary transition">Contato</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-xs uppercase tracking-widest text-foreground/60">Contato</h4>
-          <div className="mt-4 space-y-3 text-sm">
-            <p className="text-foreground/60">Telefone e Whatsapp:</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="block font-bold text-lg hover:text-primary transition">
-              {PHONE_DISPLAY}
-            </a>
-            <a href={`mailto:${EMAIL}`} className="block hover:text-primary transition break-all">
-              {EMAIL}
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-border text-center text-xs text-foreground/50">
-        © {new Date().getFullYear()} LS Agência de Marketing. Todos os direitos reservados.
+    <footer className="border-t border-border py-14">
+      <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <Logo />
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener"
+          className="text-sm font-bold hover:text-primary transition-colors"
+        >
+          {PHONE_DISPLAY}
+        </a>
+        <p className="text-xs text-foreground/50 text-center">
+          © {new Date().getFullYear()} LS Agência de Marketing. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );

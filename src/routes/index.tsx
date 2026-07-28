@@ -214,13 +214,15 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="relative py-24 md:py-32">
+    <section id="sobre" className="relative py-24 md:py-32 overflow-hidden">
       <SectionBg src={bgBranding} opacity={0.14} />
+      <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
+        <Reveal>
+          <span className="font-caption text-xs text-primary/80">Diagnóstico</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que impede <br />
-            <span className="text-primary italic" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>
               o seu crescimento?
             </span>
           </h2>
@@ -234,16 +236,18 @@ function About() {
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
             Falar com especialista
           </a>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
-          <img
-            src={bgTeam}
-            alt="Equipe da LS Agência de Marketing"
-            loading="lazy"
-            className="relative rounded-2xl w-full object-cover aspect-[4/3]"
-          />
-        </div>
+        </Reveal>
+        <Reveal delay={200}>
+          <div className="relative animate-floaty">
+            <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
+            <img
+              src={bgTeam}
+              alt="Equipe da LS Agência de Marketing"
+              loading="lazy"
+              className="relative rounded-2xl w-full object-cover aspect-[4/3]"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

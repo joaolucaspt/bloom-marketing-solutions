@@ -175,7 +175,7 @@ export default function ParticleNetwork() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[1] hidden md:block"
+      className="pointer-events-none fixed inset-0 z-[40] hidden md:block"
     />
   );
 }

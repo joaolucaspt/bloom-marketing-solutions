@@ -176,26 +176,36 @@ function Hero() {
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45" />
+        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45 scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>
+      <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
         <div className="max-w-4xl">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight">
-            Nós somos <br />
-            Especialistas em <br />
-            <RotatingWords words={words} />
-          </h1>
-          <p className="mt-10 text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
-            Seu crescimento não pode esperar! E você sabe disto.
-            <br />
-            Na LS Agência de Marketing, transformamos desafios em resultados.
-          </p>
-          <div className="mt-10">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
-              Falar com especialista
-            </a>
-          </div>
+          <Reveal>
+            <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
+          </Reveal>
+          <Reveal delay={120}>
+            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight">
+              Nós somos <br />
+              Especialistas em <br />
+              <RotatingWords words={words} />
+            </h1>
+          </Reveal>
+          <Reveal delay={260}>
+            <p className="mt-10 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
+              Seu crescimento não pode esperar! E você sabe disto.
+              <br />
+              Na LS Agência de Marketing, transformamos desafios em resultados.
+            </p>
+          </Reveal>
+          <Reveal delay={400}>
+            <div className="mt-10">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary hover:[&]:btn-primary-hover">
+                Falar com especialista
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

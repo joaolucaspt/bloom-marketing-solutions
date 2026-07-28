@@ -27,8 +27,9 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Fraunces", "Instrument Serif", "Times New Roman", serif;
-  --font-heading: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-heading: "Unbounded", "Inter", system-ui, sans-serif;
+  --font-caption: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
 :root {
@@ -37,25 +38,21 @@
   --foreground: oklch(0.98 0 0);
   --card: oklch(0.09 0 0);
   --card-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.58 0.28 285);
+  --primary: oklch(0.62 0.24 265);
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.15 0.01 285);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.15 0 0);
   --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.58 0.28 285);
+  --accent: oklch(0.62 0.24 265);
   --accent-foreground: oklch(0.98 0 0);
   --border: oklch(0.2 0 0);
-  --ring: oklch(0.58 0.28 285);
+  --ring: oklch(0.62 0.24 265);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -64,16 +61,18 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
+    font-weight: 800;
   }
 }
 
-@utility font-heading {
-  font-family: var(--font-heading);
-  letter-spacing: -0.03em;
-}
-@utility font-display {
-  font-family: var(--font-display);
+@utility font-heading { font-family: var(--font-heading); letter-spacing: -0.04em; }
+@utility font-display { font-family: var(--font-display); }
+@utility font-caption {
+  font-family: var(--font-caption);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 @utility btn-primary {
@@ -83,45 +82,75 @@
   gap: 0.5rem;
   padding: 0.9rem 1.75rem;
   border-radius: 9999px;
-  background: var(--primary);
+  background: linear-gradient(135deg, oklch(0.62 0.24 265), oklch(0.7 0.22 300));
   color: var(--primary-foreground);
+  font-family: var(--font-caption);
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: 0 10px 40px -10px oklch(0.58 0.28 285 / 0.6);
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  box-shadow: 0 12px 40px -10px oklch(0.62 0.24 265 / 0.6);
 }
 @utility btn-primary-hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 50px -10px oklch(0.58 0.28 285 / 0.8);
+  box-shadow: 0 20px 55px -10px oklch(0.62 0.24 265 / 0.85);
+  filter: brightness(1.08);
 }
 
-@keyframes rotateWords {
-  0%, 20% { transform: translateY(0); }
-  25%, 45% { transform: translateY(-100%); }
-  50%, 70% { transform: translateY(-200%); }
-  75%, 95% { transform: translateY(-300%); }
-  100% { transform: translateY(-400%); }
+/* Gradient shimmering text */
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-shine {
+  background: linear-gradient(90deg,
+    oklch(0.62 0.24 265),
+    oklch(0.75 0.2 320),
+    oklch(0.62 0.24 265));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 5s linear infinite;
 }
 
-.words-slider {
-  display: inline-flex;
-  flex-direction: column;
-  height: 1.15em;
-  overflow: hidden;
-  vertical-align: bottom;
+/* Floating (soft breathing) */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
 }
-.words-slider > span {
-  height: 1.15em;
-  animation: rotateWords 10s infinite;
-  color: var(--primary);
-  white-space: nowrap;
-}
+.animate-floaty { animation: floaty 7s ease-in-out infinite; }
 
+/* Marquee for client strip */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Fade up used by service image */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(30px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .fade-up { animation: fadeUp 0.8s ease-out both; }
+
+/* Tilt / lift on hover */
+.card-lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .4s; }
+.card-lift:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -30px oklch(0.62 0.24 265 / 0.6); }
+
+/* Animated background blobs */
+@keyframes blobMove {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(40px,-30px) scale(1.15); }
+  66% { transform: translate(-30px,40px) scale(.9); }
+}
+.blob { position:absolute; border-radius:9999px; filter: blur(80px); opacity:.35; animation: blobMove 18s ease-in-out infinite; }
 
 .grid-bg {
   background-image:
@@ -130,3 +159,4 @@
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
 }
+

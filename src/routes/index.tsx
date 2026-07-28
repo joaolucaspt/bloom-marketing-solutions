@@ -201,7 +201,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={400}>
             <div className="mt-10">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary hover:[&]:btn-primary-hover">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
                 Falar com especialista
               </a>
             </div>

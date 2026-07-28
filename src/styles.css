@@ -92,10 +92,10 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
   box-shadow: 0 12px 40px -10px oklch(0.62 0.24 265 / 0.6);
 }
-@utility btn-primary-hover {
+.btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 20px 55px -10px oklch(0.62 0.24 265 / 0.85);
-  filter: brightness(1.08);
+  filter: brightness(1.1);
 }
 
 /* Gradient shimmering text */

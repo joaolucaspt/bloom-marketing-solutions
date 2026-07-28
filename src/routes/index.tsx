@@ -515,16 +515,19 @@ function Methodology() {
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgPerformance} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
-        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wide text-center">
-          Como funciona nossa metodologia
+        <span className="block text-center font-caption text-xs text-primary/80 mb-4">Metodologia</span>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center">
+          Como funciona <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>nossa metodologia</span>
         </h2>
         <div className="mt-16 grid md:grid-cols-4 gap-8">
           {steps.map((s, i) => (
-            <div key={s.t} className="relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border">
-              <div className="text-5xl font-black text-primary">{String(i + 1).padStart(2, "0")}</div>
-              <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
-              <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
-            </div>
+            <Reveal key={s.t} delay={i * 150}>
+              <div className="card-lift relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border h-full">
+                <div className="text-5xl font-black text-shine">{String(i + 1).padStart(2, "0")}</div>
+                <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
+                <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

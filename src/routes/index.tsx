@@ -1,11 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import ParticleNetwork from "@/components/ParticleNetwork";
+import { useReveal } from "@/hooks/useReveal";
 import bgTeam from "@/assets/bg-team.jpg";
 import bgBranding from "@/assets/bg-branding.jpg";
 import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
 import bgPerformance from "@/assets/bg-performance.jpg";
 import bgPortrait from "@/assets/bg-portrait.jpg";
+
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const ref = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+function Blobs() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="blob" style={{ background: "oklch(0.62 0.24 265)", width: 380, height: 380, top: "10%", left: "-8%" }} />
+      <div className="blob" style={{ background: "oklch(0.7 0.22 320)", width: 460, height: 460, top: "40%", right: "-10%", animationDelay: "-6s" }} />
+      <div className="blob" style={{ background: "oklch(0.55 0.2 240)", width: 300, height: 300, bottom: "5%", left: "30%", animationDelay: "-12s" }} />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,7 +85,7 @@ function RotatingWords({ words }: { words: string[] }) {
   }, [words.length]);
   return (
     <span
-      className="relative inline-flex align-bottom overflow-hidden text-primary italic"
+      className="relative inline-flex align-bottom overflow-hidden italic text-shine"
       style={{ fontFamily: "var(--font-display)", height: "1.1em", minWidth: "5ch" }}
     >
       <span
@@ -156,26 +176,36 @@ function Hero() {
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45" />
+        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45 scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
       </div>
+      <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
         <div className="max-w-4xl">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight">
-            Nós somos <br />
-            Especialistas em <br />
-            <RotatingWords words={words} />
-          </h1>
-          <p className="mt-10 text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
-            Seu crescimento não pode esperar! E você sabe disto.
-            <br />
-            Na LS Agência de Marketing, transformamos desafios em resultados.
-          </p>
-          <div className="mt-10">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
-              Falar com especialista
-            </a>
-          </div>
+          <Reveal>
+            <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
+          </Reveal>
+          <Reveal delay={120}>
+            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight">
+              Nós somos <br />
+              Especialistas em <br />
+              <RotatingWords words={words} />
+            </h1>
+          </Reveal>
+          <Reveal delay={260}>
+            <p className="mt-10 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
+              Seu crescimento não pode esperar! E você sabe disto.
+              <br />
+              Na LS Agência de Marketing, transformamos desafios em resultados.
+            </p>
+          </Reveal>
+          <Reveal delay={400}>
+            <div className="mt-10">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
+                Falar com especialista
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -184,13 +214,15 @@ function Hero() {
 
 function About() {
   return (
-    <section id="sobre" className="relative py-24 md:py-32">
+    <section id="sobre" className="relative py-24 md:py-32 overflow-hidden">
       <SectionBg src={bgBranding} opacity={0.14} />
+      <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
+        <Reveal>
+          <span className="font-caption text-xs text-primary/80">Diagnóstico</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que impede <br />
-            <span className="text-primary italic" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>
               o seu crescimento?
             </span>
           </h2>
@@ -204,16 +236,18 @@ function About() {
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
             Falar com especialista
           </a>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
-          <img
-            src={bgTeam}
-            alt="Equipe da LS Agência de Marketing"
-            loading="lazy"
-            className="relative rounded-2xl w-full object-cover aspect-[4/3]"
-          />
-        </div>
+        </Reveal>
+        <Reveal delay={200}>
+          <div className="relative animate-floaty">
+            <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
+            <img
+              src={bgTeam}
+              alt="Equipe da LS Agência de Marketing"
+              loading="lazy"
+              className="relative rounded-2xl w-full object-cover aspect-[4/3]"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -227,22 +261,27 @@ const CLIENT_LOGOS = [
 ];
 
 function ClientsStrip() {
+  const row = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
   return (
-    <section className="py-16 border-y border-border bg-card/30">
+    <section className="py-16 border-y border-border bg-card/30 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground mb-10">
+        <p className="text-center font-caption text-xs text-muted-foreground mb-10">
           Marcas que crescem conosco
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
-          {CLIENT_LOGOS.map((n) => (
-            <div
-              key={n}
-              className="text-center text-xs md:text-sm font-bold tracking-widest text-foreground/50 hover:text-foreground transition-colors"
+      </div>
+      <div className="relative">
+        <div className="flex w-max animate-marquee gap-14 px-6">
+          {row.map((n, i) => (
+            <span
+              key={`${n}-${i}`}
+              className="font-caption text-sm text-foreground/50 hover:text-primary transition-colors whitespace-nowrap"
             >
               {n}
-            </div>
+            </span>
           ))}
         </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
       </div>
     </section>
   );
@@ -251,12 +290,14 @@ function ClientsStrip() {
 function Offer() {
   const words = ["Integradas", "com Resultados", "Sustentáveis"];
   return (
-    <section id="areas" className="relative py-24 md:py-32">
+    <section id="areas" className="relative py-24 md:py-32 overflow-hidden">
       <SectionBg src={bgPerformance} opacity={0.12} />
+      <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
-            O Que Oferecemos? <br />
+        <Reveal>
+          <span className="font-caption text-xs text-primary/80">Ecossistema</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
+            O que oferecemos? <br />
             <RotatingWords words={words} />
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
@@ -267,19 +308,18 @@ function Offer() {
           <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
             Falar com especialista
           </a>
-        </div>
-        <div className="relative">
-          <div
-            className="absolute -inset-4 rounded-3xl border-2 border-primary rotate-[-3deg]"
-            aria-hidden
-          />
-          <img
-            src={bgPortrait}
-            alt="Especialista LS Agência de Marketing"
-            loading="lazy"
-            className="relative rounded-2xl w-full object-cover aspect-[4/5]"
-          />
-        </div>
+        </Reveal>
+        <Reveal delay={200}>
+          <div className="relative animate-floaty">
+            <div className="absolute -inset-4 rounded-3xl border-2 border-primary rotate-[-3deg]" aria-hidden />
+            <img
+              src={bgPortrait}
+              alt="Especialista LS Agência de Marketing"
+              loading="lazy"
+              className="relative rounded-2xl w-full object-cover aspect-[4/5]"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -320,18 +360,17 @@ function Pillars() {
 
         <div className="mt-20 grid md:grid-cols-2 gap-10">
           {pillars.map((p, i) => (
-            <article
-              key={p.t}
-              className="group p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur border border-border hover:border-primary/60 transition-colors"
-            >
-              <div className="flex items-baseline gap-6">
-                <span className="text-6xl font-black text-primary/30 group-hover:text-primary transition-colors">
-                  0{i + 1}
-                </span>
-                <h3 className="text-3xl font-black">{p.t}</h3>
-              </div>
-              <p className="mt-6 text-foreground/70 leading-relaxed">{p.d}</p>
-            </article>
+            <Reveal key={p.t} delay={i * 120}>
+              <article className="group card-lift p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur border border-border hover:border-primary/60 h-full">
+                <div className="flex items-baseline gap-6">
+                  <span className="text-6xl font-black text-primary/30 group-hover:text-primary group-hover:animate-pulse transition-colors">
+                    0{i + 1}
+                  </span>
+                  <h3 className="text-3xl font-black">{p.t}</h3>
+                </div>
+                <p className="mt-6 font-caption normal-case text-foreground/70 leading-relaxed" style={{ letterSpacing: 0 }}>{p.d}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -399,30 +438,37 @@ function Services() {
             <button
               key={s.t}
               onClick={() => setActive(i)}
-              className={`text-sm md:text-base font-bold transition-colors ${
+              className={`relative font-caption text-xs md:text-sm transition-all pb-2 ${
                 active === i ? "text-primary" : "text-foreground/60 hover:text-foreground"
               }`}
             >
               {s.t}
+              <span
+                className={`absolute left-0 -bottom-[7px] h-[2px] bg-primary transition-all duration-500 ${
+                  active === i ? "w-full" : "w-0"
+                }`}
+              />
             </button>
           ))}
         </div>
 
         <div className="mt-12 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h4 className="text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
+          <div key={`txt-${active}`} className="fade-up">
+            <span className="font-caption text-xs text-primary/80">Serviço {String(active + 1).padStart(2, "0")}</span>
+            <h4 className="mt-3 text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
             <p className="mt-6 text-foreground/70 leading-relaxed max-w-md">{SERVICES[active].d}</p>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
               Quero este serviço
             </a>
           </div>
-          <div className="relative">
+          <div className="relative group">
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
             <img
               key={SERVICES[active].img}
               src={SERVICES[active].img}
               alt={SERVICES[active].t}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover rounded-2xl animate-[fadeUp_.5s_ease-out]"
+              className="relative w-full aspect-[4/3] object-cover rounded-2xl fade-up transition-transform duration-700 group-hover:scale-[1.02]"
             />
           </div>
         </div>
@@ -469,16 +515,19 @@ function Methodology() {
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgPerformance} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
-        <h2 className="text-4xl md:text-5xl font-black uppercase tracking-wide text-center">
-          Como funciona nossa metodologia
+        <span className="block text-center font-caption text-xs text-primary/80 mb-4">Metodologia</span>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center">
+          Como funciona <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>nossa metodologia</span>
         </h2>
         <div className="mt-16 grid md:grid-cols-4 gap-8">
           {steps.map((s, i) => (
-            <div key={s.t} className="relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border">
-              <div className="text-5xl font-black text-primary">{String(i + 1).padStart(2, "0")}</div>
-              <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
-              <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
-            </div>
+            <Reveal key={s.t} delay={i * 150}>
+              <div className="card-lift relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border h-full">
+                <div className="text-5xl font-black text-shine">{String(i + 1).padStart(2, "0")}</div>
+                <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
+                <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -85,7 +85,7 @@ function RotatingWords({ words }: { words: string[] }) {
   }, [words.length]);
   return (
     <span
-      className="relative inline-flex align-bottom overflow-hidden text-primary italic"
+      className="relative inline-flex align-bottom overflow-hidden italic text-shine"
       style={{ fontFamily: "var(--font-display)", height: "1.1em", minWidth: "5ch" }}
     >
       <span

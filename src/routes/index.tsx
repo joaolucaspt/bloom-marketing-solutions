@@ -261,22 +261,27 @@ const CLIENT_LOGOS = [
 ];
 
 function ClientsStrip() {
+  const row = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
   return (
-    <section className="py-16 border-y border-border bg-card/30">
+    <section className="py-16 border-y border-border bg-card/30 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground mb-10">
+        <p className="text-center font-caption text-xs text-muted-foreground mb-10">
           Marcas que crescem conosco
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
-          {CLIENT_LOGOS.map((n) => (
-            <div
-              key={n}
-              className="text-center text-xs md:text-sm font-bold tracking-widest text-foreground/50 hover:text-foreground transition-colors"
+      </div>
+      <div className="relative">
+        <div className="flex w-max animate-marquee gap-14 px-6">
+          {row.map((n, i) => (
+            <span
+              key={`${n}-${i}`}
+              className="font-caption text-sm text-foreground/50 hover:text-primary transition-colors whitespace-nowrap"
             >
               {n}
-            </div>
+            </span>
           ))}
         </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
       </div>
     </section>
   );

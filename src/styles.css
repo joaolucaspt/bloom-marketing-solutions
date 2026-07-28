@@ -27,7 +27,8 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-display: "Fraunces", "Instrument Serif", "Times New Roman", serif;
+  --font-heading: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
 }
 
 :root {

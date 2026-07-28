@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
+import ParticleNetwork from "@/components/ParticleNetwork";
 import bgTeam from "@/assets/bg-team.jpg";
 import bgBranding from "@/assets/bg-branding.jpg";
 import bgAudiovisual from "@/assets/bg-audiovisual.jpg";

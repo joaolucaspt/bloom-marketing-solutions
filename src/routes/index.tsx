@@ -360,18 +360,17 @@ function Pillars() {
 
         <div className="mt-20 grid md:grid-cols-2 gap-10">
           {pillars.map((p, i) => (
-            <article
-              key={p.t}
-              className="group p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur border border-border hover:border-primary/60 transition-colors"
-            >
-              <div className="flex items-baseline gap-6">
-                <span className="text-6xl font-black text-primary/30 group-hover:text-primary transition-colors">
-                  0{i + 1}
-                </span>
-                <h3 className="text-3xl font-black">{p.t}</h3>
-              </div>
-              <p className="mt-6 text-foreground/70 leading-relaxed">{p.d}</p>
-            </article>
+            <Reveal key={p.t} delay={i * 120}>
+              <article className="group card-lift p-8 md:p-10 rounded-3xl bg-card/80 backdrop-blur border border-border hover:border-primary/60 h-full">
+                <div className="flex items-baseline gap-6">
+                  <span className="text-6xl font-black text-primary/30 group-hover:text-primary group-hover:animate-pulse transition-colors">
+                    0{i + 1}
+                  </span>
+                  <h3 className="text-3xl font-black">{p.t}</h3>
+                </div>
+                <p className="mt-6 font-caption normal-case text-foreground/70 leading-relaxed" style={{ letterSpacing: 0 }}>{p.d}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

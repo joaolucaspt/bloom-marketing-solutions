@@ -61,7 +61,18 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
   }
+}
+
+@utility font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+@utility font-display {
+  font-family: var(--font-display);
 }
 
 @utility btn-primary {

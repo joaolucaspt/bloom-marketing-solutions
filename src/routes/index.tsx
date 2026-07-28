@@ -438,30 +438,37 @@ function Services() {
             <button
               key={s.t}
               onClick={() => setActive(i)}
-              className={`text-sm md:text-base font-bold transition-colors ${
+              className={`relative font-caption text-xs md:text-sm transition-all pb-2 ${
                 active === i ? "text-primary" : "text-foreground/60 hover:text-foreground"
               }`}
             >
               {s.t}
+              <span
+                className={`absolute left-0 -bottom-[7px] h-[2px] bg-primary transition-all duration-500 ${
+                  active === i ? "w-full" : "w-0"
+                }`}
+              />
             </button>
           ))}
         </div>
 
         <div className="mt-12 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h4 className="text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
+          <div key={`txt-${active}`} className="fade-up">
+            <span className="font-caption text-xs text-primary/80">Serviço {String(active + 1).padStart(2, "0")}</span>
+            <h4 className="mt-3 text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
             <p className="mt-6 text-foreground/70 leading-relaxed max-w-md">{SERVICES[active].d}</p>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
               Quero este serviço
             </a>
           </div>
-          <div className="relative">
+          <div className="relative group">
+            <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
             <img
               key={SERVICES[active].img}
               src={SERVICES[active].img}
               alt={SERVICES[active].t}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover rounded-2xl animate-[fadeUp_.5s_ease-out]"
+              className="relative w-full aspect-[4/3] object-cover rounded-2xl fade-up transition-transform duration-700 group-hover:scale-[1.02]"
             />
           </div>
         </div>

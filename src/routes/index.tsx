@@ -1,11 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import ParticleNetwork from "@/components/ParticleNetwork";
+import { useReveal } from "@/hooks/useReveal";
 import bgTeam from "@/assets/bg-team.jpg";
 import bgBranding from "@/assets/bg-branding.jpg";
 import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
 import bgPerformance from "@/assets/bg-performance.jpg";
 import bgPortrait from "@/assets/bg-portrait.jpg";
+
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const ref = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
+
+function Blobs() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="blob" style={{ background: "oklch(0.62 0.24 265)", width: 380, height: 380, top: "10%", left: "-8%" }} />
+      <div className="blob" style={{ background: "oklch(0.7 0.22 320)", width: 460, height: 460, top: "40%", right: "-10%", animationDelay: "-6s" }} />
+      <div className="blob" style={{ background: "oklch(0.55 0.2 240)", width: 300, height: 300, bottom: "5%", left: "30%", animationDelay: "-12s" }} />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({

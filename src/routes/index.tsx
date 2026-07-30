@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import ParticleNetwork from "@/components/ParticleNetwork";
+import { LogoMark } from "@/components/Logo";
+import Calculator from "@/components/Calculator";
+import LandingPages from "@/components/LandingPages";
+import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
 import bgTeam from "@/assets/bg-team.jpg";
 import bgBranding from "@/assets/bg-branding.jpg";
@@ -20,9 +24,9 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 function Blobs() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="blob" style={{ background: "oklch(0.62 0.24 265)", width: 380, height: 380, top: "10%", left: "-8%" }} />
-      <div className="blob" style={{ background: "oklch(0.7 0.22 320)", width: 460, height: 460, top: "40%", right: "-10%", animationDelay: "-6s" }} />
-      <div className="blob" style={{ background: "oklch(0.55 0.2 240)", width: 300, height: 300, bottom: "5%", left: "30%", animationDelay: "-12s" }} />
+      <div className="blob" style={{ background: "#C9A227", width: 380, height: 380, top: "10%", left: "-8%" }} />
+      <div className="blob" style={{ background: "#e6c452", width: 460, height: 460, top: "40%", right: "-10%", animationDelay: "-6s" }} />
+      <div className="blob" style={{ background: "#8a6f19", width: 300, height: 300, bottom: "5%", left: "30%", animationDelay: "-12s" }} />
     </div>
   );
 }
@@ -51,27 +55,10 @@ const WHATSAPP_URL =
   "https://wa.me/5531971169912?text=" +
   encodeURIComponent("Olá! Vim pelo site da LS Agência de Marketing e quero falar com um especialista.");
 
-/* Logo — inline SVG, wordmark "LS" + divider + stacked "AGÊNCIA / DE MARKETING" */
-function LogoMark({ className = "h-10 w-auto" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 260 60" className={className} aria-label="LS Agência de Marketing" role="img">
-      <g fill="currentColor">
-        <path d="M8 8 h14 v36 h24 v8 H8 z" />
-        <path d="M56 8 h40 v8 H66 v10 h26 c4 0 8 4 8 8 v10 c0 4 -4 8 -8 8 H54 v-8 h34 v-10 H62 c-4 0 -8 -4 -8 -8 V16 c0 -4 4 -8 8 -8 z" />
-      </g>
-      <line x1="115" y1="12" x2="115" y2="48" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-      <g fill="currentColor" fontFamily="Inter, sans-serif" fontWeight="400" letterSpacing="2">
-        <text x="125" y="26" fontSize="10">AGÊNCIA</text>
-        <text x="125" y="42" fontSize="10">DE MARKETING</text>
-      </g>
-    </svg>
-  );
-}
-
 function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-center text-foreground ${className}`}>
-      <LogoMark className="h-9 md:h-10 w-auto" />
+    <a href="#top" className={`inline-flex items-center ${className}`}>
+      <LogoMark scale={0.85} />
     </a>
   );
 }
@@ -85,15 +72,15 @@ function RotatingWords({ words }: { words: string[] }) {
   }, [words.length]);
   return (
     <span
-      className="relative inline-flex align-bottom overflow-hidden italic text-shine"
-      style={{ fontFamily: "var(--font-display)", height: "1.1em", minWidth: "5ch" }}
+      className="relative inline-flex align-bottom overflow-hidden text-primary"
+      style={{ fontFamily: "var(--font-display)", fontWeight: 600, height: "1.35em", minWidth: "5ch" }}
     >
       <span
         className="flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
-        style={{ transform: `translateY(-${i * 1.1}em)` }}
+        style={{ transform: `translateY(-${i * 1.35}em)` }}
       >
         {words.map((w) => (
-          <span key={w} style={{ height: "1.1em", lineHeight: "1.1em" }} className="whitespace-nowrap">
+          <span key={w} style={{ height: "1.35em", lineHeight: "1.35em" }} className="whitespace-nowrap">
             {w}
           </span>
         ))}
@@ -113,10 +100,12 @@ function Nav() {
   }, []);
 
   const links = [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#areas", label: "Áreas De Atuação" },
+    { href: "#top", label: "Início" },
+    { href: "#calculadora", label: "Calculadora" },
+    { href: "#landing-pages", label: "Landing Pages" },
     { href: "#servicos", label: "Serviços" },
-    { href: "#contato", label: "Contato" },
+    { href: "#metodologia", label: "Metodologia" },
+    { href: "#agendar", label: "Agendar" },
   ];
 
   return (
@@ -135,8 +124,8 @@ function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary hidden sm:inline-flex">
-            Falar com especialista
+          <a href="#agendar" className="btn-primary hidden sm:inline-flex">
+            Agendar diagnóstico
           </a>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
@@ -152,8 +141,8 @@ function Nav() {
               {l.label}
             </a>
           ))}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary sm:hidden">
-            Falar com especialista
+          <a href="#agendar" onClick={() => setOpen(false)} className="btn-primary sm:hidden">
+            Agendar diagnóstico
           </a>
         </div>
       )}
@@ -186,7 +175,7 @@ function Hero() {
             <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
           </Reveal>
           <Reveal delay={120}>
-            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-black leading-[1.02] tracking-tight">
+            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.25] tracking-tight">
               Nós somos <br />
               Especialistas em <br />
               <RotatingWords words={words} />
@@ -201,8 +190,8 @@ function Hero() {
           </Reveal>
           <Reveal delay={400}>
             <div className="mt-10">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
-                Falar com especialista
+              <a href="#agendar" className="btn-primary">
+                Agendar diagnóstico
               </a>
             </div>
           </Reveal>
@@ -222,7 +211,7 @@ function About() {
           <span className="font-caption text-xs text-primary/80">Diagnóstico</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que impede <br />
-            <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
               o seu crescimento?
             </span>
           </h2>
@@ -233,8 +222,8 @@ function About() {
             Nós entendemos esses desafios e temos a solução para estruturarmos o seu marketing, melhorar o
             seu posicionamento, a experiência do seu usuário e acelerar suas vendas.
           </p>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
-            Falar com especialista
+          <a href="#agendar" className="btn-primary mt-8">
+            Agendar diagnóstico
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -248,40 +237,6 @@ function About() {
             />
           </div>
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-const CLIENT_LOGOS = [
-  "SICOOB", "MODELARIA OLGA", "GRUPO PRÓVIDA", "ANCIOPLEX",
-  "SANTA CASA", "ALEXANDRE COMETTO", "ANNA HENKELMANN", "DINÂMICA",
-  "BIOS·NAD", "CRIS BARISTA", "SKYFIT ACADEMIA", "ARCA",
-  "RODRIGO JORGE", "CERTIFICAMINAS",
-];
-
-function ClientsStrip() {
-  const row = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
-  return (
-    <section className="py-16 border-y border-border bg-card/30 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6">
-        <p className="text-center font-caption text-xs text-muted-foreground mb-10">
-          Marcas que crescem conosco
-        </p>
-      </div>
-      <div className="relative">
-        <div className="flex w-max animate-marquee gap-14 px-6">
-          {row.map((n, i) => (
-            <span
-              key={`${n}-${i}`}
-              className="font-caption text-sm text-foreground/50 hover:text-primary transition-colors whitespace-nowrap"
-            >
-              {n}
-            </span>
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
       </div>
     </section>
   );
@@ -305,8 +260,8 @@ function Offer() {
             serviços inclui presença digital, branding, performance e anúncios online, experiências,
             audiovisual, jornada do cliente, vendas, treinamentos e mentorias.
           </p>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
-            Falar com especialista
+          <a href="#agendar" className="btn-primary mt-8">
+            Agendar diagnóstico
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -352,8 +307,8 @@ function Pillars() {
             <RotatingWords words={words} />
           </h2>
           <div className="mt-8">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary">
-              Falar com especialista
+            <a href="#agendar" className="btn-primary">
+              Agendar diagnóstico
             </a>
           </div>
         </div>
@@ -479,25 +434,25 @@ function Services() {
 
 function Belief() {
   return (
-    <section className="relative py-24 md:py-32 bg-foreground text-background overflow-hidden">
+    <section id="sobre" className="relative py-24 md:py-32 bg-[#050505] overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
         <img src={bgBranding} alt="" className="w-full h-full object-cover" loading="lazy" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
           Não acreditamos... <br />
-          <span className="italic font-normal" style={{ fontFamily: "var(--font-display)" }}>
+          <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
             em hacks milagrosos
           </span>
         </h2>
-        <p className="mt-10 text-lg leading-relaxed text-background/80">
+        <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
           Nossa cultura vem da mentalidade Growth, da experimentação através de testes com inteligência de
           dados para validar rotas e trazer resultados sustentáveis. Acreditamos que o seu crescimento
           está vinculado à sua mentalidade e não ao tamanho do seu negócio, estrutura ou segmentação de
           mercado.
         </p>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-10">
-          Falar com especialista
+        <a href="#agendar" className="btn-primary mt-10">
+          Agendar diagnóstico
         </a>
       </div>
     </section>
@@ -512,18 +467,18 @@ function Methodology() {
     { t: "Otimização", d: "Analisamos dados, testamos hipóteses e escalamos o que funciona." },
   ];
   return (
-    <section className="relative py-24 md:py-32 border-t border-border">
+    <section id="metodologia" className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgPerformance} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
         <span className="block text-center font-caption text-xs text-primary/80 mb-4">Metodologia</span>
         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center">
-          Como funciona <span className="italic text-shine" style={{ fontFamily: "var(--font-display)" }}>nossa metodologia</span>
+          Como funciona <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>nossa metodologia</span>
         </h2>
         <div className="mt-16 grid md:grid-cols-4 gap-8">
           {steps.map((s, i) => (
             <Reveal key={s.t} delay={i * 150}>
               <div className="card-lift relative p-8 rounded-2xl bg-card/80 backdrop-blur border border-border h-full">
-                <div className="text-5xl font-black text-shine">{String(i + 1).padStart(2, "0")}</div>
+                <div className="text-5xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</div>
                 <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
                 <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
               </div>
@@ -535,65 +490,77 @@ function Methodology() {
   );
 }
 
-/* Final contact section — logo + WhatsApp only, no form */
-function Contact() {
+function Footer() {
+  const nav = [
+    { href: "#top", label: "Início" },
+    { href: "#calculadora", label: "Calculadora" },
+    { href: "#landing-pages", label: "Landing Pages" },
+    { href: "#servicos", label: "Serviços" },
+    { href: "#metodologia", label: "Metodologia" },
+    { href: "#agendar", label: "Agendar" },
+  ];
+  const servicos = [
+    { href: "#servicos", label: "Marketing Digital" },
+    { href: "#servicos", label: "Vendas" },
+    { href: "#servicos", label: "Tecnologia" },
+    { href: "#servicos", label: "Negócios" },
+    { href: "#landing-pages", label: "Criação de Landing Pages" },
+  ];
   return (
-    <section id="contato" className="relative py-24 md:py-32 overflow-hidden border-t border-border">
-      <SectionBg src={bgTeam} opacity={0.15} />
-      <div className="relative mx-auto max-w-5xl px-6 text-center">
-        <h2 className="text-6xl md:text-8xl font-black uppercase leading-none tracking-tight">
-          Vamos <br />
-          <span className="italic font-normal text-primary" style={{ fontFamily: "var(--font-display)" }}>
-            conversar?
-          </span>
-        </h2>
-        <p className="mt-8 text-foreground/80 max-w-xl mx-auto">
-          Entre em contato e descubra como podemos transformar seu marketing. Oferecemos uma consulta
-          gratuita para entender suas necessidades e desenvolver uma estratégia personalizada.
-        </p>
-
-        <div className="mt-14 inline-flex flex-col items-center gap-6 p-10 md:p-14 rounded-3xl bg-card/80 backdrop-blur border border-border">
-          <LogoMark className="h-14 md:h-16 w-auto text-foreground" />
-          <div className="mt-2">
-            <p className="text-xs uppercase tracking-[0.3em] text-foreground/60">Telefone e WhatsApp</p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener"
-              className="mt-3 block text-3xl md:text-5xl font-black hover:text-primary transition-colors"
-            >
-              {PHONE_DISPLAY}
-            </a>
-          </div>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-2">
-            Falar agora no WhatsApp
+    <footer className="border-t border-border bg-[#050505] py-14">
+      <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-4">
+        <div>
+          <LogoMark />
+          <p className="mt-5 text-sm leading-relaxed text-[#a8a8a8] max-w-xs">
+            Branding, performance e vendas para acelerar o crescimento do seu negócio.
+          </p>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Navegação</p>
+          <ul className="mt-4 space-y-2">
+            {nav.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Serviços</p>
+          <ul className="mt-4 space-y-2">
+            {servicos.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Contato</p>
+          <p className="mt-4 text-xs uppercase tracking-[0.2em] text-[#888]">Telefone e WhatsApp</p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener"
+            className="mt-2 block text-lg font-medium text-foreground hover:text-primary transition-colors"
+          >
+            {PHONE_DISPLAY}
           </a>
         </div>
       </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border py-14">
-      <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <Logo />
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener"
-          className="text-sm font-bold hover:text-primary transition-colors"
-        >
-          {PHONE_DISPLAY}
-        </a>
-        <p className="text-xs text-foreground/50 text-center">
-          © {new Date().getFullYear()} LS Agência de Marketing. Todos os direitos reservados.
+      <div className="mx-auto mt-10 max-w-7xl border-t border-border px-6 pt-6">
+        <p className="text-center text-xs text-[#888]">
+          © 2026 LS Agência de Marketing. Todos os direitos reservados.
         </p>
       </div>
     </footer>
   );
 }
+
 
 function FloatingWhatsApp() {
   return (
@@ -619,14 +586,15 @@ function Index() {
       <Nav />
       <main className="relative z-[2]">
         <Hero />
+        <Calculator />
+        <LandingPages />
         <About />
-        <ClientsStrip />
         <Offer />
         <Pillars />
         <Services />
         <Belief />
         <Methodology />
-        <Contact />
+        <Booking />
       </main>
       <Footer />
       <FloatingWhatsApp />

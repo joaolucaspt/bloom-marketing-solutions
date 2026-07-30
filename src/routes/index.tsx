@@ -491,25 +491,76 @@ function Methodology() {
 }
 
 function Footer() {
+  const nav = [
+    { href: "#top", label: "Início" },
+    { href: "#calculadora", label: "Calculadora" },
+    { href: "#landing-pages", label: "Landing Pages" },
+    { href: "#servicos", label: "Serviços" },
+    { href: "#metodologia", label: "Metodologia" },
+    { href: "#agendar", label: "Agendar" },
+  ];
+  const servicos = [
+    { href: "#servicos", label: "Marketing Digital" },
+    { href: "#servicos", label: "Vendas" },
+    { href: "#servicos", label: "Tecnologia" },
+    { href: "#servicos", label: "Negócios" },
+    { href: "#landing-pages", label: "Criação de Landing Pages" },
+  ];
   return (
-    <footer className="border-t border-border py-14">
-      <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <Logo />
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener"
-          className="text-sm font-bold hover:text-primary transition-colors"
-        >
-          {PHONE_DISPLAY}
-        </a>
-        <p className="text-xs text-foreground/50 text-center">
-          © {new Date().getFullYear()} LS Agência de Marketing. Todos os direitos reservados.
+    <footer className="border-t border-border bg-[#050505] py-14">
+      <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-4">
+        <div>
+          <LogoMark />
+          <p className="mt-5 text-sm leading-relaxed text-[#a8a8a8] max-w-xs">
+            Branding, performance e vendas para acelerar o crescimento do seu negócio.
+          </p>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Navegação</p>
+          <ul className="mt-4 space-y-2">
+            {nav.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Serviços</p>
+          <ul className="mt-4 space-y-2">
+            {servicos.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-caption text-xs text-primary">Contato</p>
+          <p className="mt-4 text-xs uppercase tracking-[0.2em] text-[#888]">Telefone e WhatsApp</p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener"
+            className="mt-2 block text-lg font-medium text-foreground hover:text-primary transition-colors"
+          >
+            {PHONE_DISPLAY}
+          </a>
+        </div>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl border-t border-border px-6 pt-6">
+        <p className="text-center text-xs text-[#888]">
+          © 2026 LS Agência de Marketing. Todos os direitos reservados.
         </p>
       </div>
     </footer>
   );
 }
+
 
 function FloatingWhatsApp() {
   return (

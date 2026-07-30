@@ -68,10 +68,9 @@ export default function LandingPages() {
             />
             <a
               href="#agendar"
-              className="mt-auto block w-full rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
-              style={{ marginTop: "auto", paddingTop: "0.75rem" }}
+              className="mt-7 block w-full rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
-              <span className="block pt-0">Quero a gestão completa</span>
+              Quero a gestão completa
             </a>
           </article>
 
@@ -101,7 +100,7 @@ export default function LandingPages() {
               href={WA_LP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+              className="mt-7 block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
             >
               Quero minha landing page
             </a>

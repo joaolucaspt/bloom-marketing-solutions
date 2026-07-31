@@ -42,7 +42,7 @@ export default function Calculator() {
     "w-full rounded-xl bg-[#141414] border border-[#333] px-4 py-3 text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
 
   return (
-    <section id="calculadora" className="relative bg-[#050505] py-20 md:py-28">
+    <section id="calculadora" className="relative bg-[#050505] pt-20 md:pt-28" style={{ paddingBottom: 40 }}>
       <div className="mx-auto w-full max-w-[520px] px-5 md:px-6">
         <p className="font-caption text-xs text-primary">Descubra seu potencial</p>
         <h2 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">

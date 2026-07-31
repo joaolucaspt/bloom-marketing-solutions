@@ -66,9 +66,10 @@ export default function ParticleNetwork() {
     const tick = () => {
       ctx.clearRect(0, 0, width, height);
       const m = mouseRef.current;
-      const pushRadius = 140;
-      const lineRadius = 130;
-      const cursorLineRadius = 200;
+      const pushRadius = 110;
+      const lineRadius = 60;
+      const cursorLineRadius = 120;
+
 
       for (const p of particles) {
         // gentle drift back to base
@@ -175,7 +176,8 @@ export default function ParticleNetwork() {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[40] hidden md:block"
+      className="pointer-events-none fixed inset-0 z-0 hidden md:block"
     />
+
   );
 }

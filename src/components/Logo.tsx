@@ -1,24 +1,19 @@
+import lsLogo from "@/assets/ls-logo.png.asset.json";
+
 type Props = { className?: string; scale?: number };
 
 /**
- * Single reusable brand logo — "LS" (serif, gold) + thin divider + stacked
- * "AGÊNCIA / DE MARKETING" (sans, light grey). Pure typography, no effects.
+ * Single reusable brand logo — "LS" gold mark + thin divider + stacked
+ * "AGÊNCIA / DE MARKETING" (sans, light grey).
  */
 export function LogoMark({ className = "", scale = 1 }: Props) {
   return (
     <span className={`inline-flex items-center gap-3 select-none ${className}`}>
-      <span
-        style={{
-          fontFamily: '"Playfair Display", Georgia, serif',
-          fontWeight: 600,
-          fontSize: `${32 * scale}px`,
-          lineHeight: 1,
-          color: "#C9A227",
-          letterSpacing: "0.02em",
-        }}
-      >
-        LS
-      </span>
+      <img
+        src={lsLogo.url}
+        alt="LS Agência de Marketing"
+        style={{ height: `${40 * scale}px`, width: "auto", display: "block" }}
+      />
       <span
         aria-hidden
         style={{ width: 1, height: `${32 * scale}px`, backgroundColor: "#C9A227", opacity: 0.8 }}

@@ -352,28 +352,29 @@ const SERVICES = [
   {
     t: "Redes Sociais",
     d: "Gestão completa de rede social, planejamento, conteúdo, lives, podcasts, influência e colabs.",
-    img: bgTeam,
+    img: svcSocial,
   },
   {
     t: "Produção Audiovisual",
     d: "Captação e edição de fotos, shooting, vídeos curtos, motions, filmes e locução.",
-    img: bgAudiovisual,
+    img: svcAudiovisual,
   },
   {
     t: "Tech",
     d: "Desenvolvimento de Sites, Landing Pages, e-commerce, aplicativos e UX Design.",
-    img: bgPerformance,
+    img: svcTech,
   },
   {
     t: "Educação",
     d: "Consultoria estratégica, treinamentos e mentorias.",
-    img: bgTeam,
+    img: svcEducacao,
   },
   {
     t: "Performance",
     d: "Campanhas patrocinadas, SEO, mídia programática e merchandising.",
-    img: bgPerformance,
+    img: svcPerformance,
   },
+
 ];
 
 function Services() {

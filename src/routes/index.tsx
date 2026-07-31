@@ -11,6 +11,13 @@ import bgBranding from "@/assets/bg-branding.jpg";
 import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
 import bgPerformance from "@/assets/bg-performance.jpg";
 import bgPortrait from "@/assets/bg-portrait.jpg";
+import svcSocial from "@/assets/svc-social.jpg";
+import svcAudiovisual from "@/assets/svc-audiovisual.jpg";
+import svcTech from "@/assets/svc-tech.jpg";
+import svcEducacao from "@/assets/svc-educacao.jpg";
+import svcPerformance from "@/assets/svc-performance.jpg";
+import adsDashboard from "@/assets/ads-dashboard.jpg.asset.json";
+
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useReveal<HTMLDivElement>();

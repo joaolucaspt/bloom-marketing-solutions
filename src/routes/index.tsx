@@ -250,7 +250,6 @@ function About() {
 }
 
 function Offer() {
-  const words = ["Integradas", "com Resultados", "Sustentáveis"];
   return (
     <section id="areas" className="relative py-24 md:py-32 overflow-hidden">
       <SectionBg src={bgPerformance} opacity={0.12} />
@@ -260,7 +259,9 @@ function Offer() {
           <span className="font-caption text-xs text-primary/80">Ecossistema</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que oferecemos? <br />
-            <RotatingWords words={words} />
+            <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
+              Um ecossistema com resultados reais.
+            </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
             A LS ajuda empresas a se posicionarem de forma profissional no mercado. Nosso ecossistema de
@@ -275,13 +276,15 @@ function Offer() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-4 rounded-3xl border-2 border-primary rotate-[-3deg]" aria-hidden />
             <img
-              src={bgPortrait}
-              alt="Especialista LS Agência de Marketing"
+              src={adsDashboard.url}
+              alt="Análise de dashboard de métricas de anúncios e tráfego pago"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/5]"
+              style={{ filter: "grayscale(1)" }}
             />
           </div>
         </Reveal>
+
       </div>
     </section>
   );

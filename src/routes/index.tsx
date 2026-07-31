@@ -125,7 +125,7 @@ function Nav() {
         </nav>
         <div className="flex items-center gap-3">
           <a href="#agendar" className="btn-primary hidden sm:inline-flex">
-            Agendar diagnóstico
+            Falar com especialista
           </a>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
@@ -142,7 +142,7 @@ function Nav() {
             </a>
           ))}
           <a href="#agendar" onClick={() => setOpen(false)} className="btn-primary sm:hidden">
-            Agendar diagnóstico
+            Falar com especialista
           </a>
         </div>
       )}
@@ -191,7 +191,7 @@ function Hero() {
           <Reveal delay={400}>
             <div className="mt-10">
               <a href="#agendar" className="btn-primary">
-                Agendar diagnóstico
+                Falar com especialista
               </a>
             </div>
           </Reveal>
@@ -223,7 +223,7 @@ function About() {
             seu posicionamento, a experiência do seu usuário e acelerar suas vendas.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
-            Agendar diagnóstico
+            Falar com especialista
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -261,7 +261,7 @@ function Offer() {
             audiovisual, jornada do cliente, vendas, treinamentos e mentorias.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
-            Agendar diagnóstico
+            Falar com especialista
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -308,7 +308,7 @@ function Pillars() {
           </h2>
           <div className="mt-8">
             <a href="#agendar" className="btn-primary">
-              Agendar diagnóstico
+              Falar com especialista
             </a>
           </div>
         </div>
@@ -452,7 +452,7 @@ function Belief() {
           mercado.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
-          Agendar diagnóstico
+          Falar com especialista
         </a>
       </div>
     </section>

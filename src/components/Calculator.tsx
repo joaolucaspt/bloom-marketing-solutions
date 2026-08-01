@@ -39,72 +39,66 @@ export default function Calculator() {
   };
 
   const field =
-    "w-full rounded-xl bg-[#141414] border border-[#333] px-4 py-3 text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
+    "w-full rounded-lg bg-[#0d0d0d] border border-[#333] px-3 py-2.5 text-sm text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
 
   return (
-    <section id="calculadora" className="relative bg-[#050505] pt-20 md:pt-28" style={{ paddingBottom: 40 }}>
-      <div className="mx-auto w-full max-w-[520px] px-5 md:px-6">
-        <p className="font-caption text-xs text-primary">Descubra seu potencial</p>
-        <h2 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-          Você já ouviu falar em tráfego pago?
-        </h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#a8a8a8]">
-          Tráfego pago é pagar pra aparecer pro cliente certo, na hora certa, no Instagram, Facebook ou
-          Google — em vez de esperar ele passar na frente da sua loja por acaso. Veja abaixo quanto isso
-          pode representar pro seu negócio.
-        </p>
+    <div
+      id="calculadora"
+      className="w-full rounded-2xl border border-primary/60 bg-[#141414]/95 backdrop-blur-sm"
+      style={{ maxWidth: 400, padding: 24 }}
+    >
+      <p className="font-caption text-[11px] text-primary">Descubra seu potencial</p>
+      <h2 className="mt-2 text-xl font-semibold leading-snug text-foreground">
+        Você já ouviu falar em tráfego pago?
+      </h2>
+      <p className="mt-2.5 text-[13px] leading-relaxed text-[#a8a8a8]">
+        É pagar pra aparecer pro cliente certo, na hora certa. Veja quanto isso pode representar pro seu
+        negócio.
+      </p>
 
-        <div className="mt-8 space-y-5">
-          <div>
-            <label htmlFor="calc-fat" className="block text-sm font-medium text-foreground mb-2">
-              Quanto seu negócio fatura hoje por mês? (aproximado)
-            </label>
-            <input id="calc-fat" inputMode="numeric" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="R$ 8.000" className={field} />
-          </div>
-          <div>
-            <label htmlFor="calc-ticket" className="block text-sm font-medium text-foreground mb-2">
-              Qual o valor médio que cada cliente gasta com você?
-            </label>
-            <input id="calc-ticket" inputMode="numeric" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="R$ 150" className={field} />
-          </div>
+      <div className="mt-5 space-y-3.5">
+        <div>
+          <label htmlFor="calc-fat" className="block text-[13px] font-medium text-foreground mb-1.5">
+            Quanto seu negócio fatura por mês?
+          </label>
+          <input id="calc-fat" inputMode="numeric" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="R$ 8.000" className={field} />
         </div>
-
-        {error && <p className="mt-4 text-sm text-[#e07070]">{error}</p>}
-
-        <button
-          onClick={calc}
-          className="mt-6 w-full rounded-xl bg-primary py-3.5 font-semibold text-primary-foreground transition hover:brightness-110"
-        >
-          Calcular meu potencial
-        </button>
-
-        {result && (
-          <div className="mt-6 rounded-2xl border border-primary bg-[#141414] p-6 fade-up">
-            <p className="text-sm text-[#a8a8a8]">
-              Com uma campanha básica, negócios do seu porte costumam trazer
-            </p>
-            <p className="mt-1 text-xl font-semibold text-foreground">
-              {result.min} a {result.max} clientes novos por mês
-            </p>
-            <p className="mt-4 text-sm text-[#a8a8a8]">Isso representa um potencial de</p>
-            <p className="mt-1 text-3xl font-bold text-primary">+ {brl(result.potencial)}/mês</p>
-          </div>
-        )}
-
-        <p className="mt-6 text-sm leading-relaxed text-[#a8a8a8]">
-          E o melhor: isso é dinheiro que você não está vendo hoje simplesmente porque ainda ninguém fora
-          do seu bairro sabe que você existe.
-        </p>
-
-        <a
-          href={WA_CALC}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5 block w-full rounded-xl border border-primary py-3.5 text-center font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
-        >
-          Fale com a gente, é gratuito
-        </a>
+        <div>
+          <label htmlFor="calc-ticket" className="block text-[13px] font-medium text-foreground mb-1.5">
+            Valor médio que cada cliente gasta?
+          </label>
+          <input id="calc-ticket" inputMode="numeric" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="R$ 150" className={field} />
+        </div>
       </div>
-    </section>
+
+      {error && <p className="mt-3 text-[13px] text-[#e07070]">{error}</p>}
+
+      <button
+        onClick={calc}
+        className="mt-4 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+      >
+        Calcular meu potencial
+      </button>
+
+      {result && (
+        <div className="mt-4 rounded-xl border border-primary bg-[#0d0d0d] p-4 fade-up">
+          <p className="text-[13px] text-[#a8a8a8]">Com uma campanha básica, você pode trazer</p>
+          <p className="mt-1 text-base font-semibold text-foreground">
+            {result.min} a {result.max} clientes novos por mês
+          </p>
+          <p className="mt-3 text-[13px] text-[#a8a8a8]">Isso representa um potencial de</p>
+          <p className="mt-1 text-2xl font-bold text-primary">+ {brl(result.potencial)}/mês</p>
+        </div>
+      )}
+
+      <a
+        href={WA_CALC}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3.5 block w-full rounded-lg border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+      >
+        Fale com a gente, é gratuito
+      </a>
+    </div>
   );
 }

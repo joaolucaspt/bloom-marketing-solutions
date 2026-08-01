@@ -1,3 +1,4 @@
+import { Gem } from "lucide-react";
 import exampleAsset from "@/assets/produzquality-hq.png.asset.json";
 
 const WA_LP =
@@ -30,7 +31,7 @@ function List({ items }: { items: string[] }) {
 
 export default function LandingPages() {
   return (
-    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 0 }}>
+    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 64 }}>
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
@@ -62,10 +63,7 @@ export default function LandingPages() {
             <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
               Mais completo
             </span>
-            <svg viewBox="0 0 24 24" className="h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <rect x="8" y="3" width="13" height="13" rx="2" />
-              <path d="M16 16v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3" />
-            </svg>
+            <Gem className="h-6 w-6 text-primary" strokeWidth={1.8} />
             <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
               Gestão completa
             </h3>
@@ -124,6 +122,7 @@ export default function LandingPages() {
                 "Copy focada em conversão",
                 "Otimizada pra qualquer tela",
                 "Pronta em poucos dias",
+                "Suporte direto durante a criação",
               ]}
             />
             <a
@@ -167,6 +166,7 @@ export default function LandingPages() {
             <List
               items={[
                 "Landing page profissional completa",
+                "Design exclusivo com copy focada em conversão",
                 "Criação e configuração da campanha",
                 "Entrega rápida",
                 "Acompanhamento dos primeiros resultados",

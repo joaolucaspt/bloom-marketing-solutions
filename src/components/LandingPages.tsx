@@ -30,7 +30,7 @@ function List({ items }: { items: string[] }) {
 
 export default function LandingPages() {
   return (
-    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 40 }}>
+    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 0 }}>
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
@@ -49,33 +49,42 @@ export default function LandingPages() {
         </p>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3 items-stretch">
-          {/* Card 1 */}
+          {/* Card 1 — destaque */}
           <article
-            className="flex h-full flex-col rounded-xl border-[0.5px] border-[#333] bg-[#141414]"
-            style={{ padding: 36, borderRadius: 12 }}
+            className="relative flex h-full flex-col bg-[#141414]"
+            style={{
+              padding: 36,
+              borderRadius: 12,
+              border: "1.5px solid #C9A227",
+              boxShadow: "0 0 24px rgba(201,162,39,0.25)",
+            }}
           >
+            <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
+              Mais completo
+            </span>
             <svg viewBox="0 0 24 24" className="h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
               <rect x="8" y="3" width="13" height="13" rx="2" />
               <path d="M16 16v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3" />
             </svg>
             <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
-              Parte da gestão completa
+              Gestão completa
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
-              Todo cliente que fecha a gestão de marketing com a LS recebe uma landing page profissional
-              como parte do serviço.
+              A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
+              estratégia contínua por trás.
             </p>
             <List
               items={[
                 "Landing page profissional inclusa",
-                "Gestão de tráfego pago",
+                "Gestão de tráfego pago (Meta Ads e Google Ads)",
                 "Relatórios semanais",
-                "Suporte contínuo",
+                "Suporte contínuo direto com os fundadores",
+                "Estratégia personalizada para seu negócio",
               ]}
             />
             <a
               href="#agendar"
-              className="mt-auto block w-full rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="mt-auto block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
               style={{ marginTop: 28 }}
             >
               Quero a gestão completa
@@ -84,10 +93,18 @@ export default function LandingPages() {
 
           {/* Card 2 */}
           <article
-            className="relative flex h-full flex-col border border-primary bg-[#141414]"
-            style={{ padding: 36, borderRadius: 12 }}
+            className="relative flex h-full flex-col bg-[#141414]"
+            style={{
+              padding: 36,
+              borderRadius: 12,
+              border: "1px solid #e8e8e8",
+              boxShadow: "0 0 16px rgba(255,255,255,0.06)",
+            }}
           >
-            <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
+            <span
+              className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+              style={{ background: "#e8e8e8", color: "#050505" }}
+            >
               Entrega rápida
             </span>
             <svg viewBox="0 0 24 24" className="h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -113,7 +130,7 @@ export default function LandingPages() {
               href={WA_LP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+              className="mt-auto block w-full rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
               style={{ marginTop: 28 }}
             >
               Quero minha landing page
@@ -122,15 +139,23 @@ export default function LandingPages() {
 
           {/* Card 3 */}
           <article
-            className="relative flex h-full flex-col border border-primary bg-[#141414]"
-            style={{ padding: 36, borderRadius: 12 }}
+            className="relative flex h-full flex-col bg-[#141414]"
+            style={{
+              padding: 36,
+              borderRadius: 12,
+              border: "1px solid #B8941F",
+              boxShadow: "0 0 14px rgba(184,148,31,0.15)",
+            }}
           >
-            <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
-              Mais completo
+            <span
+              className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+              style={{ background: "#B8941F", color: "#050505" }}
+            >
+              Combo inicial
             </span>
-            <svg viewBox="0 0 24 24" className="h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M6 3h12l4 6-10 12L2 9l4-6z" strokeLinejoin="round" />
-              <path d="M2 9h20M12 21 8 9l4-6 4 6-4 12z" strokeLinejoin="round" />
+            <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color: "#B8941F" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 17l6-6 4 4 7-7" />
+              <path d="M14 8h6v6" />
             </svg>
             <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
               Landing page + campanha premium
@@ -151,13 +176,14 @@ export default function LandingPages() {
               href={WA_PREMIUM}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
-              style={{ marginTop: 28 }}
+              className="mt-auto block w-full rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
+              style={{ marginTop: 28, background: "#B8941F", color: "#050505" }}
             >
               Quero o plano premium
             </a>
           </article>
         </div>
+
 
         {/* Parte 2 — exemplo real */}
         <div style={{ marginTop: 64 }} className="text-center">

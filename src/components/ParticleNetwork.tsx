@@ -66,9 +66,11 @@ export default function ParticleNetwork() {
     const tick = () => {
       ctx.clearRect(0, 0, width, height);
       const m = mouseRef.current;
-      const pushRadius = 110;
-      const lineRadius = 60;
+      const pushRadius = 100;
+      const lineRadius = 95;
       const cursorLineRadius = 120;
+      const maxCursorLinks = 3;
+
 
 
       for (const p of particles) {

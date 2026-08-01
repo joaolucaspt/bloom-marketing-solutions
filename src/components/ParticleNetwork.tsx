@@ -111,9 +111,9 @@ export default function ParticleNetwork() {
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < lineRadius) {
-            const alpha = (1 - d / lineRadius) * 0.35;
+            const alpha = (1 - d / lineRadius) * 0.45;
             ctx.strokeStyle = `rgba(201,162,39,${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -122,39 +122,41 @@ export default function ParticleNetwork() {
         }
       }
 
-      // glowing lines from cursor
+      // glowing lines from cursor — only the 2-3 nearest particles
       if (m.active) {
-        for (const p of particles) {
-          const dx = p.x - m.x;
-          const dy = p.y - m.y;
-          const d = Math.hypot(dx, dy);
-          if (d < cursorLineRadius) {
-            const t = 1 - d / cursorLineRadius;
-            const grad = ctx.createLinearGradient(m.x, m.y, p.x, p.y);
-            grad.addColorStop(0, `rgba(230,196,82,${0.9 * t})`);
-            grad.addColorStop(1, `rgba(201,162,39,0)`);
-            ctx.strokeStyle = grad;
-            ctx.lineWidth = 1.1;
-            ctx.shadowColor = "rgba(201,162,39,0.9)";
-            ctx.shadowBlur = 8 * t;
-            ctx.beginPath();
-            ctx.moveTo(m.x, m.y);
-            ctx.lineTo(p.x, p.y);
-            ctx.stroke();
-          }
+        const near = particles
+          .map((p) => ({ p, d: Math.hypot(p.x - m.x, p.y - m.y) }))
+          .filter((o) => o.d < cursorLineRadius)
+          .sort((a, b) => a.d - b.d)
+          .slice(0, maxCursorLinks);
+
+        for (const { p, d } of near) {
+          const t = 1 - d / cursorLineRadius;
+          const grad = ctx.createLinearGradient(m.x, m.y, p.x, p.y);
+          grad.addColorStop(0, `rgba(230,196,82,${0.75 * t})`);
+          grad.addColorStop(1, `rgba(201,162,39,0)`);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.1;
+          ctx.shadowColor = "rgba(201,162,39,0.8)";
+          ctx.shadowBlur = 8 * t;
+          ctx.beginPath();
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
         }
         ctx.shadowBlur = 0;
       }
 
       // dots
       for (const p of particles) {
-        ctx.fillStyle = "rgba(201,162,39,0.95)";
-        ctx.shadowColor = "rgba(201,162,39,0.85)";
-        ctx.shadowBlur = 10;
+        ctx.fillStyle = "rgba(201,162,39,0.5)";
+        ctx.shadowColor = "rgba(201,162,39,0.45)";
+        ctx.shadowBlur = 8;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       }
+
       ctx.shadowBlur = 0;
 
       raf = requestAnimationFrame(tick);

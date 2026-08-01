@@ -111,9 +111,9 @@ export default function ParticleNetwork() {
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < lineRadius) {
-            const alpha = (1 - d / lineRadius) * 0.45;
+            const alpha = (1 - d / lineRadius) * 0.55;
             ctx.strokeStyle = `rgba(201,162,39,${alpha})`;
-            ctx.lineWidth = 0.7;
+            ctx.lineWidth = 0.9;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -149,7 +149,7 @@ export default function ParticleNetwork() {
 
       // dots
       for (const p of particles) {
-        ctx.fillStyle = "rgba(201,162,39,0.5)";
+        ctx.fillStyle = "rgba(201,162,39,0.6)";
         ctx.shadowColor = "rgba(201,162,39,0.45)";
         ctx.shadowBlur = 8;
         ctx.beginPath();

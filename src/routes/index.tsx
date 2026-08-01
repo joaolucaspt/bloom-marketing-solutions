@@ -283,15 +283,12 @@ function Offer() {
         <Reveal delay={200}>
           <div className="relative animate-floaty">
             <div className="absolute -inset-4 rounded-3xl border-2 border-primary rotate-[-3deg]" aria-hidden />
-            <img
-              src={adsDashboard.url}
-              alt="Análise de dashboard de métricas de anúncios e tráfego pago"
-              loading="lazy"
-              className="relative rounded-2xl w-full object-cover aspect-[4/5]"
-              style={{ filter: "grayscale(1)" }}
-            />
+            <div className="relative">
+              <AdsPanel />
+            </div>
           </div>
         </Reveal>
+
 
       </div>
     </section>

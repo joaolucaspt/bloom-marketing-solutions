@@ -16,7 +16,7 @@ import svcAudiovisual from "@/assets/svc-audiovisual.jpg";
 import svcTech from "@/assets/svc-tech.jpg";
 import svcEducacao from "@/assets/svc-educacao.jpg";
 import svcPerformance from "@/assets/svc-performance.jpg";
-import adsDashboard from "@/assets/ads-dashboard.jpg.asset.json";
+import AdsPanel from "@/components/AdsPanel";
 
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -602,7 +602,6 @@ function Index() {
       <Nav />
       <main className="relative z-[2]">
         <Hero />
-        <Calculator />
         <LandingPages />
         <About />
         <Offer />

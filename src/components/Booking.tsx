@@ -79,16 +79,19 @@ export default function Booking() {
           </div>
 
           {/* Coluna direita — Cal.com */}
-          <div
-            className="overflow-hidden bg-[#141414] shadow-2xl"
-            style={{ borderRadius: 12, height: 680, width: "100%" }}
-          >
-            <Cal
-              calLink="ls.agenciademarketing/diagnostico-gratuito"
-              style={{ width: "100%", height: "100%", overflow: "auto" }}
-              config={{ theme: "dark", layout: "month_view" }}
-            />
+          <div className="flex justify-center md:justify-end">
+            <div
+              className="w-full overflow-hidden bg-[#141414] shadow-2xl"
+              style={{ borderRadius: 12, height: 520, maxWidth: 420 }}
+            >
+              <Cal
+                calLink="ls.agenciademarketing/diagnostico-gratuito"
+                style={{ width: "100%", height: "100%", overflow: "auto" }}
+                config={{ theme: "dark", layout: "month_view" }}
+              />
+            </div>
           </div>
+
         </div>
 
         {/* Card de contato — centralizado e mais abaixo */}

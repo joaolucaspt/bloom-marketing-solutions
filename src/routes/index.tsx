@@ -16,7 +16,7 @@ import svcAudiovisual from "@/assets/svc-audiovisual.jpg";
 import svcTech from "@/assets/svc-tech.jpg";
 import svcEducacao from "@/assets/svc-educacao.jpg";
 import svcPerformance from "@/assets/svc-performance.jpg";
-import adsDashboard from "@/assets/ads-dashboard.jpg.asset.json";
+import AdsPanel from "@/components/AdsPanel";
 
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -170,36 +170,43 @@ function SectionBg({ src, opacity = 0.18 }: { src: string; opacity?: number }) {
 function Hero() {
   const words = ["Branding", "Marketing", "Vendas", "Crescimento"];
   return (
-    <section id="top" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+    <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-45 scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
       </div>
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
-        <div className="max-w-4xl">
-          <Reveal>
-            <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
-          </Reveal>
-          <Reveal delay={120}>
-            <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.25] tracking-tight">
-              Nós somos <br />
-              Especialistas em <br />
-              <RotatingWords words={words} />
-            </h1>
-          </Reveal>
-          <Reveal delay={260}>
-            <p className="mt-10 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
-              Seu crescimento não pode esperar! E você sabe disto.
-              <br />
-              Na LS Agência de Marketing, transformamos desafios em resultados.
-            </p>
-          </Reveal>
-          <Reveal delay={400}>
-            <div className="mt-10">
-              <a href="#agendar" className="btn-primary">
-                Falar com especialista
-              </a>
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_400px] lg:items-center">
+          <div>
+            <Reveal>
+              <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
+            </Reveal>
+            <Reveal delay={120}>
+              <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.2] tracking-tight">
+                Nós somos <br />
+                Especialistas em <br />
+                <RotatingWords words={words} />
+              </h1>
+            </Reveal>
+            <Reveal delay={260}>
+              <p className="mt-8 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
+                Seu crescimento não pode esperar! E você sabe disto.
+                <br />
+                Na LS Agência de Marketing, transformamos desafios em resultados.
+              </p>
+            </Reveal>
+            <Reveal delay={400}>
+              <div className="mt-8">
+                <a href="#agendar" className="btn-primary">
+                  Falar com especialista
+                </a>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={300}>
+            <div className="flex justify-center lg:justify-end">
+              <Calculator />
             </div>
           </Reveal>
         </div>
@@ -207,6 +214,7 @@ function Hero() {
     </section>
   );
 }
+
 
 function About() {
   return (
@@ -275,15 +283,12 @@ function Offer() {
         <Reveal delay={200}>
           <div className="relative animate-floaty">
             <div className="absolute -inset-4 rounded-3xl border-2 border-primary rotate-[-3deg]" aria-hidden />
-            <img
-              src={adsDashboard.url}
-              alt="Análise de dashboard de métricas de anúncios e tráfego pago"
-              loading="lazy"
-              className="relative rounded-2xl w-full object-cover aspect-[4/5]"
-              style={{ filter: "grayscale(1)" }}
-            />
+            <div className="relative">
+              <AdsPanel />
+            </div>
           </div>
         </Reveal>
+
 
       </div>
     </section>
@@ -597,7 +602,6 @@ function Index() {
       <Nav />
       <main className="relative z-[2]">
         <Hero />
-        <Calculator />
         <LandingPages />
         <About />
         <Offer />

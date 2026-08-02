@@ -73,10 +73,21 @@ export default function ParticleNetwork() {
 
 
 
-      for (const p of particles) {
+      const now = performance.now() / 1000;
+
+      for (let idx = 0; idx < particles.length; idx++) {
+        const p = particles[idx];
+        // continuous, non-repetitive drift (sum of out-of-phase sines)
+        const wx =
+          Math.sin(now * 0.23 + idx * 1.7) * 0.05 + Math.sin(now * 0.11 + idx * 0.53) * 0.035;
+        const wy =
+          Math.cos(now * 0.19 + idx * 2.3) * 0.05 + Math.cos(now * 0.13 + idx * 0.77) * 0.035;
+        p.vx += wx;
+        p.vy += wy;
+
         // gentle drift back to base
-        p.vx += (p.bx - p.x) * 0.0008;
-        p.vy += (p.by - p.y) * 0.0008;
+        p.vx += (p.bx - p.x) * 0.0004;
+        p.vy += (p.by - p.y) * 0.0004;
 
         // mouse repulsion
         if (m.active) {
@@ -90,8 +101,8 @@ export default function ParticleNetwork() {
           }
         }
 
-        p.vx *= 0.94;
-        p.vy *= 0.94;
+        p.vx *= 0.96;
+        p.vy *= 0.96;
         p.x += p.vx;
         p.y += p.vy;
 
@@ -101,6 +112,7 @@ export default function ParticleNetwork() {
         if (p.y < -20) p.y = height + 20;
         if (p.y > height + 20) p.y = -20;
       }
+
 
       // links between particles
       for (let i = 0; i < particles.length; i++) {

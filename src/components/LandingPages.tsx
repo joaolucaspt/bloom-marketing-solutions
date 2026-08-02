@@ -18,7 +18,7 @@ function Check() {
 
 function List({ items }: { items: string[] }) {
   return (
-    <ul className="mt-5 space-y-2.5">
+    <ul className="mt-5 space-y-2.5" style={{ flexGrow: 1 }}>
       {items.map((i) => (
         <li key={i} className="flex gap-2.5 text-sm text-foreground">
           <Check />
@@ -31,7 +31,7 @@ function List({ items }: { items: string[] }) {
 
 export default function LandingPages() {
   return (
-    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 64 }}>
+    <section id="landing-pages" className="relative bg-[#050505]/40 pb-20 md:pb-28" style={{ paddingTop: 64 }}>
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
@@ -49,11 +49,12 @@ export default function LandingPages() {
           Como você quer começar?
         </p>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3 items-stretch">
+        <div className="mt-8 grid grid-cols-1 gap-6 items-stretch md:grid-cols-3">
           {/* Card 1 — destaque */}
           <article
-            className="relative flex h-full flex-col bg-[#141414]"
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1.5px solid #C9A227",
@@ -64,8 +65,8 @@ export default function LandingPages() {
               Mais completo
             </span>
             <Gem className="h-6 w-6 text-primary" strokeWidth={1.8} />
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
-              Gestão completa
+            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+              GESTÃO COMPLETA
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
               A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
@@ -91,8 +92,9 @@ export default function LandingPages() {
 
           {/* Card 2 */}
           <article
-            className="relative flex h-full flex-col bg-[#141414]"
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1px solid #e8e8e8",
@@ -109,8 +111,8 @@ export default function LandingPages() {
               <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
               <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
             </svg>
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
-              Só a landing page, rápido
+            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+              SÓ A LANDING PAGE, RÁPIDO
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
               Precisa sair do zero agora? Criamos sua página de vendas sem precisar contratar o pacote
@@ -138,8 +140,9 @@ export default function LandingPages() {
 
           {/* Card 3 */}
           <article
-            className="relative flex h-full flex-col bg-[#141414]"
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1px solid #B8941F",
@@ -156,8 +159,8 @@ export default function LandingPages() {
               <path d="M3 17l6-6 4 4 7-7" />
               <path d="M14 8h6v6" />
             </svg>
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19 }}>
-              Landing page + campanha premium
+            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+              LANDING PAGE + CAMPANHA PREMIUM
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
               Sua página de vendas pronta e já rodando com uma campanha estratégica pra trazer os

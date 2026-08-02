@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { Instagram, Linkedin } from "lucide-react";
+
 import { LogoMark } from "@/components/Logo";
 import fundador1 from "@/assets/fundador-1.png.asset.json";
 import fundador2 from "@/assets/fundador-2.png.asset.json";
@@ -20,7 +22,7 @@ export default function Booking() {
   }, []);
 
   return (
-    <section id="agendar" className="relative bg-[#050505] py-20 md:py-28">
+    <section id="agendar" className="relative bg-[#050505]/40 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:items-start">
           {/* Coluna esquerda */}
@@ -95,8 +97,15 @@ export default function Booking() {
         </div>
 
         {/* Card de contato — centralizado e mais abaixo */}
-        <div className="mt-20 flex justify-center md:mt-28">
-          <div className="w-full max-w-[420px] rounded-2xl border border-primary bg-[#141414] p-8">
+        <div className="mt-20 flex items-center justify-center md:mt-28">
+          <div
+            className="w-full max-w-[420px] rounded-2xl bg-[#141414]"
+            style={{
+              padding: 48,
+              border: "1.5px solid #C9A227",
+              boxShadow: "0 0 40px rgba(201,162,39,0.15)",
+            }}
+          >
             <div className="flex justify-center">
               <LogoMark />
             </div>
@@ -105,16 +114,47 @@ export default function Booking() {
               Telefone e WhatsApp
             </p>
             <p className="mt-2 text-center text-2xl font-medium text-foreground">{PHONE_DISPLAY}</p>
+
+            <div className="my-6 h-px bg-[#333]" />
+            <p className="text-center text-xs uppercase tracking-[0.2em] text-[#888]">
+              Horário de atendimento
+            </p>
+            <p className="mt-2 text-center text-sm text-foreground">Segunda a sexta, 9h às 18h</p>
+
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram da LS Agência de Marketing"
+                className="rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"
+              >
+                <Instagram className="h-4 w-4" strokeWidth={1.5} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn da LS Agência de Marketing"
+                className="rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"
+              >
+                <Linkedin className="h-4 w-4" strokeWidth={1.5} />
+              </a>
+            </div>
+
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 block w-full rounded-xl bg-primary py-3.5 text-center font-semibold text-primary-foreground transition hover:brightness-110"
+              className="mt-7 flex w-full items-center justify-center rounded-xl bg-primary text-center font-semibold text-primary-foreground transition hover:brightness-110"
+              style={{ height: 50, boxShadow: "0 0 20px rgba(201,162,39,0.3)" }}
             >
               Falar agora no WhatsApp
             </a>
+            <p className="mt-3 text-center text-xs text-[#888]">Resposta em até 1 dia útil</p>
           </div>
         </div>
+
       </div>
     </section>
   );

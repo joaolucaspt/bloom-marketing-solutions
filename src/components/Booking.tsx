@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { Instagram, Linkedin } from "lucide-react";
+
 import { LogoMark } from "@/components/Logo";
 import fundador1 from "@/assets/fundador-1.png.asset.json";
 import fundador2 from "@/assets/fundador-2.png.asset.json";

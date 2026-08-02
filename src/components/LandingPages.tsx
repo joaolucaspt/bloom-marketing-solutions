@@ -18,9 +18,9 @@ function Check() {
 
 function List({ items }: { items: string[] }) {
   return (
-    <ul style={{ flexGrow: 1, marginTop: 24, display: "flex", flexDirection: "column", gap: 14 }}>
+    <ul className="card-benefits-list">
       {items.map((i) => (
-        <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-foreground">
+        <li key={i} className="text-sm leading-relaxed text-foreground">
           <Check />
           <span>{i}</span>
         </li>
@@ -49,13 +49,11 @@ export default function LandingPages() {
           Como você quer começar?
         </p>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 items-stretch md:grid-cols-3">
+        <div className="mt-8 cards-container">
           {/* Card 1 — destaque */}
           <article
-            className="relative flex flex-col bg-[#141414]"
+            className="card-landing-page relative bg-[#141414]"
             style={{
-              height: "100%",
-              padding: 36,
               borderRadius: 12,
               border: "1.5px solid #D4AF37",
               boxShadow: "0 0 24px rgba(212,175,55,0.25)",
@@ -64,11 +62,11 @@ export default function LandingPages() {
             <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
               Mais completo
             </span>
-            <Gem className="h-6 w-6 text-primary" strokeWidth={1.8} />
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+            <Gem className="card-icon h-6 w-6 text-primary" strokeWidth={1.8} />
+            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
               GESTÃO COMPLETA
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
+            <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
               estratégia contínua por trás.
             </p>
@@ -83,8 +81,7 @@ export default function LandingPages() {
             />
             <a
               href="#agendar"
-              className="mt-auto block w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
-              style={{ marginTop: 28 }}
+              className="card-button block rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
             >
               Quero a gestão completa
             </a>
@@ -92,10 +89,8 @@ export default function LandingPages() {
 
           {/* Card 2 */}
           <article
-            className="relative flex flex-col bg-[#141414]"
+            className="card-landing-page relative bg-[#141414]"
             style={{
-              height: "100%",
-              padding: 36,
               borderRadius: 12,
               border: "1px solid #e8e8e8",
               boxShadow: "0 0 16px rgba(255,255,255,0.06)",
@@ -107,14 +102,14 @@ export default function LandingPages() {
             >
               Entrega rápida
             </span>
-            <svg viewBox="0 0 24 24" className="h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
               <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
             </svg>
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
               SÓ A LANDING PAGE, RÁPIDO
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
+            <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               Precisa sair do zero agora? Criamos sua página de vendas sem precisar contratar o pacote
               completo.
             </p>
@@ -131,8 +126,7 @@ export default function LandingPages() {
               href={WA_LP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto block w-full rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
-              style={{ marginTop: 28 }}
+              className="card-button block rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
               Quero minha landing page
             </a>
@@ -140,10 +134,8 @@ export default function LandingPages() {
 
           {/* Card 3 */}
           <article
-            className="relative flex flex-col bg-[#141414]"
+            className="card-landing-page relative bg-[#141414]"
             style={{
-              height: "100%",
-              padding: 36,
               borderRadius: 12,
               border: "1px solid #B8942E",
               boxShadow: "0 0 14px rgba(184,148,46,0.15)",
@@ -155,14 +147,14 @@ export default function LandingPages() {
             >
               Combo inicial
             </span>
-            <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color: "#B8942E" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" className="card-icon h-6 w-6" style={{ color: "#B8942E" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 17l6-6 4 4 7-7" />
               <path d="M14 8h6v6" />
             </svg>
-            <h3 className="mt-5 font-semibold text-foreground" style={{ fontSize: 19, minHeight: 48, lineHeight: "24px" }}>
+            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
               LANDING PAGE + CAMPANHA PREMIUM
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#a8a8a8]">
+            <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               Sua página de vendas pronta e já rodando com uma campanha estratégica pra trazer os
               primeiros leads desde o primeiro dia.
             </p>
@@ -179,8 +171,8 @@ export default function LandingPages() {
               href={WA_PREMIUM}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto block w-full rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
-              style={{ marginTop: 28, background: "#B8942E", color: "#050505" }}
+              className="card-button block rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
+              style={{ background: "#B8942E", color: "#050505" }}
             >
               Quero o plano premium
             </a>

@@ -49,11 +49,12 @@ export default function LandingPages() {
           Como você quer começar?
         </p>
 
-        <div className="mt-8 grid gap-6 items-stretch" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+        <div className="mt-8 grid grid-cols-1 gap-6 items-stretch md:grid-cols-3">
           {/* Card 1 — destaque */}
           <article
-            className="relative flex flex-col bg-[#141414]" style={{ height: "100%" }}
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1.5px solid #C9A227",
@@ -91,8 +92,9 @@ export default function LandingPages() {
 
           {/* Card 2 */}
           <article
-            className="relative flex flex-col bg-[#141414]" style={{ height: "100%" }}
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1px solid #e8e8e8",
@@ -138,8 +140,9 @@ export default function LandingPages() {
 
           {/* Card 3 */}
           <article
-            className="relative flex flex-col bg-[#141414]" style={{ height: "100%" }}
+            className="relative flex flex-col bg-[#141414]"
             style={{
+              height: "100%",
               padding: 36,
               borderRadius: 12,
               border: "1px solid #B8941F",

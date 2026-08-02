@@ -103,7 +103,7 @@ export default function Booking() {
             style={{
               padding: 48,
               border: "1.5px solid #D4AF37",
-              boxShadow: "0 0 40px rgba(201,162,39,0.15)",
+              boxShadow: "0 0 40px rgba(212,175,55,0.15)",
             }}
           >
             <div className="flex justify-center">
@@ -147,7 +147,7 @@ export default function Booking() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-7 flex w-full items-center justify-center rounded-xl bg-primary text-center font-semibold text-primary-foreground transition hover:brightness-110"
-              style={{ height: 50, boxShadow: "0 0 20px rgba(201,162,39,0.3)" }}
+              style={{ height: 50, boxShadow: "0 0 20px rgba(212,175,55,0.3)" }}
             >
               Falar agora no WhatsApp
             </a>

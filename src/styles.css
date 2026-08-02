@@ -90,11 +90,11 @@
   font-size: 0.82rem;
   text-transform: uppercase;
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  box-shadow: 0 12px 40px -10px rgba(201,162,39,0.45);
+  box-shadow: 0 12px 40px -10px rgba(212,175,55,0.45);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 55px -10px rgba(201,162,39,0.7);
+  box-shadow: 0 20px 55px -10px rgba(212,175,55,0.7);
   filter: brightness(1.1);
 }
 
@@ -142,7 +142,7 @@
 
 /* Tilt / lift on hover */
 .card-lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .4s; }
-.card-lift:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -30px rgba(201,162,39,0.5); }
+.card-lift:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -30px rgba(212,175,55,0.5); }
 
 /* Animated background blobs */
 @keyframes blobMove {

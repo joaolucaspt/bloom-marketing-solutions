@@ -58,7 +58,7 @@ export default function LandingPages() {
               padding: 36,
               borderRadius: 12,
               border: "1.5px solid #D4AF37",
-              boxShadow: "0 0 24px rgba(201,162,39,0.25)",
+              boxShadow: "0 0 24px rgba(212,175,55,0.25)",
             }}
           >
             <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
@@ -146,7 +146,7 @@ export default function LandingPages() {
               padding: 36,
               borderRadius: 12,
               border: "1px solid #B8942E",
-              boxShadow: "0 0 14px rgba(184,148,31,0.15)",
+              boxShadow: "0 0 14px rgba(184,148,46,0.15)",
             }}
           >
             <span

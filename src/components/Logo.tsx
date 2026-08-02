@@ -16,7 +16,7 @@ export function LogoMark({ className = "", scale = 1 }: Props) {
       />
       <span
         aria-hidden
-        style={{ width: 1, height: `${32 * scale}px`, backgroundColor: "#C9A227", opacity: 0.8 }}
+        style={{ width: 1, height: `${32 * scale}px`, backgroundColor: "#D4AF37", opacity: 0.8 }}
       />
       <span
         style={{

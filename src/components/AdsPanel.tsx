@@ -47,12 +47,12 @@ export default function AdsPanel() {
         <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 w-full" preserveAspectRatio="none" aria-hidden>
           <defs>
             <linearGradient id="adsGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#C9A227" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#C9A227" stopOpacity="0" />
+              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path d={area} fill="url(#adsGrad)" />
-          <path d={path} fill="none" stroke="#C9A227" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+          <path d={path} fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
         </svg>
       </div>
     </div>

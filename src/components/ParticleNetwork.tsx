@@ -123,11 +123,11 @@ export default function ParticleNetwork() {
         for (const { p, d } of near) {
           const t = 1 - d / cursorLineRadius;
           const grad = ctx.createLinearGradient(m.x, m.y, p.x, p.y);
-          grad.addColorStop(0, `rgba(230,196,82,${0.75 * t})`);
-          grad.addColorStop(1, `rgba(201,162,39,0)`);
+          grad.addColorStop(0, `rgba(232,206,122,${0.75 * t})`);
+          grad.addColorStop(1, `rgba(212,175,55,0)`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;
-          ctx.shadowColor = "rgba(201,162,39,0.8)";
+          ctx.shadowColor = "rgba(212,175,55,0.8)";
           ctx.shadowBlur = 8 * t;
           ctx.beginPath();
           ctx.moveTo(m.x, m.y);
@@ -139,8 +139,8 @@ export default function ParticleNetwork() {
 
       // dots
       for (const p of particles) {
-        ctx.fillStyle = "rgba(201,162,39,0.6)";
-        ctx.shadowColor = "rgba(201,162,39,0.45)";
+        ctx.fillStyle = "rgba(212,175,55,0.6)";
+        ctx.shadowColor = "rgba(212,175,55,0.45)";
         ctx.shadowBlur = 8;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);

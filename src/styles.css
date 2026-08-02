@@ -38,16 +38,16 @@
   --foreground: oklch(0.98 0 0);
   --card: #141414;
   --card-foreground: oklch(0.98 0 0);
-  --primary: #C9A227;
+  --primary: #D4AF37;
   --primary-foreground: #050505;
   --secondary: #141414;
   --secondary-foreground: oklch(0.98 0 0);
   --muted: #141414;
   --muted-foreground: #a8a8a8;
-  --accent: #C9A227;
+  --accent: #D4AF37;
   --accent-foreground: #050505;
   --border: #333333;
-  --ring: #C9A227;
+  --ring: #D4AF37;
 }
 
 @layer base {
@@ -82,7 +82,7 @@
   gap: 0.5rem;
   padding: 0.9rem 1.75rem;
   border-radius: 9999px;
-  background: #C9A227;
+  background: #D4AF37;
   color: var(--primary-foreground);
   font-family: var(--font-caption);
   font-weight: 600;
@@ -90,11 +90,11 @@
   font-size: 0.82rem;
   text-transform: uppercase;
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  box-shadow: 0 12px 40px -10px rgba(201,162,39,0.45);
+  box-shadow: 0 12px 40px -10px rgba(212,175,55,0.45);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 55px -10px rgba(201,162,39,0.7);
+  box-shadow: 0 20px 55px -10px rgba(212,175,55,0.7);
   filter: brightness(1.1);
 }
 
@@ -105,9 +105,9 @@
 }
 .text-shine {
   background: linear-gradient(90deg,
-    #C9A227,
+    #D4AF37,
     #e6c452,
-    #C9A227);
+    #D4AF37);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -142,7 +142,7 @@
 
 /* Tilt / lift on hover */
 .card-lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .4s; }
-.card-lift:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -30px rgba(201,162,39,0.5); }
+.card-lift:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -30px rgba(212,175,55,0.5); }
 
 /* Animated background blobs */
 @keyframes blobMove {
@@ -160,3 +160,56 @@
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
 }
 
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .cards-container { grid-template-columns: 1fr; }
+}
+
+.card-landing-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px 28px;
+}
+
+.card-landing-page .card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.card-landing-page .card-icon {
+  margin-bottom: 16px;
+}
+
+.card-landing-page .card-title {
+  margin-bottom: 12px;
+}
+
+.card-landing-page .card-description {
+  margin-bottom: 20px;
+}
+
+.card-landing-page .card-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-landing-page .card-benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-landing-page .card-button {
+  margin-top: 24px;
+  width: 100%;
+}

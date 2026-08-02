@@ -31,7 +31,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 function Blobs() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="blob" style={{ background: "#C9A227", width: 380, height: 380, top: "10%", left: "-8%" }} />
+      <div className="blob" style={{ background: "#D4AF37", width: 380, height: 380, top: "10%", left: "-8%" }} />
       <div className="blob" style={{ background: "#e6c452", width: 460, height: 460, top: "40%", right: "-10%", animationDelay: "-6s" }} />
       <div className="blob" style={{ background: "#8a6f19", width: 300, height: 300, bottom: "5%", left: "30%", animationDelay: "-12s" }} />
     </div>

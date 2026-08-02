@@ -57,7 +57,7 @@ export default function LandingPages() {
               height: "100%",
               padding: 36,
               borderRadius: 12,
-              border: "1.5px solid #C9A227",
+              border: "1.5px solid #D4AF37",
               boxShadow: "0 0 24px rgba(201,162,39,0.25)",
             }}
           >
@@ -145,17 +145,17 @@ export default function LandingPages() {
               height: "100%",
               padding: 36,
               borderRadius: 12,
-              border: "1px solid #B8941F",
+              border: "1px solid #B8942E",
               boxShadow: "0 0 14px rgba(184,148,31,0.15)",
             }}
           >
             <span
               className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
-              style={{ background: "#B8941F", color: "#050505" }}
+              style={{ background: "#B8942E", color: "#050505" }}
             >
               Combo inicial
             </span>
-            <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color: "#B8941F" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" className="h-6 w-6" style={{ color: "#B8942E" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 17l6-6 4 4 7-7" />
               <path d="M14 8h6v6" />
             </svg>
@@ -180,7 +180,7 @@ export default function LandingPages() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-auto block w-full rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
-              style={{ marginTop: 28, background: "#B8941F", color: "#050505" }}
+              style={{ marginTop: 28, background: "#B8942E", color: "#050505" }}
             >
               Quero o plano premium
             </a>

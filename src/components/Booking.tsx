@@ -14,7 +14,7 @@ export default function Booking() {
     (async () => {
       try {
         const cal = await getCalApi();
-        cal("ui", { theme: "dark", styles: { branding: { brandColor: "#C9A227" } } });
+        cal("ui", { theme: "dark", styles: { branding: { brandColor: "#D4AF37" } } });
       } catch {
         /* embed unavailable */
       }
@@ -102,7 +102,7 @@ export default function Booking() {
             className="w-full max-w-[420px] rounded-2xl bg-[#141414]"
             style={{
               padding: 48,
-              border: "1.5px solid #C9A227",
+              border: "1.5px solid #D4AF37",
               boxShadow: "0 0 40px rgba(201,162,39,0.15)",
             }}
           >

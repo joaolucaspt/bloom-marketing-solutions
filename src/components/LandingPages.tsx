@@ -31,7 +31,7 @@ function List({ items }: { items: string[] }) {
 
 export default function LandingPages() {
   return (
-    <section id="landing-pages" className="relative bg-[#050505] pb-20 md:pb-28" style={{ paddingTop: 64 }}>
+    <section id="landing-pages" className="relative bg-[#050505]/40 pb-20 md:pb-28" style={{ paddingTop: 64 }}>
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>

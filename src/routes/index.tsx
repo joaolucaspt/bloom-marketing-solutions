@@ -162,7 +162,7 @@ function SectionBg({ src, opacity = 0.18 }: { src: string; opacity?: number }) {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
       <img src={src} alt="" className="w-full h-full object-cover" style={{ opacity }} loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/60" />
     </div>
   );
 }
@@ -173,7 +173,7 @@ function Hero() {
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
         <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/60" />
       </div>
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
@@ -450,7 +450,7 @@ function Services() {
 
 function Belief() {
   return (
-    <section id="sobre" className="relative py-24 md:py-32 bg-[#050505] overflow-hidden border-t border-border">
+    <section id="sobre" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
         <img src={bgBranding} alt="" className="w-full h-full object-cover" loading="lazy" />
       </div>
@@ -523,7 +523,7 @@ function Footer() {
     { href: "#landing-pages", label: "Criação de Landing Pages" },
   ];
   return (
-    <footer className="border-t border-border bg-[#050505] py-14">
+    <footer className="border-t border-border bg-[#050505]/40 py-14">
       <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-4">
         <div>
           <LogoMark />
@@ -597,7 +597,7 @@ function FloatingWhatsApp() {
 
 function Index() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-[#050505] text-foreground">
       <ParticleNetwork />
       <Nav />
       <main className="relative z-[2]">

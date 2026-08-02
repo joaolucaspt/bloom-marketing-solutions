@@ -20,7 +20,7 @@ export default function Booking() {
   }, []);
 
   return (
-    <section id="agendar" className="relative bg-[#050505] py-20 md:py-28">
+    <section id="agendar" className="relative bg-[#050505]/40 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:items-start">
           {/* Coluna esquerda */}

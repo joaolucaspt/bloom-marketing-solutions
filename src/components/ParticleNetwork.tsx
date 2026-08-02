@@ -66,28 +66,18 @@ export default function ParticleNetwork() {
     const tick = () => {
       ctx.clearRect(0, 0, width, height);
       const m = mouseRef.current;
-      const pushRadius = 100;
-      const lineRadius = 95;
-      const cursorLineRadius = 120;
-      const maxCursorLinks = 3;
-
-
+      const pushRadius = 90;
+      const cursorLineRadius = 100;
+      const maxCursorLinks = 2;
 
       const now = performance.now() / 1000;
 
       for (let idx = 0; idx < particles.length; idx++) {
         const p = particles[idx];
-        // continuous, non-repetitive drift (sum of out-of-phase sines)
-        const wx =
-          Math.sin(now * 0.23 + idx * 1.7) * 0.05 + Math.sin(now * 0.11 + idx * 0.53) * 0.035;
-        const wy =
-          Math.cos(now * 0.19 + idx * 2.3) * 0.05 + Math.cos(now * 0.13 + idx * 0.77) * 0.035;
-        p.vx += wx;
-        p.vy += wy;
-
-        // gentle drift back to base
-        p.vx += (p.bx - p.x) * 0.0004;
-        p.vy += (p.by - p.y) * 0.0004;
+        // slow, smooth directional drift (very gentle steering)
+        const angle = now * 0.05 + idx * 1.37;
+        p.vx += Math.cos(angle) * 0.004;
+        p.vy += Math.sin(angle * 0.9 + 1.1) * 0.004;
 
         // mouse repulsion
         if (m.active) {
@@ -96,13 +86,22 @@ export default function ParticleNetwork() {
           const dist = Math.hypot(dx, dy);
           if (dist < pushRadius && dist > 0) {
             const force = (pushRadius - dist) / pushRadius;
-            p.vx += (dx / dist) * force * 1.2;
-            p.vy += (dy / dist) * force * 1.2;
+            p.vx += (dx / dist) * force * 0.5;
+            p.vy += (dy / dist) * force * 0.5;
           }
         }
 
-        p.vx *= 0.96;
-        p.vy *= 0.96;
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+
+        // clamp speed so movement never looks erratic
+        const sp = Math.hypot(p.vx, p.vy);
+        const maxSp = 0.35;
+        if (sp > maxSp) {
+          p.vx = (p.vx / sp) * maxSp;
+          p.vy = (p.vy / sp) * maxSp;
+        }
+
         p.x += p.vx;
         p.y += p.vy;
 
@@ -113,28 +112,7 @@ export default function ParticleNetwork() {
         if (p.y > height + 20) p.y = -20;
       }
 
-
-      // links between particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const d = Math.hypot(dx, dy);
-          if (d < lineRadius) {
-            const alpha = (1 - d / lineRadius) * 0.55;
-            ctx.strokeStyle = `rgba(201,162,39,${alpha})`;
-            ctx.lineWidth = 0.9;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // glowing lines from cursor — only the 2-3 nearest particles
+      // glowing lines from cursor only — no particle-to-particle links
       if (m.active) {
         const near = particles
           .map((p) => ({ p, d: Math.hypot(p.x - m.x, p.y - m.y) }))

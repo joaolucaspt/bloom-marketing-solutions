@@ -123,7 +123,7 @@ export default function Booking() {
 
             <div className="mt-6 flex items-center justify-center gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ls.agenciademarketing"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da LS Agência de Marketing"

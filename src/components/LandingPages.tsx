@@ -18,9 +18,9 @@ function Check() {
 
 function List({ items }: { items: string[] }) {
   return (
-    <ul className="mt-5 space-y-2.5" style={{ flexGrow: 1 }}>
+    <ul style={{ flexGrow: 1, marginTop: 24, display: "flex", flexDirection: "column", gap: 14 }}>
       {items.map((i) => (
-        <li key={i} className="flex gap-2.5 text-sm text-foreground">
+        <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-foreground">
           <Check />
           <span>{i}</span>
         </li>

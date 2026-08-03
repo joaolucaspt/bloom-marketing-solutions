@@ -613,6 +613,8 @@ function Index() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <ExitIntentPopup />
     </div>
+
   );
 }

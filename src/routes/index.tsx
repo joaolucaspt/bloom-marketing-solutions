@@ -430,7 +430,7 @@ function Services() {
             <span className="font-caption text-xs text-primary/80">Serviço {String(active + 1).padStart(2, "0")}</span>
             <h4 className="mt-3 text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
             <p className="mt-6 text-foreground/70 leading-relaxed max-w-md">{SERVICES[active].d}</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener" className="btn-primary mt-8">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8">
               Quero este serviço
             </a>
           </div>
@@ -563,7 +563,7 @@ function Footer() {
           <a
             href={WHATSAPP_URL}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="mt-2 block text-lg font-medium text-foreground hover:text-primary transition-colors"
           >
             {PHONE_DISPLAY}
@@ -585,7 +585,7 @@ function FloatingWhatsApp() {
     <a
       href={WHATSAPP_URL}
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       aria-label="WhatsApp"
       className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition"
       style={{ backgroundColor: "#25D366", boxShadow: "0 10px 40px rgba(37,211,102,0.5)" }}

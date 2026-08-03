@@ -62,14 +62,17 @@ export default function LandingPages() {
             <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
               Mais completo
             </span>
-            <Gem className="card-icon h-6 w-6 text-primary" strokeWidth={1.8} />
-            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
-              GESTÃO COMPLETA
-            </h3>
+            <div className="card-header">
+              <Gem className="card-icon h-6 w-6 text-primary" strokeWidth={1.8} />
+              <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
+                GESTÃO COMPLETA
+              </h3>
+            </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
               estratégia contínua por trás.
             </p>
+            <div className="spacer-top" />
             <List
               items={[
                 "Landing page profissional inclusa",
@@ -79,6 +82,7 @@ export default function LandingPages() {
                 "Estratégia personalizada para seu negócio",
               ]}
             />
+            <div className="spacer-bottom" />
             <a
               href="#agendar"
               className="card-button block rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
@@ -102,17 +106,20 @@ export default function LandingPages() {
             >
               Entrega rápida
             </span>
-            <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-              <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-            </svg>
-            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
-              SÓ A LANDING PAGE, RÁPIDO
-            </h3>
+            <div className="card-header">
+              <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+              </svg>
+              <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
+                SÓ A LANDING PAGE, RÁPIDO
+              </h3>
+            </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               Precisa sair do zero agora? Criamos sua página de vendas sem precisar contratar o pacote
               completo.
             </p>
+            <div className="spacer-top" />
             <List
               items={[
                 "Design exclusivo, sem templates",
@@ -122,6 +129,7 @@ export default function LandingPages() {
                 "Suporte direto durante a criação",
               ]}
             />
+            <div className="spacer-bottom" />
             <a
               href={WA_LP}
               target="_blank"
@@ -137,27 +145,30 @@ export default function LandingPages() {
             className="card-landing-page relative bg-[#141414]"
             style={{
               borderRadius: 12,
-              border: "1px solid #B8942E",
-              boxShadow: "0 0 14px rgba(184,148,46,0.15)",
+              border: "1px solid #D4AF37",
+              boxShadow: "0 0 14px rgba(212,175,55,0.15)",
             }}
           >
             <span
               className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
-              style={{ background: "#B8942E", color: "#050505" }}
+              style={{ background: "#D4AF37", color: "#050505" }}
             >
               Combo inicial
             </span>
-            <svg viewBox="0 0 24 24" className="card-icon h-6 w-6" style={{ color: "#B8942E" }} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 17l6-6 4 4 7-7" />
-              <path d="M14 8h6v6" />
-            </svg>
-            <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
-              LANDING PAGE + CAMPANHA PREMIUM
-            </h3>
+            <div className="card-header">
+              <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 17l6-6 4 4 7-7" />
+                <path d="M14 8h6v6" />
+              </svg>
+              <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
+                LANDING PAGE + CAMPANHA PREMIUM
+              </h3>
+            </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
               Sua página de vendas pronta e já rodando com uma campanha estratégica pra trazer os
               primeiros leads desde o primeiro dia.
             </p>
+            <div className="spacer-top" />
             <List
               items={[
                 "Landing page profissional completa",
@@ -167,12 +178,13 @@ export default function LandingPages() {
                 "Acompanhamento dos primeiros resultados",
               ]}
             />
+            <div className="spacer-bottom" />
             <a
               href={WA_PREMIUM}
               target="_blank"
               rel="noopener noreferrer"
               className="card-button block rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
-              style={{ background: "#B8942E", color: "#050505" }}
+              style={{ background: "#D4AF37", color: "#050505" }}
             >
               Quero o plano premium
             </a>

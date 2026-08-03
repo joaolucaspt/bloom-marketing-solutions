@@ -43,19 +43,26 @@ function Blobs() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LS Agência de Marketing — Branding, Performance & Vendas" },
+      { title: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
       {
         name: "description",
         content:
-          "LS Agência de Marketing: ecossistema completo de branding, marketing digital, vendas e tecnologia para acelerar o crescimento do seu negócio.",
+          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
       },
-      { property: "og:title", content: "LS Agência de Marketing" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
       {
         property: "og:description",
-        content: "Branding, performance e vendas para acelerar o crescimento do seu negócio.",
+        content:
+          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:url", content: "https://ls-marketing-magic.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://ls-marketing-magic.lovable.app/" }],
   }),
+
   component: Index,
 });
 

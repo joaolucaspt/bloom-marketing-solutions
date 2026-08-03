@@ -123,7 +123,7 @@ export default function ParticleNetwork() {
         for (const { p, d } of near) {
           const t = 1 - d / cursorLineRadius;
           const grad = ctx.createLinearGradient(m.x, m.y, p.x, p.y);
-          grad.addColorStop(0, `rgba(232,206,122,${0.75 * t})`);
+          grad.addColorStop(0, `rgba(212,175,55,${0.75 * t})`);
           grad.addColorStop(1, `rgba(212,175,55,0)`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;

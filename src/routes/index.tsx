@@ -17,6 +17,8 @@ import svcTech from "@/assets/svc-tech.jpg";
 import svcEducacao from "@/assets/svc-educacao.jpg";
 import svcPerformance from "@/assets/svc-performance.jpg";
 import AdsPanel from "@/components/AdsPanel";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
+
 
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -613,6 +615,8 @@ function Index() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <ExitIntentPopup />
     </div>
+
   );
 }

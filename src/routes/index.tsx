@@ -54,7 +54,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces.",
+          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },

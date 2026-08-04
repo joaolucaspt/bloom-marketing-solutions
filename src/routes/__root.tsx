@@ -89,16 +89,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces.",
+          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { property: "og:site_name", content: "LS Agência de Marketing" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { name: "twitter:description", content: "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" },

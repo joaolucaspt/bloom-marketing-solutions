@@ -150,7 +150,7 @@ function Nav() {
           <a href="#agendar" className="btn-primary hidden sm:inline-flex">
             Falar com especialista
           </a>
-          <button type="button" onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu" aria-expanded={open} aria-controls="mobile-navigation">
+          <button type="button" onClick={() => setOpen(!open)} className="lg:hidden flex min-h-[44px] min-w-[44px] flex-col items-center justify-center rounded-lg p-2" aria-label={open ? "Fechar menu de navegação" : "Abrir menu de navegação"} aria-expanded={open} aria-controls="mobile-navigation">
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground" />
@@ -430,7 +430,7 @@ function Services() {
               key={s.t}
               aria-pressed={active === i}
               onClick={() => setActive(i)}
-              className={`relative font-caption text-xs md:text-sm transition-all pb-2 ${
+              className={`relative inline-flex min-h-[44px] items-center px-1 font-caption text-xs md:text-sm transition-all pb-2 ${
                 active === i ? "text-primary" : "text-foreground/60 hover:text-foreground"
               }`}
             >
@@ -619,7 +619,7 @@ function Index() {
       </a>
       <ParticleNetwork />
       <Nav />
-      <main id="main-content" className="relative z-[2]">
+      <main id="main-content" tabIndex={-1} className="relative z-[2]">
         <Hero />
         <LandingPages />
         <About />

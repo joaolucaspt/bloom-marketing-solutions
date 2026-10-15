@@ -6,18 +6,39 @@ import Calculator from "@/components/Calculator";
 import LandingPages from "@/components/LandingPages";
 import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
-import bgTeam from "@/assets/bg-team.jpg";
-import bgBranding from "@/assets/bg-branding.jpg";
-import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
-import bgPerformance from "@/assets/bg-performance.jpg";
-import bgPortrait from "@/assets/bg-portrait.jpg";
-import svcSocial from "@/assets/svc-social.jpg";
-import svcAudiovisual from "@/assets/svc-audiovisual.jpg";
-import svcTech from "@/assets/svc-tech.jpg";
-import svcEducacao from "@/assets/svc-educacao.jpg";
-import svcPerformance from "@/assets/svc-performance.jpg";
+
+
+
+
+
+
+
+
+
+
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+
+/**
+ * Fotografia contextual do setor odontológico.
+ * Cada posição usa uma imagem diferente para evitar repetição visual.
+ * A identidade, o layout e as animações existentes da LS são preservados.
+ */
+const heroBackground = "https://images.pexels.com/photos/18523995/pexels-photo-18523995.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const aboutBackground = "https://images.pexels.com/photos/38055772/pexels-photo-38055772.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const aboutClinicImage = "https://images.pexels.com/photos/37458045/pexels-photo-37458045.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const offerBackground = "https://images.pexels.com/photos/6812453/pexels-photo-6812453.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const pillarsBackground = "https://images.pexels.com/photos/6809645/pexels-photo-6809645.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const servicesBackground = "https://images.pexels.com/photos/4269274/pexels-photo-4269274.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const beliefBackground = "https://images.pexels.com/photos/6812439/pexels-photo-6812439.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const methodologyBackground = "https://images.pexels.com/photos/5355715/pexels-photo-5355715.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const serviceGoogleAdsImage = "https://images.pexels.com/photos/11999471/pexels-photo-11999471.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const serviceMetaAdsImage = "https://images.pexels.com/photos/6529057/pexels-photo-6529057.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const serviceLandingPagesImage = "https://images.pexels.com/photos/18524124/pexels-photo-18524124.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const servicePresenceImage = "https://images.pexels.com/photos/5622000/pexels-photo-5622000.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const serviceReportingImage = "https://images.pexels.com/photos/6809664/pexels-photo-6809664.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const serviceJourneyImage = "https://images.pexels.com/photos/6812445/pexels-photo-6812445.jpeg?auto=compress&cs=tinysrgb&w=1200";
+
 
 
 
@@ -183,7 +204,7 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={bgTeam} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <img src={heroBackground} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/60" />
       </div>
       <Blobs />
@@ -230,7 +251,7 @@ function Hero() {
 function About() {
   return (
     <section id="sobre" className="relative py-24 md:py-32 overflow-hidden">
-      <SectionBg src={bgBranding} opacity={0.14} />
+      <SectionBg src={aboutBackground} opacity={0.14} />
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <Reveal>
@@ -257,8 +278,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={bgTeam}
-              alt="Equipe da LS Agência de Marketing"
+              src={aboutClinicImage}
+              alt="Dentista em clínica odontológica moderna"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />
@@ -272,7 +293,7 @@ function About() {
 function Offer() {
   return (
     <section id="areas" className="relative py-24 md:py-32 overflow-hidden">
-      <SectionBg src={bgPerformance} opacity={0.12} />
+      <SectionBg src={offerBackground} opacity={0.12} />
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <Reveal>
@@ -326,7 +347,7 @@ function Pillars() {
   const words = ["atrair pacientes", "lotar a agenda", "aumentar agendamentos", "captar mais leads", "vender mais tratamentos"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={bgTeam} opacity={0.1} />
+      <SectionBg src={pillarsBackground} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
@@ -364,32 +385,32 @@ const SERVICES = [
   {
     t: "Google Ads",
     d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e transformá-las em agendamentos.",
-    img: bgBranding,
+    img: serviceGoogleAdsImage,
   },
   {
     t: "Meta Ads",
     d: "Campanhas no Instagram e Facebook para gerar oportunidades comerciais qualificadas para a sua clínica.",
-    img: svcSocial,
+    img: serviceMetaAdsImage,
   },
   {
     t: "Landing Pages",
     d: "Páginas de conversão focadas em transformar visitantes em pacientes agendados.",
-    img: svcAudiovisual,
+    img: serviceLandingPagesImage,
   },
   {
     t: "Presença Digital",
     d: "Posicionamento profissional da sua clínica para transmitir confiança antes do primeiro atendimento.",
-    img: svcTech,
+    img: servicePresenceImage,
   },
   {
     t: "Acompanhamento",
     d: "Relatórios e análise de indicadores para direcionar melhor o investimento em marketing da clínica.",
-    img: svcEducacao,
+    img: serviceReportingImage,
   },
   {
     t: "Jornada do Paciente",
     d: "Otimização do caminho entre o primeiro contato, o atendimento comercial e o agendamento.",
-    img: svcPerformance,
+    img: serviceJourneyImage,
   },
 
 ];
@@ -399,7 +420,7 @@ function Services() {
   const words = ["de Pacientes", "de Agendamentos", "de Tratamentos", "de Resultados", "de Crescimento"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={bgAudiovisual} opacity={0.1} />
+      <SectionBg src={servicesBackground} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
@@ -464,7 +485,7 @@ function Belief() {
   return (
     <section id="sobre" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
-        <img src={bgBranding} alt="" className="w-full h-full object-cover" loading="lazy" />
+        <img src={beliefBackground} alt="" className="w-full h-full object-cover" loading="lazy" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
@@ -496,7 +517,7 @@ function Methodology() {
   ];
   return (
     <section id="metodologia" className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={bgPerformance} opacity={0.1} />
+      <SectionBg src={methodologyBackground} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
         <span className="block text-center font-caption text-xs text-primary/80 mb-4">Metodologia</span>
         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center">

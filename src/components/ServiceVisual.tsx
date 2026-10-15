@@ -31,7 +31,7 @@ function Frame({ children, label }: { children: ReactNode; label: string }) {
           <span className="h-2 w-2 rounded-full bg-[#565656]" />
         </div>
         <span className="truncate text-xs text-[#a7a7a7]">{label}</span>
-        <span className="visual-demo-label">CONCEITO</span>
+        <span className="visual-demo-label">ESTRATÉGIA</span>
       </div>
       <div className="service-visual-canvas">{children}</div>
     </div>
@@ -49,7 +49,7 @@ function GoogleVisual() {
         <div className="mt-5 rounded-xl border border-[#343434] bg-[#111111] p-5">
           <div className="flex items-center gap-2 text-[11px] text-[#b0b0b0]">
             <span className="rounded border border-primary/60 px-2 py-1 text-primary">ANÚNCIO</span>
-            <span>Exemplo de estrutura — não é uma campanha real</span>
+            <span>Pesquisa patrocinada · intenção local</span>
           </div>
           <h3 className="mt-4 text-lg font-semibold leading-snug text-white">
             Clínica odontológica | Conheça a proposta
@@ -85,7 +85,7 @@ function MetaVisual() {
           </div>
           <div>
             <p className="text-sm font-medium text-white">Clínica odontológica</p>
-            <p className="text-[11px] text-[#999]">Peça conceitual • não publicada</p>
+            <p className="text-[11px] text-[#999]">Criativo e mensagem · Meta Ads</p>
           </div>
         </div>
         <div className="relative overflow-hidden bg-[#e9e3d7] px-6 py-8 text-[#201f1b]">
@@ -151,7 +151,7 @@ function LandingVisual() {
           </div>
         </div>
         <p className="border-t border-[#292929] px-4 py-2.5 text-[10px] text-[#8e8e8e]">
-          Wireframe conceitual; não representa um cliente ou projeto entregue.
+          Estrutura de conversão · contato direto.
         </p>
       </div>
     </Frame>
@@ -174,7 +174,7 @@ function PresenceVisual() {
           </div>
           <div>
             <p className="text-base font-semibold text-white">Pontos de contato da clínica</p>
-            <p className="mt-1 text-xs text-[#a1a1a1]">Checklist de posicionamento • modelo conceitual</p>
+            <p className="mt-1 text-xs text-[#a1a1a1]">Consistência entre canais e pontos de contato</p>
           </div>
         </div>
         <ul className="mt-5 space-y-3">
@@ -203,7 +203,7 @@ function AnalyticsVisual() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-base font-semibold text-white">Indicadores da operação</p>
-            <p className="mt-1 text-xs text-[#9a9a9a]">Estrutura de acompanhamento, sem dados de clientes</p>
+            <p className="mt-1 text-xs text-[#9a9a9a]">Leitura integrada de desempenho</p>
           </div>
           <ClipboardCheck size={21} className="shrink-0 text-primary" />
         </div>
@@ -221,7 +221,7 @@ function AnalyticsVisual() {
           ))}
         </div>
         <p className="mt-5 border-t border-[#292929] pt-4 text-[11px] leading-relaxed text-[#8e8e8e]">
-          As barras são decorativas. Os resultados reais só podem ser avaliados com dados de campanha e atendimento.
+          Investimento, contatos e agendamentos orientam decisões e otimização contínua.
         </p>
       </div>
     </Frame>

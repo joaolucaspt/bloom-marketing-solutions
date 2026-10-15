@@ -18,10 +18,10 @@ import { useReveal } from "@/hooks/useReveal";
 
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
-import ServicePhoto, { type ServicePhotoVariant } from "@/components/ServicePhoto";
+import teamWhiteboard from "@/assets/team-whiteboard.jpg";
+import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
-const dentalHeroImage = "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
 
 
 
@@ -189,8 +189,8 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.28] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/70 to-background/45" />
+        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.23] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/78 to-background/50" />
       </div>
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
@@ -252,8 +252,7 @@ function About() {
             enquanto o marketing não gera contatos de qualidade.
           </p>
           <p className="mt-4 text-foreground/80 leading-relaxed">
-            A LS entende o negócio odontológico: atrair pacientes particulares, valorizar tratamentos de
-            maior investimento e estruturar a jornada do primeiro contato até o agendamento.
+            A estratégia conecta a captação de pacientes particulares, a valorização dos tratamentos e uma jornada organizada do primeiro contato ao agendamento.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
             Quero melhorar a captação de pacientes
@@ -263,8 +262,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={dentalAboutImage}
-              alt="Fotografia ilustrativa de dentista apresentando informações a uma paciente durante consulta"
+              src={teamWhiteboard}
+              alt="Planejamento estratégico da equipe LS"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />
@@ -369,37 +368,37 @@ function Pillars() {
 const SERVICES: {
   t: string;
   d: string;
-  photo: ServicePhotoVariant;
+  visual: ServiceVisualVariant;
 }[] = [
   {
     t: "Google Ads",
     d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e criar oportunidades de contato.",
-    photo: "google",
+    visual: "google",
   },
   {
     t: "Meta Ads",
     d: "Campanhas nas redes sociais para apresentar a proposta da clínica e gerar oportunidades comerciais.",
-    photo: "meta",
+    visual: "meta",
   },
   {
     t: "Landing Pages",
     d: "Páginas de captação que explicam a proposta da clínica e facilitam o contato.",
-    photo: "landing",
+    visual: "landing",
   },
   {
     t: "Presença Digital",
     d: "Uma apresentação digital consistente para comunicar especialidades, diferenciais e formas de contato.",
-    photo: "presence",
+    visual: "presence",
   },
   {
     t: "Acompanhamento",
     d: "Organização de indicadores para avaliar campanhas e orientar próximos passos, usando dados reais do projeto.",
-    photo: "analytics",
+    visual: "analytics",
   },
   {
     t: "Jornada do Paciente",
     d: "Um fluxo claro entre o primeiro contato, o atendimento da equipe e o acompanhamento do agendamento.",
-    photo: "journey",
+    visual: "journey",
   },
 
 ];
@@ -423,7 +422,7 @@ function Services() {
         </div>
 
         <h3 className="mt-20 text-center text-3xl md:text-4xl font-black uppercase tracking-wider">
-          Lista de Serviços
+          Frentes de crescimento odontológico
         </h3>
 
         <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-border pb-6">
@@ -456,8 +455,8 @@ function Services() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
-            <div key={SERVICES[active].photo} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
-              <ServicePhoto variant={SERVICES[active].photo} />
+            <div key={SERVICES[active].visual} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
+              <ServiceVisual variant={SERVICES[active].visual} />
             </div>
           </div>
         </div>

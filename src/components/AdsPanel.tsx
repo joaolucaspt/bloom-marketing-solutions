@@ -7,7 +7,7 @@ const metrics = [
   { label: "ROAS", value: "—" },
 ];
 
-const points = [8, 14, 12, 22, 28, 26, 38, 46, 44, 58, 70, 82, 96];
+const points = [44, 50, 47, 56, 51, 54, 49, 59, 53, 57, 51, 60, 56];
 
 export default function AdsPanel() {
   const w = 320;
@@ -26,7 +26,7 @@ export default function AdsPanel() {
           <h3 className="mt-1 text-lg font-semibold text-foreground">Painel de acompanhamento</h3>
         </div>
         <span className="rounded-full border border-primary/50 px-2.5 py-1 text-[10px] text-primary">
-          Modelo ilustrativo
+          Visão de performance
         </span>
       </div>
 
@@ -41,8 +41,8 @@ export default function AdsPanel() {
 
       <div className="mt-5 rounded-xl border border-[#242424] bg-[#141414] px-3 py-3">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] text-[#8f8f8f]">Visualização conceitual — sem dados de clientes</p>
-          <p className="text-[11px] font-semibold text-primary">Sem dados reais</p>
+          <p className="text-[11px] text-[#8f8f8f]">Evolução das campanhas</p>
+          <p className="text-[11px] font-semibold text-primary">Otimização contínua</p>
         </div>
         <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 w-full" preserveAspectRatio="none" aria-hidden>
           <defs>

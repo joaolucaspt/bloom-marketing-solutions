@@ -192,15 +192,14 @@ export default function LandingPages() {
         </div>
 
 
-        {/* Parte 2 — demonstração conceitual, sem portfólio fictício */}
+        {/* Direção de página para captação odontológica */}
         <div style={{ marginTop: 64 }} className="text-center">
-          <p className="font-caption text-xs text-primary">Demonstração conceitual</p>
+          <p className="font-caption text-xs text-primary">Captação odontológica</p>
           <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
             Como pode ser estruturada a página da sua clínica
           </h3>
           <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            Este mockup é ilustrativo. Não representa uma clínica atendida, uma marca de cliente, uma campanha publicada
-            ou resultados já obtidos pela LS no setor odontológico.
+            A página conecta especialidades, diferenciais e uma chamada clara para transformar interesse em contato e agendamento.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] text-left">

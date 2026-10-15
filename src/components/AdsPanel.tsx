@@ -1,10 +1,10 @@
 const metrics = [
-  { label: "Alcance", value: "128.400" },
-  { label: "Cliques no link", value: "6.230" },
-  { label: "Taxa de cliques (CTR)", value: "4,8%" },
-  { label: "Custo por resultado", value: "R$ 3,20" },
-  { label: "Leads gerados", value: "412" },
-  { label: "ROAS", value: "5,4x" },
+  { label: "Alcance", value: "—" },
+  { label: "Cliques no link", value: "—" },
+  { label: "Taxa de cliques (CTR)", value: "—" },
+  { label: "Custo por resultado", value: "—" },
+  { label: "Leads gerados", value: "—" },
+  { label: "ROAS", value: "—" },
 ];
 
 const points = [8, 14, 12, 22, 28, 26, 38, 46, 44, 58, 70, 82, 96];
@@ -23,10 +23,10 @@ export default function AdsPanel() {
       <div className="flex items-center justify-between">
         <div>
           <p className="font-caption text-[10px] text-primary">Gerenciador de anúncios</p>
-          <h3 className="mt-1 text-lg font-semibold text-foreground">Resultados da campanha</h3>
+          <h3 className="mt-1 text-lg font-semibold text-foreground">Painel de acompanhamento</h3>
         </div>
         <span className="rounded-full border border-primary/50 px-2.5 py-1 text-[10px] text-primary">
-          Últimos 30 dias
+          Modelo ilustrativo
         </span>
       </div>
 
@@ -41,8 +41,8 @@ export default function AdsPanel() {
 
       <div className="mt-5 rounded-xl border border-[#242424] bg-[#141414] px-3 py-3">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] text-[#8f8f8f]">Conversões nos últimos 30 dias</p>
-          <p className="text-[11px] font-semibold text-primary">+248%</p>
+          <p className="text-[11px] text-[#8f8f8f]">Visualização conceitual — sem dados de clientes</p>
+          <p className="text-[11px] font-semibold text-primary">Sem dados reais</p>
         </div>
         <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 w-full" preserveAspectRatio="none" aria-hidden>
           <defs>

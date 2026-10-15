@@ -21,7 +21,7 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
-const dentalHeroImage = "https://images.pexels.com/photos/6812453/pexels-photo-6812453.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
 
 
 
@@ -286,7 +286,7 @@ function Offer() {
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que oferecemos? <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              Um ecossistema com resultados reais.
+              Uma estratégia integrada para captar pacientes.
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">

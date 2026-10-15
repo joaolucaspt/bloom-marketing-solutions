@@ -39,18 +39,19 @@ export default function CookieBanner() {
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <p style={{ fontSize: 13 }} className="text-center leading-relaxed text-[#d5d5d5] sm:text-left">
-          Usamos cookies para melhorar sua experiência e analisar o tráfego do site. Ao continuar
-          navegando, você concorda com nossa{" "}
+          Este site utiliza armazenamento local para lembrar que o aviso foi fechado e carrega serviços
+          de terceiros, como o agendamento online. Esses serviços podem aplicar suas próprias tecnologias
+          de armazenamento. Consulte a{" "}
           <Link to="/politica-de-privacidade" className="text-primary underline">
             Política de Privacidade
           </Link>
-          .
+          para saber mais.
         </p>
         <button
           onClick={accept}
           className="shrink-0 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
         >
-          Aceitar
+          Entendi
         </button>
       </div>
     </div>

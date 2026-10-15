@@ -217,3 +217,44 @@
 #lovable-badge,
 #lovable-badge * { display: none !important; }
 
+/* LS conceptual service mockups — no third-party or client branding */
+.service-visual-frame {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #333;
+  border-radius: 0.9rem;
+  background: #0d0d0d;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+.service-visual-topbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #292929;
+}
+.visual-demo-label {
+  border: 1px solid #4b4028;
+  border-radius: 0.3rem;
+  padding: 0.28rem 0.4rem;
+  color: #cfb45d;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+}
+.service-visual-canvas {
+  min-height: 330px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-visual-canvas > div {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .service-visual-canvas {
+    min-height: 280px;
+  }
+}
+

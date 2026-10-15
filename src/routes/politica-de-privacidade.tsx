@@ -76,13 +76,19 @@ function PrivacyPage() {
 
         <Section title="3. Cookies e pixels de rastreamento">
           <p>
-            Este site pode utilizar cookies próprios e de terceiros, incluindo ferramentas como
-            Google Analytics e Meta Pixel (Facebook/Instagram), para medir audiência, atribuir
-            conversões e exibir anúncios mais relevantes.
+            Este site utiliza armazenamento local para lembrar preferências de interface e pode carregar
+            tecnologias de terceiros necessárias a funcionalidades incorporadas, como o agendamento online.
+            Esses serviços podem utilizar seus próprios cookies, conforme as políticas dos respectivos
+            fornecedores.
           </p>
           <p>
-            Você pode bloquear ou apagar cookies a qualquer momento nas configurações do seu
-            navegador. Algumas funcionalidades do site podem ser afetadas por essa escolha.
+            Ferramentas de análise de audiência e publicidade devem ser descritas conforme as integrações
+            efetivamente habilitadas na versão publicada. A disponibilidade dessas ferramentas pode variar
+            de acordo com a configuração do ambiente.
+          </p>
+          <p>
+            Você pode bloquear ou apagar cookies a qualquer momento nas configurações do seu navegador.
+            Algumas funcionalidades incorporadas podem ser afetadas por essa escolha.
           </p>
         </Section>
 

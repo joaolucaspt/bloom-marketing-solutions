@@ -1,12 +1,11 @@
-import { Gem } from "lucide-react";
-import exampleAsset from "@/assets/produzquality-hq.png.asset.json";
+import { ArrowRight, Gem } from "lucide-react";
 
 const WA_LP =
   "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20landing%20page%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_PREMIUM =
   "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20combo%20de%20landing%20page%20%2B%20campanha%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_EXAMPLE =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vi%20o%20exemplo%20de%20p%C3%A1gina%20que%20a%20LS%20fez%20e%20quero%20uma%20assim%20pra%20minha%20cl%C3%ADnica";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20uma%20landing%20page%20adaptada%20%C3%A0%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 
 function Check() {
   return (
@@ -69,8 +68,7 @@ export default function LandingPages() {
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
-              estratégia contínua por trás.
+              Para clínicas que precisam conectar as campanhas, a página de captação e o acompanhamento em uma estratégia integrada.
             </p>
             <div className="spacer-top" />
             <List
@@ -104,7 +102,7 @@ export default function LandingPages() {
               className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
               style={{ background: "#e8e8e8", color: "#050505" }}
             >
-              Entrega rápida
+              Projeto pontual
             </span>
             <div className="card-header">
               <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -116,8 +114,7 @@ export default function LandingPages() {
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              Precisa sair do zero agora? Criamos sua página de vendas sem precisar contratar o pacote
-              completo.
+              Precisa de uma página pontual? Criamos uma experiência focada em apresentar a clínica e facilitar o contato.
             </p>
             <div className="spacer-top" />
             <List
@@ -125,7 +122,7 @@ export default function LandingPages() {
                 "Design exclusivo, sem templates",
                 "Copy focada em conversão",
                 "Otimizada pra qualquer tela",
-                "Pronta em poucos dias",
+                "Prazo definido conforme o escopo",
                 "Suporte direto durante a criação",
               ]}
             />
@@ -165,8 +162,7 @@ export default function LandingPages() {
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              Sua página de vendas pronta e já rodando com uma campanha estratégica pra trazer os
-              primeiros leads desde o primeiro dia.
+              Página e campanha planejadas em conjunto, com o destino e os indicadores definidos antes da ativação.
             </p>
             <div className="spacer-top" />
             <List
@@ -192,39 +188,39 @@ export default function LandingPages() {
         </div>
 
 
-        {/* Parte 2 — exemplo real */}
-        <div style={{ marginTop: 64 }} className="text-center">
-          <p className="font-caption text-xs text-primary">Projeto da LS</p>
-          <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-            Uma estrutura que pode ser adaptada à sua clínica
-          </h3>
-          <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            Este é um projeto real da LS desenvolvido para outro segmento. Ele demonstra nossa abordagem de design
-            e estrutura — não é um case odontológico nem representa resultados de uma clínica.
-          </p>
-
-          <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-xl border border-primary">
-            <div className="flex items-center gap-2 bg-[#141414] px-4 py-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="ml-3 text-xs text-[#888]">produzquality.company</span>
+        <div className="mt-16 border-t border-[#2a2a2a] pt-10">
+          <div className="grid gap-7 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+            <div>
+              <p className="font-caption text-xs text-primary">Antes do layout</p>
+              <h3 className="mt-3 text-2xl font-semibold leading-tight text-foreground">
+                A página começa pela estratégia da clínica.
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#a8a8a8]">
+                A proposta é definida a partir da realidade do negócio, não de um template genérico ou de promessas prontas.
+              </p>
             </div>
-            <img
-              src={exampleAsset.url}
-              alt="Exemplo real de landing page criada pela LS Agência de Marketing"
-              loading="lazy"
-              className="block w-full"
-            />
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="border-l border-primary pl-4">
+                <p className="text-sm font-semibold text-foreground">01. Prioridade</p>
+                <p className="mt-2 text-xs leading-relaxed text-[#a8a8a8]">Especialidade, região e serviço que a clínica quer destacar.</p>
+              </div>
+              <div className="border-l border-primary pl-4">
+                <p className="text-sm font-semibold text-foreground">02. Mensagem</p>
+                <p className="mt-2 text-xs leading-relaxed text-[#a8a8a8]">Informações úteis, diferenciais reais e próximo passo claro.</p>
+              </div>
+              <div className="border-l border-primary pl-4">
+                <p className="text-sm font-semibold text-foreground">03. Conversão</p>
+                <p className="mt-2 text-xs leading-relaxed text-[#a8a8a8]">Contato acessível e experiência pensada primeiro para o celular.</p>
+              </div>
+            </div>
           </div>
-
           <a
             href={WA_EXAMPLE}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block rounded-xl bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition hover:brightness-110"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg border border-primary px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            Quero uma página assim
+            Planejar uma página para minha clínica <ArrowRight size={15} />
           </a>
         </div>
       </div>

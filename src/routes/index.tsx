@@ -7,7 +7,6 @@ import LandingPages from "@/components/LandingPages";
 import FAQ from "@/components/FAQ";
 import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
-import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 
 
 
@@ -22,7 +21,8 @@ import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import ServicePhoto, { type ServicePhotoVariant } from "@/components/ServicePhoto";
 
-const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalHeroImage = "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
 
 
 
@@ -50,18 +50,18 @@ function Blobs() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
+      { title: "Agência de Marketing Odontológico | LS para Clínicas" },
       {
         name: "description",
         content:
-          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
+          "Marketing odontológico para clínicas que querem atrair pacientes particulares com Google Ads, Meta Ads e landing pages focadas em conversão e agendamento.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
+      { property: "og:title", content: "Agência de Marketing Odontológico | LS para Clínicas" },
       {
         property: "og:description",
         content:
-          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
+          "Marketing odontológico para clínicas que querem atrair pacientes particulares com Google Ads, Meta Ads e landing pages focadas em conversão e agendamento.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
@@ -186,7 +186,7 @@ function SectionBg({ src, opacity = 0.18 }: { src?: string; opacity?: number }) 
 }
 
 function Hero() {
-  const words = ["além das indicações", "com estratégia", "com consistência", "com clareza"];
+  const words = ["com estratégia", "com consistência", "com clareza", "com direção"];
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
@@ -209,7 +209,7 @@ function Hero() {
             </Reveal>
             <Reveal delay={260}>
               <p className="mt-8 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
-                Marketing para clínicas odontológicas com Google Ads, Meta Ads e páginas de conversão — para atrair pacientes particulares, comunicar o valor das suas especialidades e acompanhar cada oportunidade até o agendamento.
+                Estratégia de marketing para clínicas odontológicas que querem crescer além das indicações, atrair pacientes particulares e transformar interesse em oportunidades de agendamento — com Google Ads, Meta Ads e páginas de conversão.
               </p>
             </Reveal>
             <Reveal delay={400}>
@@ -263,8 +263,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={teamWhiteboard}
-              alt="Equipe LS em reunião de planejamento estratégico"
+              src={dentalAboutImage}
+              alt="Profissional odontológico em atendimento a paciente em consultório contemporâneo"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />

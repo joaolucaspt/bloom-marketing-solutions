@@ -1,5 +1,5 @@
 import { Gem } from "lucide-react";
-const dentalReferenceImage = "https://images.pexels.com/photos/34779494/pexels-photo-34779494.jpeg?auto=compress&cs=tinysrgb&w=1600";
+import ServiceVisual from "@/components/ServiceVisual";
 
 const WA_LP =
   "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20landing%20page%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
@@ -192,30 +192,19 @@ export default function LandingPages() {
         </div>
 
 
-        {/* Parte 2 — referência visual odontológica */}
+        {/* Parte 2 — demonstração conceitual, sem portfólio fictício */}
         <div style={{ marginTop: 64 }} className="text-center">
-          <p className="font-caption text-xs text-primary">Referência visual</p>
+          <p className="font-caption text-xs text-primary">Demonstração conceitual</p>
           <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-            Uma presença digital alinhada ao padrão da sua clínica
+            Como pode ser estruturada a página da sua clínica
           </h3>
-          <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            A página da sua clínica deve transmitir confiança, destacar seus diferenciais e facilitar o contato. A imagem
-            abaixo é uma referência do setor odontológico — não um case de cliente ou uma página criada pela LS.
+          <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#a8a8a8]">
+            Este mockup é ilustrativo. Não representa uma clínica atendida, uma marca de cliente, uma campanha publicada
+            ou resultados já obtidos pela LS no setor odontológico.
           </p>
 
-          <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-xl border border-primary">
-            <div className="flex items-center gap-2 bg-[#141414] px-4 py-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="ml-3 text-xs text-[#888]">referência visual · odontologia</span>
-            </div>
-            <img
-              src={dentalReferenceImage}
-              alt="Referência visual de clínica odontológica moderna; não representa um projeto de cliente da LS"
-              loading="lazy"
-              className="block w-full"
-            />
+          <div className="mx-auto mt-8 max-w-[900px] text-left">
+            <ServiceVisual variant="landing" />
           </div>
 
           <a

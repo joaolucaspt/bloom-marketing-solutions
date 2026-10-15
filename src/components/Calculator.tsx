@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const WA_CALC =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vim%20pela%20calculadora%20do%20site%20e%20quero%20saber%20mais";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vim%20pela%20calculadora%20do%20site%20e%20quero%20saber%20mais%20sobre%20a%20capta%C3%A7%C3%A3o%20de%20pacientes%20para%20cl%C3%ADnicas";
 
 const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
@@ -52,22 +52,22 @@ export default function Calculator() {
         Você já ouviu falar em tráfego pago?
       </h2>
       <p className="mt-2.5 text-[13px] leading-relaxed text-[#a8a8a8]">
-        É pagar pra aparecer pro cliente certo, na hora certa. Veja quanto isso pode representar pro seu
-        negócio.
+        É colocar a sua clínica na frente do paciente certo, na hora certa. Veja quanto isso pode
+        representar.
       </p>
 
       <div className="mt-5 space-y-3.5">
         <div>
           <label htmlFor="calc-fat" className="block text-[13px] font-medium text-foreground mb-1.5">
-            Quanto seu negócio fatura por mês?
+            Quanto sua clínica fatura por mês?
           </label>
-          <input id="calc-fat" inputMode="numeric" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="R$ 8.000" className={field} />
+          <input id="calc-fat" inputMode="numeric" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="R$ 30.000" className={field} />
         </div>
         <div>
           <label htmlFor="calc-ticket" className="block text-[13px] font-medium text-foreground mb-1.5">
-            Valor médio que cada cliente gasta?
+            Qual o valor médio de um tratamento?
           </label>
-          <input id="calc-ticket" inputMode="numeric" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="R$ 150" className={field} />
+          <input id="calc-ticket" inputMode="numeric" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="R$ 1.500" className={field} />
         </div>
       </div>
 
@@ -82,9 +82,9 @@ export default function Calculator() {
 
       {result && (
         <div className="mt-4 rounded-xl border border-primary bg-[#0d0d0d] p-4 fade-up">
-          <p className="text-[13px] text-[#a8a8a8]">Com uma campanha básica, você pode trazer</p>
+          <p className="text-[13px] text-[#a8a8a8]">Com uma campanha básica, sua clínica pode atender</p>
           <p className="mt-1 text-base font-semibold text-foreground">
-            {result.min} a {result.max} clientes novos por mês
+            {result.min} a {result.max} pacientes novos por mês
           </p>
           <p className="mt-3 text-[13px] text-[#a8a8a8]">Isso representa um potencial de</p>
           <p className="mt-1 text-2xl font-bold text-primary">+ {brl(result.potencial)}/mês</p>

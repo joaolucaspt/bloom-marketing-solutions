@@ -78,18 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
-      { title: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { title: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         name: "description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
+          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { property: "og:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         property: "og:description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
+          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },

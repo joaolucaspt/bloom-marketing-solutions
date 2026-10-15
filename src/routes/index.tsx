@@ -43,18 +43,18 @@ function Blobs() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { title: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         name: "description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
+          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { property: "og:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         property: "og:description",
         content:
-          "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso.",
+          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
@@ -68,8 +68,10 @@ export const Route = createFileRoute("/")({
 
 const PHONE_DISPLAY = "(31) 97116-9912";
 const WHATSAPP_URL =
-  "https://wa.me/5531971169912?text=" +
-  encodeURIComponent("Olá! Vim pelo site da LS Agência de Marketing e quero falar com um especialista.");
+"https://wa.me/5531971169912?text=" +
+  encodeURIComponent(
+    "Olá! Sou responsável por uma clínica odontológica e gostaria de conhecer as estratégias da LS para atrair novos pacientes."
+  );
 
 function Logo({ className = "" }: { className?: string }) {
   return (
@@ -177,7 +179,7 @@ function SectionBg({ src, opacity = 0.18 }: { src: string; opacity?: number }) {
 }
 
 function Hero() {
-  const words = ["Branding", "Marketing", "Vendas", "Crescimento"];
+  const words = ["pacientes novos", "agendamentos", "tratamentos de valor", "crescimento"];
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
@@ -193,22 +195,22 @@ function Hero() {
             </Reveal>
             <Reveal delay={120}>
               <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.2] tracking-tight">
-                Nós somos <br />
-                Especialistas em <br />
+                Sua clínica odontológica <br />
+                merece crescer <br />
                 <RotatingWords words={words} />
               </h1>
             </Reveal>
             <Reveal delay={260}>
               <p className="mt-8 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
-                Seu crescimento não pode esperar! E você sabe disto.
+                Estratégias de marketing digital para atrair novos pacientes, fortalecer a presença
                 <br />
-                Na LS Agência de Marketing, transformamos desafios em resultados.
+                da sua clínica e transformar oportunidades em crescimento.
               </p>
             </Reveal>
             <Reveal delay={400}>
               <div className="mt-8">
                 <a href="#agendar" className="btn-primary">
-                  Falar com especialista
+                  Quero atrair mais pacientes
                 </a>
               </div>
             </Reveal>
@@ -236,18 +238,19 @@ function About() {
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que impede <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              o seu crescimento?
+              o crescimento da sua clínica?
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed">
-            Muitas empresas lutam para conectar estratégias de marketing e vendas de maneira eficaz.
+            Muitas clínicas odontológicas dependem quase só de indicações e vivem com agenda irregular,
+            enquanto o marketing não gera contatos de qualidade.
           </p>
           <p className="mt-4 text-foreground/80 leading-relaxed">
-            Nós entendemos esses desafios e temos a solução para estruturarmos o seu marketing, melhorar o
-            seu posicionamento, a experiência do seu usuário e acelerar suas vendas.
+            A LS entende o negócio odontológico: atrair pacientes particulares, valorizar tratamentos de
+            maior investimento e estruturar a jornada do primeiro contato até o agendamento.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
-            Falar com especialista
+            Quero melhorar a captação de pacientes
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -281,12 +284,12 @@ function Offer() {
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
-            A LS ajuda empresas a se posicionarem de forma profissional no mercado. Nosso ecossistema de
-            serviços inclui presença digital, branding, performance e anúncios online, experiências,
-            audiovisual, jornada do cliente, vendas, treinamentos e mentorias.
+            A LS ajuda clínicas odontológicas a se posicionarem de forma profissional e a captarem
+            pacientes: tráfego pago no Google e Meta Ads, landing pages de conversão, presença digital e
+            acompanhamento de indicadores.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
-            Falar com especialista
+            Conversar com a LS
           </a>
         </Reveal>
         <Reveal delay={200}>
@@ -307,32 +310,32 @@ function Offer() {
 function Pillars() {
   const pillars = [
     {
-      t: "Marketing Digital",
-      d: "Presença digital, branding, performance, audiovisual, jornada do cliente, vendas, treinamentos e mentorias.",
+      t: "Captação de Pacientes",
+      d: "Campanhas de tráfego pago que colocam sua clínica na frente de quem procura serviços odontológicos.",
     },
-    { t: "Vendas", d: "Melhoramos a eficiência entre o comercial e o marketing do seu negócio." },
+    { t: "Vendas", d: "Melhoramos a eficiência entre o marketing e o atendimento comercial da sua clínica." },
     {
       t: "Tecnologia",
-      d: "Proporcionamos uma experiência incrível com acesso às melhores tecnologias do mercado.",
+      d: "Landing pages e ferramentas que transformam visitantes em agendamentos.",
     },
     {
-      t: "Negócios",
-      d: "Estruturamos e aceleramos produtos e negócios com dados, processos e treinamentos.",
+      t: "Gestão",
+      d: "Estruturamos a aquisição de pacientes com dados, processos e acompanhamento de indicadores.",
     },
   ];
-  const words = ["crescer", "melhorar o branding", "otimizar resultados", "gerar mais leads", "aumentar as vendas"];
+  const words = ["atrair pacientes", "lotar a agenda", "aumentar agendamentos", "captar mais leads", "vender mais tratamentos"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgTeam} opacity={0.1} />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
-            Como ajudamos sua empresa a <br />
+            Como ajudamos sua clínica a <br />
             <RotatingWords words={words} />
           </h2>
           <div className="mt-8">
             <a href="#agendar" className="btn-primary">
-              Falar com especialista
+              Quero conhecer a estratégia para minha clínica
             </a>
           </div>
         </div>
@@ -359,33 +362,33 @@ function Pillars() {
 
 const SERVICES = [
   {
-    t: "Identidade Visual e Branding",
-    d: "Naming, logotipo, personalidade, tom de voz, manifesto, arquétipo, definição de posicionamento.",
+    t: "Google Ads",
+    d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e transformá-las em agendamentos.",
     img: bgBranding,
   },
   {
-    t: "Redes Sociais",
-    d: "Gestão completa de rede social, planejamento, conteúdo, lives, podcasts, influência e colabs.",
+    t: "Meta Ads",
+    d: "Campanhas no Instagram e Facebook para gerar oportunidades comerciais qualificadas para a sua clínica.",
     img: svcSocial,
   },
   {
-    t: "Produção Audiovisual",
-    d: "Captação e edição de fotos, shooting, vídeos curtos, motions, filmes e locução.",
+    t: "Landing Pages",
+    d: "Páginas de conversão focadas em transformar visitantes em pacientes agendados.",
     img: svcAudiovisual,
   },
   {
-    t: "Tech",
-    d: "Desenvolvimento de Sites, Landing Pages, e-commerce, aplicativos e UX Design.",
+    t: "Presença Digital",
+    d: "Posicionamento profissional da sua clínica para transmitir confiança antes do primeiro atendimento.",
     img: svcTech,
   },
   {
-    t: "Educação",
-    d: "Consultoria estratégica, treinamentos e mentorias.",
+    t: "Acompanhamento",
+    d: "Relatórios e análise de indicadores para direcionar melhor o investimento em marketing da clínica.",
     img: svcEducacao,
   },
   {
-    t: "Performance",
-    d: "Campanhas patrocinadas, SEO, mídia programática e merchandising.",
+    t: "Jornada do Paciente",
+    d: "Otimização do caminho entre o primeiro contato, o atendimento comercial e o agendamento.",
     img: svcPerformance,
   },
 
@@ -393,7 +396,7 @@ const SERVICES = [
 
 function Services() {
   const [active, setActive] = useState(0);
-  const words = ["de Growth", "de Branding", "de Vendas", "de Experiências", "de Treinamentos"];
+  const words = ["de Pacientes", "de Agendamentos", "de Tratamentos", "de Resultados", "de Crescimento"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgAudiovisual} opacity={0.1} />
@@ -404,8 +407,8 @@ function Services() {
             <RotatingWords words={words} />
           </h2>
           <p className="mt-6 text-foreground/70">
-            Como podemos ajudar a sua empresa a crescer de forma sustentável? Formamos um ecossistema
-            integrado para te ajudar de forma completa.
+            Como podemos ajudar a sua clínica a crescer de forma sustentável? Formamos um ecossistema
+            integrado para atrair e converter pacientes.
           </p>
         </div>
 
@@ -472,12 +475,12 @@ function Belief() {
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
           Nossa cultura vem da mentalidade Growth, da experimentação através de testes com inteligência de
-          dados para validar rotas e trazer resultados sustentáveis. Acreditamos que o seu crescimento
-          está vinculado à sua mentalidade e não ao tamanho do seu negócio, estrutura ou segmentação de
-          mercado.
+          dados para validar rotas e trazer resultados sustentáveis. Acreditamos que o crescimento da sua
+          clínica está vinculado à estratégia certa, e não ao tamanho da estrutura ou da cidade onde ela
+          atende.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
-          Falar com especialista
+          Conversar com a LS
         </a>
       </div>
     </section>
@@ -486,9 +489,9 @@ function Belief() {
 
 function Methodology() {
   const steps = [
-    { t: "Diagnóstico", d: "Entendemos o momento do seu negócio, dores e oportunidades." },
-    { t: "Estratégia", d: "Desenhamos um plano personalizado com metas claras e mensuráveis." },
-    { t: "Execução", d: "Rodamos campanhas, produzimos conteúdos e implantamos processos." },
+    { t: "Diagnóstico", d: "Entendemos o momento da sua clínica, especialidades, dores e oportunidades." },
+    { t: "Estratégia", d: "Desenhamos um plano de captação de pacientes com metas claras e mensuráveis." },
+    { t: "Execução", d: "Rodamos campanhas, criamos páginas e implantamos os processos." },
     { t: "Otimização", d: "Analisamos dados, testamos hipóteses e escalamos o que funciona." },
   ];
   return (
@@ -525,11 +528,11 @@ function Footer() {
     { href: "#agendar", label: "Agendar" },
   ];
   const servicos = [
-    { href: "#servicos", label: "Marketing Digital" },
-    { href: "#servicos", label: "Vendas" },
-    { href: "#servicos", label: "Tecnologia" },
-    { href: "#servicos", label: "Negócios" },
-    { href: "#landing-pages", label: "Criação de Landing Pages" },
+    { href: "#servicos", label: "Google Ads" },
+    { href: "#servicos", label: "Meta Ads" },
+    { href: "#servicos", label: "Landing Pages" },
+    { href: "#servicos", label: "Presença Digital" },
+    { href: "#servicos", label: "Jornada do Paciente" },
   ];
   return (
     <footer className="border-t border-border bg-[#050505]/40 py-14">
@@ -537,7 +540,7 @@ function Footer() {
         <div>
           <LogoMark />
           <p className="mt-5 text-sm leading-relaxed text-[#a8a8a8] max-w-xs">
-            Branding, performance e vendas para acelerar o crescimento do seu negócio.
+            Marketing e captação de pacientes para clínicas odontológicas.
           </p>
         </div>
         <div>

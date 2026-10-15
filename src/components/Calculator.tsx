@@ -8,7 +8,14 @@ const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 2 });
 
 const parseNum = (s: string) => {
-  const clean = s.replace(/[^\d,.-]/g, "").replace(/\.(?=.*\.)/g, "").replace(",", ".");
+  let clean = s.trim().replace(/[^\d,.-]/g, "");
+  if (clean.includes(",")) {
+    // Brazilian format: 2.000,50 -> 2000.50
+    clean = clean.replace(/\./g, "").replace(",", ".");
+  } else if (/^\d{1,3}(?:\.\d{3})+$/.test(clean)) {
+    // Brazilian thousands separator without decimal cents: 2.000 -> 2000
+    clean = clean.replace(/\./g, "");
+  }
   const n = Number(clean);
   return Number.isFinite(n) && n > 0 ? n : NaN;
 };

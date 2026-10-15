@@ -7,6 +7,7 @@ import LandingPages from "@/components/LandingPages";
 import FAQ from "@/components/FAQ";
 import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
+import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 
 
 
@@ -22,7 +23,6 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
 const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
 
 
 
@@ -263,8 +263,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={dentalAboutImage}
-              alt="Atendimento odontológico em um consultório moderno"
+              src={teamWhiteboard}
+              alt="Equipe LS em reunião de planejamento estratégico"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />

@@ -47,8 +47,7 @@ export default function Calculator() {
 
   return (
     <div
-      id="calculadora"
-      className="w-full rounded-2xl border border-primary/60 bg-[#141414]/95 backdrop-blur-sm"
+      className="w-full rounded-2xl border border-primary/60 bg-[#141414]/95"
       style={{ maxWidth: 400, padding: 24 }}
     >
       <p className="font-caption text-[11px] text-primary">Simulação de mídia</p>

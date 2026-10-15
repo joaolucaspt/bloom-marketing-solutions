@@ -16,9 +16,9 @@ export default function CookieBanner() {
 
   if (!visible) return null;
 
-  const accept = () => {
+  const dismiss = () => {
     try {
-      localStorage.setItem(STORAGE_KEY, "accepted");
+      localStorage.setItem(STORAGE_KEY, "dismissed");
     } catch {
       /* ignore */
     }
@@ -48,7 +48,7 @@ export default function CookieBanner() {
           para saber mais.
         </p>
         <button
-          onClick={accept}
+          onClick={dismiss}
           className="shrink-0 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
         >
           Entendi

@@ -84,10 +84,7 @@ export default function Booking() {
 
           {/* Coluna direita — Cal.com */}
           <div className="flex justify-center md:justify-end">
-            <div
-              className="w-full overflow-hidden bg-[#141414] shadow-2xl"
-              style={{ borderRadius: 12, height: 520, maxWidth: 420 }}
-            >
+            <div className="h-[540px] w-full max-w-[420px] overflow-hidden rounded-xl bg-[#141414] shadow-2xl sm:h-[580px]">
               <Cal
                 calLink="ls.agenciademarketing/diagnostico-gratuito"
                 style={{ width: "100%", height: "100%", overflow: "auto" }}
@@ -101,9 +98,8 @@ export default function Booking() {
         {/* Card de contato — centralizado e mais abaixo */}
         <div className="mt-20 flex items-center justify-center md:mt-28">
           <div
-            className="w-full max-w-[420px] rounded-2xl bg-[#141414]"
+            className="w-full max-w-[420px] rounded-2xl bg-[#141414] p-6 sm:p-8 md:p-12"
             style={{
-              padding: 48,
               border: "1.5px solid #D4AF37",
               boxShadow: "0 0 40px rgba(212,175,55,0.15)",
             }}

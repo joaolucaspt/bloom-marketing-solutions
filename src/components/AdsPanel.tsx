@@ -7,16 +7,9 @@ const metrics = [
   { label: "Retorno atribuído", detail: "Quando mensurável" },
 ];
 
-const points = [49, 45, 51, 48, 52, 47, 50, 48, 53, 46, 51, 48, 50];
+const optimizationStages = ["Analisar", "Ajustar", "Medir", "Planejar"];
 
 export default function AdsPanel() {
-  const w = 320;
-  const h = 110;
-  const max = 100;
-  const path = points
-    .map((point, index) => `${index === 0 ? "M" : "L"} ${(index / (points.length - 1)) * w} ${h - (point / max) * h}`)
-    .join(" ");
-  const area = `${path} L ${w} ${h} L 0 ${h} Z`;
 
   return (
     <div className="w-full rounded-2xl border border-[#2a2a2a] bg-[#0d0d0d] p-5 md:p-6">
@@ -39,24 +32,28 @@ export default function AdsPanel() {
         ))}
       </div>
 
-      <div className="mt-5 rounded-xl border border-[#242424] bg-[#141414] px-3 py-3">
+      <div className="mt-5 rounded-xl border border-[#242424] bg-[#141414] px-3 py-4">
         <div className="flex items-center justify-between gap-4">
-          <p className="text-[11px] text-[#8f8f8f]">Leitura por período</p>
-          <p className="text-[11px] font-semibold text-primary">Análise e otimização</p>
+          <p className="text-[11px] text-[#8f8f8f]">Ciclo de otimização</p>
+          <p className="text-[11px] font-semibold text-primary">Baseado em indicadores</p>
         </div>
-        <svg viewBox={`0 0 ${w} ${h}`} className="mt-2 w-full" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="adsGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.24" />
-              <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          {[25, 50, 75].map((line) => (
-            <line key={line} x1="0" x2={w} y1={h - (line / max) * h} y2={h - (line / max) * h} stroke="#303030" strokeDasharray="3 5" />
+        <div className="mt-5 grid grid-cols-4 gap-2" aria-label="Etapas de acompanhamento de campanhas">
+          {optimizationStages.map((stage, index) => (
+            <div key={stage} className="min-w-0 text-center">
+              <div className="flex items-center">
+                <span className={`h-px flex-1 ${index === 0 ? "bg-transparent" : "bg-[#5b4b25]"}`} aria-hidden="true" />
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-primary/70 bg-[#201b0e] text-[10px] font-semibold text-primary">
+                  0{index + 1}
+                </span>
+                <span className={`h-px flex-1 ${index === optimizationStages.length - 1 ? "bg-transparent" : "bg-[#5b4b25]"}`} aria-hidden="true" />
+              </div>
+              <p className="mt-2 text-[10px] font-medium leading-tight text-[#c7c7c7] sm:text-[11px]">{stage}</p>
+            </div>
           ))}
-          <path d={area} fill="url(#adsGrad)" />
-          <path d={path} fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-        </svg>
+        </div>
+        <p className="mt-4 border-t border-[#292929] pt-3 text-[10px] leading-relaxed text-[#858585]">
+          O acompanhamento considera os dados disponíveis em cada etapa da jornada.
+        </p>
       </div>
     </div>
   );

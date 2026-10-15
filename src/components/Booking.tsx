@@ -33,17 +33,17 @@ export default function Booking() {
           <div>
             <p className="font-caption text-xs text-primary">Conversa estratégica</p>
             <h2 className="mt-4 text-3xl md:text-4xl font-semibold leading-tight text-foreground">
-              Vamos entender o momento da sua clínica e os próximos passos para a captação.
+              Sua próxima fase de crescimento começa com uma estratégia de captação bem definida.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-[#a8a8a8]">
-              Em 30 minutos, conversamos sobre as especialidades, a região de atendimento, os objetivos e a estrutura atual da clínica. A partir desse contexto, alinhamos o que faz sentido avaliar — com clareza, sem pressão e sem promessas prontas.
+              Em 30 minutos, mapeamos as especialidades, a região de atendimento, a estrutura comercial e os objetivos de crescimento da clínica. A partir desse diagnóstico, definimos as prioridades de marketing e os próximos passos mais adequados à operação.
             </p>
 
             <ul className="mt-7 space-y-3">
               {[
                 "Você conversa diretamente com um dos fundadores",
-                "Analisamos especialidades, região e estrutura de atendimento",
-                "Próximos passos alinhados à realidade da clínica",
+                "Análise das especialidades, da região e da jornada de atendimento",
+                "Prioridades de aquisição alinhadas ao momento da clínica",
               ].map((i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-foreground">
                   <span className="mt-1.5 h-2 w-2 shrink-0 bg-primary" />

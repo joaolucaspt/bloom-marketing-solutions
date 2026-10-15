@@ -324,7 +324,7 @@ function Pillars() {
     },
     {
       t: "Gestão",
-      d: "Organizamos a aquisição com acompanhamento de investimento, contatos e agendamentos, de acordo com os dados disponíveis.",
+      d: "Acompanhamos investimento, custo por contato, qualidade das oportunidades e evolução dos agendamentos para orientar decisões e ajustes na estratégia.",
     },
   ];
   const words = ["atrair pacientes", "organizar a captação", "medir oportunidades", "valorizar especialidades"];
@@ -480,7 +480,7 @@ function Belief() {
           </span>
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
-          Unimos planejamento, campanhas e páginas de conversão com acompanhamento dos indicadores disponíveis. Cada decisão considera especialidades, região e capacidade de atendimento da clínica, para orientar o investimento e identificar oportunidades de melhoria ao longo da jornada.
+          Combinamos planejamento, campanhas e páginas de conversão a uma rotina de acompanhamento de indicadores. O foco é dar clareza ao investimento, identificar gargalos na jornada e priorizar melhorias conforme as especialidades, a região e a capacidade de atendimento da clínica.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
           Conversar com a LS
@@ -495,7 +495,7 @@ function Methodology() {
     { t: "Diagnóstico", d: "Entendemos especialidades, região, capacidade de atendimento, objetivos e ponto de partida da clínica." },
     { t: "Planejamento", d: "Definimos canais, proposta, página de conversão e indicadores adequados ao cenário." },
     { t: "Implementação", d: "Configuramos as campanhas e os recursos acordados, com mensagem alinhada às especialidades da clínica." },
-    { t: "Otimização", d: "Avaliamos os dados disponíveis, identificamos ajustes e alinhamos os próximos passos com transparência." },
+    { t: "Otimização", d: "Monitoramos os indicadores acordados, identificamos gargalos e priorizamos os ajustes de campanha e conversão." },
   ];
   return (
     <section id="metodologia" className="relative py-24 md:py-32 border-t border-border">

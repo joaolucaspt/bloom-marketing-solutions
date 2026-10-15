@@ -36,12 +36,12 @@ export default function LandingPages() {
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-foreground">
-            Sua página de captura, pronta pra agendar pacientes
+            Sua página de captação, pensada para gerar oportunidades
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#a8a8a8]">
-            No mercado, isso é chamado de landing page — uma página única e direta, feita pra transformar
-            visitante em paciente agendado, sem distrações. É o primeiro passo de qualquer estratégia de
-            captação que funciona.
+            Uma landing page é uma página direta, planejada para apresentar sua clínica, explicar os diferenciais
+            e facilitar o contato. Ela pode apoiar a captação quando está alinhada às campanhas e ao
+            atendimento da equipe.
           </p>
         </div>
 
@@ -194,13 +194,13 @@ export default function LandingPages() {
 
         {/* Parte 2 — exemplo real */}
         <div style={{ marginTop: 64 }} className="text-center">
-          <p className="font-caption text-xs text-primary">Exemplo real</p>
+          <p className="font-caption text-xs text-primary">Projeto da LS</p>
           <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-            Isso poderia ser a sua página, hoje mesmo
+            Uma estrutura que pode ser adaptada à sua clínica
           </h3>
           <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            Um projeto real feito pela LS, com hero de impacto e calculadora interativa capturando o lead
-            logo na primeira dobra.
+            Este é um projeto real da LS desenvolvido para outro segmento. Ele demonstra nossa abordagem de design
+            e estrutura — não é um case odontológico nem representa resultados de uma clínica.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-xl border border-primary">

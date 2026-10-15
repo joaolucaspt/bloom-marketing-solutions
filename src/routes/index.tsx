@@ -6,19 +6,20 @@ import Calculator from "@/components/Calculator";
 import LandingPages from "@/components/LandingPages";
 import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
-import bgTeam from "@/assets/bg-team.jpg";
-import bgBranding from "@/assets/bg-branding.jpg";
-import bgAudiovisual from "@/assets/bg-audiovisual.jpg";
-import bgPerformance from "@/assets/bg-performance.jpg";
-import bgPortrait from "@/assets/bg-portrait.jpg";
-import svcSocial from "@/assets/svc-social.jpg";
-import svcAudiovisual from "@/assets/svc-audiovisual.jpg";
-import svcTech from "@/assets/svc-tech.jpg";
-import svcEducacao from "@/assets/svc-educacao.jpg";
-import svcPerformance from "@/assets/svc-performance.jpg";
+
+
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
-
+// Imagens odontológicas como contexto visual; marca, logo e sistema visual da LS permanecem preservados.
+const bgTeam = "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=82";
+const bgBranding = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=82";
+const bgAudiovisual = "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1400&q=82";
+const bgPerformance = "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=82";
+const svcSocial = "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=82";
+const svcAudiovisual = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=82";
+const svcTech = "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=82";
+const svcEducacao = "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=82";
+const svcPerformance = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=82";
 
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -194,7 +195,7 @@ function Hero() {
               <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
             </Reveal>
             <Reveal delay={120}>
-              <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.2] tracking-tight">
+              <h1 className="mt-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.2] tracking-tight">
                 Sua clínica odontológica <br />
                 merece crescer <br />
                 <RotatingWords words={words} />
@@ -258,7 +259,7 @@ function About() {
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
               src={bgTeam}
-              alt="Equipe da LS Agência de Marketing"
+              alt="Atendimento em uma clínica odontológica moderna"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />
@@ -280,7 +281,7 @@ function Offer() {
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que oferecemos? <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              Um ecossistema com resultados reais.
+              Uma estratégia integrada para captar pacientes.
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
@@ -323,7 +324,7 @@ function Pillars() {
       d: "Estruturamos a aquisição de pacientes com dados, processos e acompanhamento de indicadores.",
     },
   ];
-  const words = ["atrair pacientes", "lotar a agenda", "aumentar agendamentos", "captar mais leads", "vender mais tratamentos"];
+  const words = ["atrair pacientes", "organizar a agenda", "ampliar oportunidades", "gerar contatos qualificados", "apoiar o crescimento"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg src={bgTeam} opacity={0.1} />
@@ -413,7 +414,7 @@ function Services() {
         </div>
 
         <h3 className="mt-20 text-center text-3xl md:text-4xl font-black uppercase tracking-wider">
-          Lista de Serviços
+          Soluções para sua clínica
         </h3>
 
         <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-border pb-6">
@@ -462,7 +463,7 @@ function Services() {
 
 function Belief() {
   return (
-    <section id="sobre" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
+    <section id="compromisso" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
         <img src={bgBranding} alt="" className="w-full h-full object-cover" loading="lazy" />
       </div>
@@ -474,10 +475,7 @@ function Belief() {
           </span>
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
-          Nossa cultura vem da mentalidade Growth, da experimentação através de testes com inteligência de
-          dados para validar rotas e trazer resultados sustentáveis. Acreditamos que o crescimento da sua
-          clínica está vinculado à estratégia certa, e não ao tamanho da estrutura ou da cidade onde ela
-          atende.
+          Defendemos uma estratégia construída para a realidade de cada clínica: objetivos claros, testes, acompanhamento de indicadores e decisões baseadas nos dados disponíveis — sem fórmulas mágicas ou promessas de resultado.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
           Conversar com a LS

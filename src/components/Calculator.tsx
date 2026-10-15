@@ -1,45 +1,41 @@
 import { useState } from "react";
 
 const WA_CALC =
-  "https://wa.me/5531971169912?text=" +
-  encodeURIComponent("Olá! Quero avaliar uma estratégia de captação de pacientes para minha clínica odontológica.");
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vim%20pela%20calculadora%20do%20site%20e%20quero%20saber%20mais%20sobre%20a%20capta%C3%A7%C3%A3o%20de%20pacientes%20para%20cl%C3%ADnicas";
 
 const brl = (v: number) =>
-  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 2 });
+  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 
 const parseNum = (s: string) => {
-  let clean = s.trim().replace(/[^\d,.-]/g, "");
-  if (clean.includes(",")) {
-    // Brazilian format: 2.000,50 -> 2000.50
-    clean = clean.replace(/\./g, "").replace(",", ".");
-  } else if (/^\d{1,3}(?:\.\d{3})+$/.test(clean)) {
-    // Brazilian thousands separator without decimal cents: 2.000 -> 2000
-    clean = clean.replace(/\./g, "");
-  }
+  const clean = s.replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".");
   const n = Number(clean);
   return Number.isFinite(n) && n > 0 ? n : NaN;
 };
 
 export default function Calculator() {
-  const [budget, setBudget] = useState("");
-  const [cpl, setCpl] = useState("");
+  const [fat, setFat] = useState("");
+  const [ticket, setTicket] = useState("");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<{ budget: number; cpl: number; contacts: number } | null>(null);
+  const [result, setResult] = useState<{ min: number; max: number; potencial: number } | null>(null);
 
-  const simulate = () => {
-    const monthlyBudget = parseNum(budget);
-    const costPerContact = parseNum(cpl);
-    if (!Number.isFinite(monthlyBudget) || !Number.isFinite(costPerContact)) {
-      setError("Informe valores válidos e maiores que zero nos dois campos.");
+  const calc = () => {
+    const f = parseNum(fat);
+    const t = parseNum(ticket);
+    if (Number.isNaN(f) || Number.isNaN(t)) {
+      setError("Preencha os dois valores pra calcular.");
       setResult(null);
       return;
     }
     setError("");
-    setResult({
-      budget: monthlyBudget,
-      cpl: costPerContact,
-      contacts: Math.floor(monthlyBudget / costPerContact),
-    });
+    const atuais = f / t;
+    let min = Math.round(atuais * 0.15);
+    let max = Math.round(atuais * 0.25);
+    if (min < 3) {
+      min = 3;
+      max = 6;
+    }
+    const media = (min + max) / 2;
+    setResult({ min, max, potencial: Math.round(media * t) });
   };
 
   const field =
@@ -47,60 +43,53 @@ export default function Calculator() {
 
   return (
     <div
-      className="w-full rounded-2xl border border-primary/60 bg-[#141414]/95"
+      id="calculadora"
+      className="w-full rounded-2xl border border-primary/60 bg-[#141414]/95 backdrop-blur-sm"
       style={{ maxWidth: 400, padding: 24 }}
     >
-      <p className="font-caption text-[11px] text-primary">Simulação de mídia</p>
+      <p className="font-caption text-[11px] text-primary">Descubra seu potencial</p>
       <h2 className="mt-2 text-xl font-semibold leading-snug text-foreground">
-        Planeje um cenário para sua clínica
+        Você já ouviu falar em tráfego pago?
       </h2>
       <p className="mt-2.5 text-[13px] leading-relaxed text-[#a8a8a8]">
-        Informe o investimento mensal e o custo por contato que deseja usar como hipótese. A simulação
-        faz apenas uma estimativa matemática para ajudar no planejamento.
+        É colocar a sua clínica na frente do paciente certo, na hora certa. Veja quanto isso pode
+        representar.
       </p>
 
       <div className="mt-5 space-y-3.5">
         <div>
-          <label htmlFor="calc-budget" className="block text-[13px] font-medium text-foreground mb-1.5">
-            Investimento mensal em anúncios (R$)
+          <label htmlFor="calc-fat" className="block text-[13px] font-medium text-foreground mb-1.5">
+            Quanto sua clínica fatura por mês?
           </label>
-          <input id="calc-budget" inputMode="decimal" value={budget} onChange={(e) => setBudget(e.target.value)} placeholder="2.000" className={field} />
+          <input id="calc-fat" inputMode="numeric" value={fat} onChange={(e) => setFat(e.target.value)} placeholder="R$ 30.000" className={field} />
         </div>
         <div>
-          <label htmlFor="calc-cpl" className="block text-[13px] font-medium text-foreground mb-1.5">
-            Custo estimado por contato (R$)
+          <label htmlFor="calc-ticket" className="block text-[13px] font-medium text-foreground mb-1.5">
+            Qual o valor médio de um tratamento?
           </label>
-          <input id="calc-cpl" inputMode="decimal" value={cpl} onChange={(e) => setCpl(e.target.value)} placeholder="25" className={field} />
+          <input id="calc-ticket" inputMode="numeric" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="R$ 1.500" className={field} />
         </div>
       </div>
 
-      {error && <p className="mt-3 text-[13px] text-[#e07070]" role="alert">{error}</p>}
+      {error && <p className="mt-3 text-[13px] text-[#e07070]">{error}</p>}
 
       <button
-        type="button"
-        onClick={simulate}
+        onClick={calc}
         className="mt-4 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
       >
-        Simular cenário
+        Calcular meu potencial
       </button>
 
       {result && (
-        <div className="mt-4 rounded-xl border border-primary bg-[#0d0d0d] p-4 fade-up" aria-live="polite">
-          <p className="text-[13px] text-[#a8a8a8]">Estimativa matemática no cenário informado</p>
-          <p className="mt-1 text-2xl font-bold text-primary">
-            {result.contacts.toLocaleString("pt-BR")} contatos
+        <div className="mt-4 rounded-xl border border-primary bg-[#0d0d0d] p-4 fade-up">
+          <p className="text-[13px] text-[#a8a8a8]">Com uma campanha básica, sua clínica pode atender</p>
+          <p className="mt-1 text-base font-semibold text-foreground">
+            {result.min} a {result.max} pacientes novos por mês
           </p>
-          <p className="mt-2 text-xs leading-relaxed text-[#a8a8a8]">
-            {brl(result.budget)} de investimento ÷ {brl(result.cpl)} por contato. Contatos não equivalem
-            necessariamente a pacientes ou agendamentos.
-          </p>
+          <p className="mt-3 text-[13px] text-[#a8a8a8]">Isso representa um potencial de</p>
+          <p className="mt-1 text-2xl font-bold text-primary">+ {brl(result.potencial)}/mês</p>
         </div>
       )}
-
-      <p className="mt-3 text-[11px] leading-relaxed text-[#858585]">
-        Simulação informativa, não promessa de desempenho. Os custos e volumes reais variam conforme
-        região, concorrência, oferta, campanha e atendimento.
-      </p>
 
       <a
         href={WA_CALC}
@@ -108,7 +97,7 @@ export default function Calculator() {
         rel="noopener noreferrer"
         className="mt-3.5 block w-full rounded-lg border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
       >
-        Avaliar a estratégia com a LS
+        Fale com a gente, é gratuito
       </a>
     </div>
   );

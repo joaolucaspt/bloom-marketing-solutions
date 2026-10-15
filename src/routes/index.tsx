@@ -19,10 +19,10 @@ import { useReveal } from "@/hooks/useReveal";
 
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
-import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
 const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
 
 
 
@@ -50,18 +50,18 @@ function Blobs() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
+      { title: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
       {
         name: "description",
         content:
-          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
+          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
+      { property: "og:title", content: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
       {
         property: "og:description",
         content:
-          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
+          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
@@ -263,8 +263,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={teamWhiteboard}
-              alt="Planejamento estratégico da equipe LS"
+              src={dentalAboutImage}
+              alt="Atendimento odontológico em um consultório moderno"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />

@@ -74,7 +74,7 @@ function PrivacyPage() {
           <p>Não vendemos, alugamos ou comercializamos seus dados com terceiros.</p>
         </Section>
 
-        <Section title="3. Cookies e pixels de rastreamento">
+        <Section title="3. Cookies e tecnologias de terceiros">
           <p>
             Este site utiliza armazenamento local para lembrar preferências de interface e pode carregar
             tecnologias de terceiros necessárias a funcionalidades incorporadas, como o agendamento online.

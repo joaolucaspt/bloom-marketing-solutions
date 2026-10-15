@@ -286,7 +286,7 @@ function Offer() {
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
             O que oferecemos? <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              Um ecossistema com resultados reais.
+              Uma estratégia integrada para captar pacientes.
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">

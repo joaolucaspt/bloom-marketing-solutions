@@ -2,11 +2,11 @@ import { Gem } from "lucide-react";
 import exampleAsset from "@/assets/produzquality-hq.png.asset.json";
 
 const WA_LP =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20servi%C3%A7o%20de%20cria%C3%A7%C3%A3o%20de%20landing%20page";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20landing%20page%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_PREMIUM =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20plano%20de%20landing%20page%20%2B%20campanha%20premium";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20combo%20de%20landing%20page%20%2B%20campanha%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_EXAMPLE =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vi%20o%20exemplo%20de%20p%C3%A1gina%20que%20voc%C3%AA%20fez%20e%20quero%20uma%20assim%20pra%20mim";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vi%20o%20exemplo%20de%20p%C3%A1gina%20que%20a%20LS%20fez%20e%20quero%20uma%20assim%20pra%20minha%20cl%C3%ADnica";
 
 function Check() {
   return (
@@ -36,12 +36,12 @@ export default function LandingPages() {
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-foreground">
-            Sua página de vendas, pronta pra vender
+            Sua página de captura, pronta pra agendar pacientes
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#a8a8a8]">
             No mercado, isso é chamado de landing page — uma página única e direta, feita pra transformar
-            visitante em cliente, sem distrações. É o primeiro passo de qualquer estratégia de marketing
-            que funciona.
+            visitante em paciente agendado, sem distrações. É o primeiro passo de qualquer estratégia de
+            captação que funciona.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function LandingPages() {
                 "Gestão de tráfego pago (Meta Ads e Google Ads)",
                 "Relatórios semanais",
                 "Suporte contínuo direto com os fundadores",
-                "Estratégia personalizada para seu negócio",
+                "Estratégia personalizada para sua clínica",
               ]}
             />
             <div className="spacer-bottom" />

@@ -7,7 +7,11 @@ import fundador1 from "@/assets/fundador-1.png.asset.json";
 import fundador2 from "@/assets/fundador-2.png.asset.json";
 
 const PHONE_DISPLAY = "(31) 97116-9912";
-const WHATSAPP_URL = "https://wa.me/5531971169912";
+const WHATSAPP_URL =
+  "https://wa.me/5531971169912?text=" +
+  encodeURIComponent(
+    "Olá! Sou responsável por uma clínica odontológica e gostaria de conhecer as estratégias da LS para atrair novos pacientes."
+  );
 
 export default function Booking() {
   useEffect(() => {
@@ -32,15 +36,15 @@ export default function Booking() {
               30 minutos. Vamos ver se faz sentido trabalharmos juntos.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-[#a8a8a8]">
-              Isso não é um discurso de vendas pronto. Queremos entender seu negócio, seus objetivos e onde
-              você está travando — e aí te dizer com sinceridade como podemos ajudar, ou se não somos a
+              Isso não é um discurso de vendas pronto. Queremos entender sua clínica, suas especialidades
+              e seus objetivos — e aí te dizer com sinceridade como podemos ajudar, ou se não somos a
               opção certa pra você. Você vai falar com um dos fundadores, sempre. Sem pressão, sem enrolação.
             </p>
 
             <ul className="mt-7 space-y-3">
               {[
                 "Você fala com um fundador, nunca com um vendedor",
-                "Entendemos seu negócio antes de propor qualquer coisa",
+                "Entendemos sua clínica antes de propor qualquer coisa",
                 "Uma resposta direta sobre se podemos ajudar",
               ].map((i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-foreground">

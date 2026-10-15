@@ -5,7 +5,6 @@ import {
   CalendarCheck,
   Check,
   ClipboardCheck,
-  Instagram,
   MapPin,
   MessageCircle,
   MousePointer2,
@@ -82,7 +81,7 @@ function MetaVisual() {
       <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-[#343434] bg-[#111111]">
         <div className="flex items-center gap-3 border-b border-[#2a2a2a] px-4 py-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#202020] text-primary">
-            <Instagram size={17} />
+            <MessageCircle size={17} />
           </div>
           <div>
             <p className="text-sm font-medium text-white">Clínica odontológica</p>
@@ -144,7 +143,7 @@ function LandingVisual() {
             <div className="mt-2 h-2 w-4/5 rounded bg-[#292929]" />
             <div className="mt-5 space-y-2">
               <div className="rounded-md border border-[#353535] px-3 py-2 text-[10px] text-[#8e8e8e]">Nome</div>
-              <div className="rounded-md border border-[#353535] px-3 py-2 text-[10px] text-[#8e8e8e]">WhatsApp</div>
+              <div className="rounded-md border border-[#353535] px-3 py-2 text-[10px] text-[#8e8e8e]">Contato</div>
               <div className="rounded-md bg-[#292929] px-3 py-2 text-center text-[10px] font-medium text-white">
                 Solicitar contato
               </div>

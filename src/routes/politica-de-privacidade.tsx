@@ -17,10 +17,8 @@ export const Route = createFileRoute("/politica-de-privacidade")({
           "Como a LS Agência de Marketing coleta, usa e protege os dados de navegação dos visitantes do site.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "https://ls-marketing-magic.lovable.app/politica-de-privacidade" },
     ],
     links: [
-      { rel: "canonical", href: "https://ls-marketing-magic.lovable.app/politica-de-privacidade" },
     ],
   }),
   component: PrivacyPage,

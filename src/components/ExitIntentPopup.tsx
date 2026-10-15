@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "ls-exit-intent-shown";
-const WHATSAPP_URL = "https://wa.me/5531971169912?text=" + encodeURIComponent("Olá! Sou responsável por uma clínica odontológica e gostaria de conversar sobre captação de pacientes.");
+const WHATSAPP_URL = "https://wa.me/message/YAROFN2KO3W4I1";
 const MIN_DELAY_MS = 15000;
 
 export default function ExitIntentPopup() {
@@ -85,11 +85,12 @@ export default function ExitIntentPopup() {
           className="mt-4 text-center font-heading text-foreground"
           style={{ fontSize: 21, lineHeight: 1.3, fontVariantNumeric: "lining-nums" }}
         >
-          Quer conversar sobre a captação da sua clínica?
+          Ainda em dúvida? A gente resolve isso numa conversa de 15 minutos
         </h2>
 
         <p className="mt-4 text-center" style={{ fontSize: 12.5, color: "#a8a8a8", lineHeight: 1.6 }}>
-          Conte um pouco sobre a sua clínica e seus objetivos. A LS pode avaliar o cenário com você, sem compromisso.
+          Você não precisa decidir sozinho agora. Fale direto com um dos fundadores — sem discurso de
+          vendas, sem pressão.
         </p>
 
         <div
@@ -102,10 +103,11 @@ export default function ExitIntentPopup() {
           }}
         >
           <p style={{ color: "#D4AF37", fontWeight: 800, fontSize: 15, lineHeight: 1.35 }}>
-            A captação começa com uma estratégia adequada à realidade da sua clínica.
+            CADA DIA SEM ANUNCIAR É UM DIA A MAIS QUE SEU CONCORRENTE FICA NA FRENTE DE UM CLIENTE QUE
+            PODERIA SER SEU
           </p>
           <p style={{ marginTop: 8, color: "#ccc", fontWeight: 500, fontSize: 11, lineHeight: 1.4 }}>
-            Converse com a LS para avaliar os próximos passos, sem pressão.
+            FALAR AGORA NÃO CUSTA NADA. ESPERAR, PODE CUSTAR CARO.
           </p>
         </div>
 
@@ -116,7 +118,7 @@ export default function ExitIntentPopup() {
           className="mt-6 flex w-full items-center justify-center rounded-xl bg-primary font-semibold text-primary-foreground transition hover:brightness-110"
           style={{ height: 46 }}
         >
-          Quero conversar sobre minha clínica
+          Sim, quero tirar minhas dúvidas agora
         </a>
 
         <button

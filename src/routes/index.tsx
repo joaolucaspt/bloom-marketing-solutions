@@ -414,7 +414,7 @@ function Services() {
       <SectionBg />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
             Aproveite o nosso ecossistema <br />
             <RotatingWords words={words} />
           </h2>

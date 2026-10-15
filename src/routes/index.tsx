@@ -18,10 +18,10 @@ import { useReveal } from "@/hooks/useReveal";
 
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
-import teamWhiteboard from "@/assets/team-whiteboard.jpg";
-import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
+import ServicePhoto, { type ServicePhotoVariant } from "@/components/ServicePhoto";
 
-const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalHeroImage = "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
 
 
 
@@ -189,8 +189,8 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/60" />
+        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.28] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/70 to-background/45" />
       </div>
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
@@ -263,8 +263,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={teamWhiteboard}
-              alt="Planejamento estratégico da equipe LS"
+              src={dentalAboutImage}
+              alt="Fotografia ilustrativa de dentista apresentando informações a uma paciente durante consulta"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />
@@ -369,37 +369,37 @@ function Pillars() {
 const SERVICES: {
   t: string;
   d: string;
-  visual: ServiceVisualVariant;
+  photo: ServicePhotoVariant;
 }[] = [
   {
     t: "Google Ads",
     d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e criar oportunidades de contato.",
-    visual: "google",
+    photo: "google",
   },
   {
     t: "Meta Ads",
     d: "Campanhas nas redes sociais para apresentar a proposta da clínica e gerar oportunidades comerciais.",
-    visual: "meta",
+    photo: "meta",
   },
   {
     t: "Landing Pages",
     d: "Páginas de captação que explicam a proposta da clínica e facilitam o contato.",
-    visual: "landing",
+    photo: "landing",
   },
   {
     t: "Presença Digital",
     d: "Uma apresentação digital consistente para comunicar especialidades, diferenciais e formas de contato.",
-    visual: "presence",
+    photo: "presence",
   },
   {
     t: "Acompanhamento",
     d: "Organização de indicadores para avaliar campanhas e orientar próximos passos, usando dados reais do projeto.",
-    visual: "analytics",
+    photo: "analytics",
   },
   {
     t: "Jornada do Paciente",
     d: "Um fluxo claro entre o primeiro contato, o atendimento da equipe e o acompanhamento do agendamento.",
-    visual: "journey",
+    photo: "journey",
   },
 
 ];
@@ -456,8 +456,8 @@ function Services() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
-            <div key={SERVICES[active].visual} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
-              <ServiceVisual variant={SERVICES[active].visual} />
+            <div key={SERVICES[active].photo} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
+              <ServicePhoto variant={SERVICES[active].photo} />
             </div>
           </div>
         </div>

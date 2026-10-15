@@ -85,12 +85,11 @@ export default function ExitIntentPopup() {
           className="mt-4 text-center font-heading text-foreground"
           style={{ fontSize: 21, lineHeight: 1.3, fontVariantNumeric: "lining-nums" }}
         >
-          Ainda em dúvida? A gente resolve isso numa conversa de 15 minutos
+          Quer conversar sobre a captação da sua clínica?
         </h2>
 
         <p className="mt-4 text-center" style={{ fontSize: 12.5, color: "#a8a8a8", lineHeight: 1.6 }}>
-          Você não precisa decidir sozinho agora. Fale direto com um dos fundadores — sem discurso de
-          vendas, sem pressão.
+          Fale diretamente com a LS para discutir as especialidades, a região de atendimento e os objetivos de crescimento da sua clínica. Uma conversa objetiva, sem pressão.
         </p>
 
         <div
@@ -103,11 +102,10 @@ export default function ExitIntentPopup() {
           }}
         >
           <p style={{ color: "#D4AF37", fontWeight: 800, fontSize: 15, lineHeight: 1.35 }}>
-            CADA DIA SEM ANUNCIAR É UM DIA A MAIS QUE SEU CONCORRENTE FICA NA FRENTE DE UM CLIENTE QUE
-            PODERIA SER SEU
+            MÍDIA, PÁGINA E ATENDIMENTO PRECISAM TRABALHAR JUNTOS
           </p>
           <p style={{ marginTop: 8, color: "#ccc", fontWeight: 500, fontSize: 11, lineHeight: 1.4 }}>
-            FALAR AGORA NÃO CUSTA NADA. ESPERAR, PODE CUSTAR CARO.
+            Vamos entender o cenário da sua clínica antes de alinhar os próximos passos.
           </p>
         </div>
 
@@ -118,7 +116,7 @@ export default function ExitIntentPopup() {
           className="mt-6 flex w-full items-center justify-center rounded-xl bg-primary font-semibold text-primary-foreground transition hover:brightness-110"
           style={{ height: 46 }}
         >
-          Sim, quero tirar minhas dúvidas agora
+          Conversar com a LS
         </a>
 
         <button
@@ -127,7 +125,7 @@ export default function ExitIntentPopup() {
           className="mt-4 block w-full text-center underline"
           style={{ color: "#666", fontSize: 12 }}
         >
-          Não, prefiro decidir sozinho depois
+          Continuar navegando
         </button>
       </div>
     </div>

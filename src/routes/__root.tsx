@@ -82,21 +82,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
+          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         property: "og:description",
         content:
-          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
+          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { property: "og:site_name", content: "LS Agência de Marketing" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
-      { name: "twitter:description", content: "Estratégias de marketing digital, tráfego pago e landing pages para apoiar a captação de pacientes em clínicas odontológicas. Converse com a LS." },
+      { name: "twitter:description", content: "Google Ads, Meta Ads e landing pages para clínicas odontológicas. Estruture a captação de pacientes particulares e acompanhe oportunidades até o agendamento com a LS." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
     ],

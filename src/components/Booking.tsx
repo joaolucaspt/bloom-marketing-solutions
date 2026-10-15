@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 
 import { LogoMark } from "@/components/Logo";
 import fundador1 from "@/assets/fundador-1.png.asset.json";
@@ -31,21 +31,19 @@ export default function Booking() {
         <div className="grid gap-12 md:grid-cols-2 md:items-start">
           {/* Coluna esquerda */}
           <div>
-            <p className="font-caption text-xs text-primary">A jogada é sua</p>
+            <p className="font-caption text-xs text-primary">Conversa estratégica</p>
             <h2 className="mt-4 text-3xl md:text-4xl font-semibold leading-tight text-foreground">
-              30 minutos. Vamos ver se faz sentido trabalharmos juntos.
+              Vamos entender o momento da sua clínica e os próximos passos para a captação.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-[#a8a8a8]">
-              Isso não é um discurso de vendas pronto. Queremos entender sua clínica, suas especialidades
-              e seus objetivos — e aí te dizer com sinceridade como podemos ajudar, ou se não somos a
-              opção certa pra você. Você vai falar com um dos fundadores, sempre. Sem pressão, sem enrolação.
+              Em 30 minutos, conversamos sobre as especialidades, a região de atendimento, os objetivos e a estrutura atual da clínica. A partir desse contexto, alinhamos o que faz sentido avaliar — com clareza, sem pressão e sem promessas prontas.
             </p>
 
             <ul className="mt-7 space-y-3">
               {[
-                "Você fala com um fundador, nunca com um vendedor",
-                "Entendemos sua clínica antes de propor qualquer coisa",
-                "Uma resposta direta sobre se podemos ajudar",
+                "Você conversa diretamente com um dos fundadores",
+                "Analisamos especialidades, região e estrutura de atendimento",
+                "Próximos passos alinhados à realidade da clínica",
               ].map((i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-foreground">
                   <span className="mt-1.5 h-2 w-2 shrink-0 bg-primary" />
@@ -136,13 +134,11 @@ export default function Booking() {
                 <Instagram className="h-4 w-4" strokeWidth={1.5} />
               </a>
               <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn da LS Agência de Marketing"
+                href="mailto:contato@lsagenciademarketing.com.br"
+                aria-label="Enviar e-mail para a LS Agência de Marketing"
                 className="rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"
               >
-                <Linkedin className="h-4 w-4" strokeWidth={1.5} />
+                <Mail className="h-4 w-4" strokeWidth={1.5} />
               </a>
             </div>
 

@@ -36,17 +36,15 @@ export default function LandingPages() {
         <div className="mx-auto max-w-[620px] text-center">
           <p className="font-caption text-xs text-primary">Seu ponto de partida</p>
           <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-foreground">
-            Sua página de captura, pronta pra agendar pacientes
+            Uma página de conversão pensada para a jornada do paciente
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#a8a8a8]">
-            No mercado, isso é chamado de landing page — uma página única e direta, feita pra transformar
-            visitante em paciente agendado, sem distrações. É o primeiro passo de qualquer estratégia de
-            captação que funciona.
+            Uma landing page reúne especialidades, diferenciais e uma chamada clara para o próximo passo. Ela reduz distrações e facilita o contato de quem já demonstrou interesse na clínica.
           </p>
         </div>
 
         <p className="mt-10 text-center text-sm uppercase tracking-[0.12em] text-[#d5d5d5]">
-          Como você quer começar?
+          Escolha a estrutura que faz sentido para sua clínica
         </p>
 
         <div className="mt-8 cards-container">
@@ -69,17 +67,16 @@ export default function LandingPages() {
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              A escolha certa pra quem quer crescer de verdade: cuidamos de tudo, do zero à conversão, com
-              estratégia contínua por trás.
+              Para clínicas que querem conectar planejamento, campanhas e páginas de conversão em uma estratégia acompanhada de ponta a ponta.
             </p>
             <div className="spacer-top" />
             <List
               items={[
-                "Landing page profissional inclusa",
-                "Gestão de tráfego pago (Meta Ads e Google Ads)",
-                "Relatórios semanais",
-                "Suporte contínuo direto com os fundadores",
-                "Estratégia personalizada para sua clínica",
+                "Landing page de conversão alinhada à campanha",
+                "Gestão de tráfego pago no Meta Ads e Google Ads",
+                "Acompanhamento dos principais indicadores",
+                "Contato direto com os fundadores",
+                "Direcionamento alinhado à realidade da clínica",
               ]}
             />
             <div className="spacer-bottom" />
@@ -104,7 +101,7 @@ export default function LandingPages() {
               className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
               style={{ background: "#e8e8e8", color: "#050505" }}
             >
-              Entrega rápida
+              Projeto de página
             </span>
             <div className="card-header">
               <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -112,12 +109,11 @@ export default function LandingPages() {
                 <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
               </svg>
               <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
-                SÓ A LANDING PAGE, RÁPIDO
+                LANDING PAGE DE CONVERSÃO
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              Precisa sair do zero agora? Criamos sua página de vendas sem precisar contratar o pacote
-              completo.
+              Para a clínica que precisa apresentar especialidades e diferenciais com clareza e facilitar o contato, sem contratar a gestão de campanhas.
             </p>
             <div className="spacer-top" />
             <List
@@ -125,7 +121,7 @@ export default function LandingPages() {
                 "Design exclusivo, sem templates",
                 "Copy focada em conversão",
                 "Otimizada pra qualquer tela",
-                "Pronta em poucos dias",
+                "Prazo definido no escopo do projeto",
                 "Suporte direto durante a criação",
               ]}
             />
@@ -153,7 +149,7 @@ export default function LandingPages() {
               className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
               style={{ background: "#D4AF37", color: "#050505" }}
             >
-              Combo inicial
+              Estrutura integrada
             </span>
             <div className="card-header">
               <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -161,21 +157,20 @@ export default function LandingPages() {
                 <path d="M14 8h6v6" />
               </svg>
               <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
-                LANDING PAGE + CAMPANHA PREMIUM
+                LANDING PAGE + CAMPANHA
               </h3>
             </div>
             <p className="card-description text-sm leading-relaxed text-[#a8a8a8]">
-              Sua página de vendas pronta e já rodando com uma campanha estratégica pra trazer os
-              primeiros leads desde o primeiro dia.
+              Página de conversão combinada à configuração de uma campanha, com mensagem e destino alinhados desde o início.
             </p>
             <div className="spacer-top" />
             <List
               items={[
                 "Landing page profissional completa",
                 "Design exclusivo com copy focada em conversão",
-                "Criação e configuração da campanha",
-                "Entrega rápida",
-                "Acompanhamento dos primeiros resultados",
+                "Configuração de campanha no canal definido",
+                "Entrega conforme o escopo acordado",
+                "Acompanhamento inicial dos indicadores disponíveis",
               ]}
             />
             <div className="spacer-bottom" />
@@ -186,7 +181,7 @@ export default function LandingPages() {
               className="card-button block rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
               style={{ background: "#D4AF37", color: "#050505" }}
             >
-              Quero o plano premium
+              Quero combinar página e campanha
             </a>
           </article>
         </div>
@@ -199,7 +194,7 @@ export default function LandingPages() {
             Como pode ser estruturada a página da sua clínica
           </h3>
           <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            A página conecta especialidades, diferenciais e uma chamada clara para transformar interesse em contato e agendamento.
+            A página apresenta a clínica com clareza e cria um caminho direto para que pessoas interessadas entrem em contato ou solicitem um agendamento.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] text-left">

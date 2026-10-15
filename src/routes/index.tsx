@@ -18,26 +18,11 @@ import { useReveal } from "@/hooks/useReveal";
 
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import teamWhiteboard from "@/assets/team-whiteboard.jpg";
+import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
-/**
- * Fotografia contextual do setor odontológico.
- * Cada posição usa uma imagem diferente para evitar repetição visual.
- * A identidade, o layout e as animações existentes da LS são preservados.
- */
-const heroBackground = "https://images.pexels.com/photos/18523995/pexels-photo-18523995.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const aboutBackground = "https://images.pexels.com/photos/38055772/pexels-photo-38055772.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const aboutClinicImage = "https://images.pexels.com/photos/37458045/pexels-photo-37458045.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const offerBackground = "https://images.pexels.com/photos/6812453/pexels-photo-6812453.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const pillarsBackground = "https://images.pexels.com/photos/6809645/pexels-photo-6809645.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const servicesBackground = "https://images.pexels.com/photos/4269274/pexels-photo-4269274.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const beliefBackground = "https://images.pexels.com/photos/6812439/pexels-photo-6812439.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const methodologyBackground = "https://images.pexels.com/photos/5355715/pexels-photo-5355715.jpeg?auto=compress&cs=tinysrgb&w=1400";
-const serviceGoogleAdsImage = "https://images.pexels.com/photos/11999471/pexels-photo-11999471.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const serviceMetaAdsImage = "https://images.pexels.com/photos/6529057/pexels-photo-6529057.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const serviceLandingPagesImage = "https://images.pexels.com/photos/18524124/pexels-photo-18524124.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const servicePresenceImage = "https://images.pexels.com/photos/5622000/pexels-photo-5622000.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const serviceReportingImage = "https://images.pexels.com/photos/6809664/pexels-photo-6809664.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const serviceJourneyImage = "https://images.pexels.com/photos/6812445/pexels-photo-6812445.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const dentalHeroImage = "https://images.pexels.com/photos/6812453/pexels-photo-6812453.jpeg?auto=compress&cs=tinysrgb&w=1800";
+
 
 
 
@@ -190,10 +175,12 @@ function Nav() {
 }
 
 /* Reusable ambient background so every section has an image */
-function SectionBg({ src, opacity = 0.18 }: { src: string; opacity?: number }) {
+function SectionBg({ src, opacity = 0.18 }: { src?: string; opacity?: number }) {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <img src={src} alt="" className="w-full h-full object-cover" style={{ opacity }} loading="lazy" />
+      {src ? (
+        <img src={src} alt="" className="w-full h-full object-cover" style={{ opacity }} loading="lazy" />
+      ) : null}
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background/60" />
     </div>
   );
@@ -204,7 +191,7 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroBackground} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.12] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/60" />
       </div>
       <Blobs />
@@ -251,7 +238,7 @@ function Hero() {
 function About() {
   return (
     <section id="sobre" className="relative py-24 md:py-32 overflow-hidden">
-      <SectionBg src={aboutBackground} opacity={0.14} />
+      <SectionBg />
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <Reveal>
@@ -278,8 +265,8 @@ function About() {
           <div className="relative animate-floaty">
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
-              src={aboutClinicImage}
-              alt="Dentista em clínica odontológica moderna"
+              src={teamWhiteboard}
+              alt="Planejamento estratégico da equipe LS"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"
             />
@@ -293,7 +280,7 @@ function About() {
 function Offer() {
   return (
     <section id="areas" className="relative py-24 md:py-32 overflow-hidden">
-      <SectionBg src={offerBackground} opacity={0.12} />
+      <SectionBg />
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 grid md:grid-cols-2 gap-16 items-center">
         <Reveal>
@@ -347,7 +334,7 @@ function Pillars() {
   const words = ["atrair pacientes", "lotar a agenda", "aumentar agendamentos", "captar mais leads", "vender mais tratamentos"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={pillarsBackground} opacity={0.1} />
+      <SectionBg />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
@@ -381,36 +368,40 @@ function Pillars() {
   );
 }
 
-const SERVICES = [
+const SERVICES: {
+  t: string;
+  d: string;
+  visual: ServiceVisualVariant;
+}[] = [
   {
     t: "Google Ads",
-    d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e transformá-las em agendamentos.",
-    img: serviceGoogleAdsImage,
+    d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e criar oportunidades de contato.",
+    visual: "google",
   },
   {
     t: "Meta Ads",
-    d: "Campanhas no Instagram e Facebook para gerar oportunidades comerciais qualificadas para a sua clínica.",
-    img: serviceMetaAdsImage,
+    d: "Campanhas nas redes sociais para apresentar a proposta da clínica e gerar oportunidades comerciais.",
+    visual: "meta",
   },
   {
     t: "Landing Pages",
-    d: "Páginas de conversão focadas em transformar visitantes em pacientes agendados.",
-    img: serviceLandingPagesImage,
+    d: "Páginas de captação que explicam a proposta da clínica e facilitam o contato.",
+    visual: "landing",
   },
   {
     t: "Presença Digital",
-    d: "Posicionamento profissional da sua clínica para transmitir confiança antes do primeiro atendimento.",
-    img: servicePresenceImage,
+    d: "Uma apresentação digital consistente para comunicar especialidades, diferenciais e formas de contato.",
+    visual: "presence",
   },
   {
     t: "Acompanhamento",
-    d: "Relatórios e análise de indicadores para direcionar melhor o investimento em marketing da clínica.",
-    img: serviceReportingImage,
+    d: "Organização de indicadores para avaliar campanhas e orientar próximos passos, usando dados reais do projeto.",
+    visual: "analytics",
   },
   {
     t: "Jornada do Paciente",
-    d: "Otimização do caminho entre o primeiro contato, o atendimento comercial e o agendamento.",
-    img: serviceJourneyImage,
+    d: "Um fluxo claro entre o primeiro contato, o atendimento da equipe e o acompanhamento do agendamento.",
+    visual: "journey",
   },
 
 ];
@@ -420,7 +411,7 @@ function Services() {
   const words = ["de Pacientes", "de Agendamentos", "de Tratamentos", "de Resultados", "de Crescimento"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={servicesBackground} opacity={0.1} />
+      <SectionBg />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-black leading-tight">
@@ -467,13 +458,9 @@ function Services() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
-            <img
-              key={SERVICES[active].img}
-              src={SERVICES[active].img}
-              alt={SERVICES[active].t}
-              loading="lazy"
-              className="relative w-full aspect-[4/3] object-cover rounded-2xl fade-up transition-transform duration-700 group-hover:scale-[1.02]"
-            />
+            <div key={SERVICES[active].visual} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
+              <ServiceVisual variant={SERVICES[active].visual} />
+            </div>
           </div>
         </div>
       </div>
@@ -485,7 +472,7 @@ function Belief() {
   return (
     <section id="sobre" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
-        <img src={beliefBackground} alt="" className="w-full h-full object-cover" loading="lazy" />
+        <div className="h-full w-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5" aria-hidden="true" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
@@ -517,7 +504,7 @@ function Methodology() {
   ];
   return (
     <section id="metodologia" className="relative py-24 md:py-32 border-t border-border">
-      <SectionBg src={methodologyBackground} opacity={0.1} />
+      <SectionBg />
       <div className="relative mx-auto max-w-7xl px-6">
         <span className="block text-center font-caption text-xs text-primary/80 mb-4">Metodologia</span>
         <h2 className="text-4xl md:text-5xl font-black tracking-tight text-center">

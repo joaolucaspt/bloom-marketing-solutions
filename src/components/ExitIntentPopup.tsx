@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "ls-exit-intent-shown";
-const WHATSAPP_URL = "https://wa.me/message/YAROFN2KO3W4I1";
+const WHATSAPP_URL =
+  "https://wa.me/5531971169912?text=" +
+  encodeURIComponent(
+    "Olá! Sou responsável por uma clínica odontológica e gostaria de conversar com a LS sobre a captação de pacientes."
+  );
 const MIN_DELAY_MS = 15000;
 
 export default function ExitIntentPopup() {
@@ -58,6 +62,8 @@ export default function ExitIntentPopup() {
       <div
         role="dialog"
         aria-modal="true"
+        aria-labelledby="exit-intent-title"
+        aria-describedby="exit-intent-description"
         onClick={(e) => e.stopPropagation()}
         className="relative w-full"
         style={{
@@ -82,13 +88,14 @@ export default function ExitIntentPopup() {
         <p className="text-center font-caption text-[11px] text-primary">ANTES DE VOCÊ IR</p>
 
         <h2
+          id="exit-intent-title"
           className="mt-4 text-center font-heading text-foreground"
           style={{ fontSize: 21, lineHeight: 1.3, fontVariantNumeric: "lining-nums" }}
         >
           Quer conversar sobre a captação da sua clínica?
         </h2>
 
-        <p className="mt-4 text-center" style={{ fontSize: 12.5, color: "#a8a8a8", lineHeight: 1.6 }}>
+        <p id="exit-intent-description" className="mt-4 text-center" style={{ fontSize: 12.5, color: "#a8a8a8", lineHeight: 1.6 }}>
           Fale diretamente com a LS para discutir as especialidades, a região de atendimento e os objetivos de crescimento da sua clínica. Uma conversa objetiva, sem pressão.
         </p>
 

@@ -191,10 +191,10 @@ export default function LandingPages() {
         <div style={{ marginTop: 64 }} className="text-center">
           <p className="font-caption text-xs text-primary">Captação odontológica</p>
           <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-            Como pode ser estruturada a página da sua clínica
+            Uma landing page pensada para converter interesse em contato
           </h3>
           <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            A página apresenta a clínica com clareza e cria um caminho direto para que pessoas interessadas entrem em contato ou solicitem um agendamento.
+            Alinhamos mensagem, diferenciais e chamadas para ação à estratégia da clínica, criando um caminho claro entre o interesse inicial e o contato ou agendamento.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] text-left">

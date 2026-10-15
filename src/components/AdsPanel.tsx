@@ -1,42 +1,79 @@
-const metrics = [
-  { label: "Investimento em mídia", value: "A mensurar" },
-  { label: "Contatos recebidos", value: "A mensurar" },
-  { label: "Custo por contato", value: "A mensurar" },
-  { label: "Agendamentos atribuídos", value: "A mensurar" },
-  { label: "Taxa de conversão", value: "A mensurar" },
-  { label: "Retorno do investimento", value: "A mensurar" },
+import {
+  ArrowRight,
+  CalendarCheck,
+  MousePointer2,
+  PanelsTopLeft,
+  Search,
+  Sparkles,
+} from "lucide-react";
+
+const stages = [
+  {
+    number: "01",
+    title: "Atrair",
+    description: "Campanhas alinhadas à intenção e ao público.",
+    icon: Search,
+  },
+  {
+    number: "02",
+    title: "Apresentar",
+    description: "Mensagem e página com um próximo passo claro.",
+    icon: PanelsTopLeft,
+  },
+  {
+    number: "03",
+    title: "Conversar",
+    description: "Contato encaminhado para o atendimento.",
+    icon: MousePointer2,
+  },
+  {
+    number: "04",
+    title: "Acompanhar",
+    description: "Indicadores e aprendizados para otimização.",
+    icon: CalendarCheck,
+  },
 ];
 
 export default function AdsPanel() {
   return (
-    <div className="w-full rounded-2xl border border-[#2a2a2a] bg-[#0d0d0d] p-5 md:p-6">
-      <div className="flex items-start justify-between gap-3">
+    <div className="acquisition-board">
+      <div className="acquisition-board-heading">
         <div>
-          <p className="font-caption text-[10px] text-primary">Demonstração visual</p>
-          <h3 className="mt-1 text-lg font-semibold text-foreground">Painel de acompanhamento</h3>
-          <p className="mt-1 text-xs leading-relaxed text-[#8f8f8f]">
-            Indicadores para acompanhar a aquisição de pacientes
-          </p>
+          <p className="acquisition-board-kicker">LS / MAPA DE AQUISIÇÃO</p>
+          <h2>Do primeiro clique ao próximo passo.</h2>
         </div>
-        <span className="shrink-0 rounded-full border border-primary/50 px-2.5 py-1 text-[10px] text-primary">
-          Modelo ilustrativo
+        <span className="acquisition-board-badge">
+          <Sparkles size={13} /> Estrutura conceitual
         </span>
       </div>
-
-      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {metrics.map((m) => (
-          <div key={m.label} className="rounded-xl border border-[#242424] bg-[#141414] px-3 py-3">
-            <p className="text-[11px] leading-tight text-[#8f8f8f]">{m.label}</p>
-            <p className="mt-2 text-sm font-semibold text-primary">{m.value}</p>
-          </div>
-        ))}
+      <p className="acquisition-board-description">
+        Um processo conectado para que anúncio, página e atendimento trabalhem com o mesmo objetivo.
+      </p>
+      <div className="acquisition-board-stages">
+        {stages.map((stage, index) => {
+          const Icon = stage.icon;
+          return (
+            <div className="acquisition-stage-wrap" key={stage.number}>
+              <article className="acquisition-stage">
+                <div className="acquisition-stage-top">
+                  <span>{stage.number}</span>
+                  <Icon size={17} />
+                </div>
+                <h3>{stage.title}</h3>
+                <p>{stage.description}</p>
+              </article>
+              {index < stages.length - 1 && (
+                <ArrowRight size={16} className="acquisition-stage-arrow" aria-hidden="true" />
+              )}
+            </div>
+          );
+        })}
       </div>
-
-      <div className="mt-5 rounded-xl border border-primary/25 bg-[#141414] px-4 py-4">
-        <p className="text-sm font-semibold text-foreground">Decisões orientadas por dados</p>
-        <p className="mt-2 text-xs leading-relaxed text-[#a8a8a8]">
-          Os dados são preenchidos e analisados conforme as campanhas e as ferramentas de mensuração
-          efetivamente utilizadas em cada projeto. Não são resultados de uma clínica específica.
+      <div className="acquisition-board-note">
+        <span className="acquisition-note-mark" />
+        <p>
+          A estratégia é definida com base na realidade da clínica. Os indicadores são avaliados a partir de dados reais,
+          não de números de demonstração.
         </p>
       </div>
     </div>

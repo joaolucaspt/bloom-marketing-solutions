@@ -614,9 +614,12 @@ function FloatingWhatsApp() {
 function Index() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-foreground">
+      <a href="#main-content" className="skip-to-content">
+        Pular para o conteúdo principal
+      </a>
       <ParticleNetwork />
       <Nav />
-      <main className="relative z-[2]">
+      <main id="main-content" className="relative z-[2]">
         <Hero />
         <LandingPages />
         <About />

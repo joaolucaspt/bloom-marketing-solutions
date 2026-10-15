@@ -301,3 +301,9 @@
   outline: 2px solid var(--primary);
   outline-offset: 4px;
 }
+
+/* Evita que a navegação por âncoras esconda títulos sob o cabeçalho fixo. */
+section[id],
+#main-content {
+  scroll-margin-top: 6rem;
+}

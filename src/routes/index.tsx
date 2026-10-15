@@ -21,7 +21,7 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
 
-const dentalHeroImage = "https://images.pexels.com/photos/6812453/pexels-photo-6812453.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
 
 
 

@@ -78,25 +78,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
-      { title: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
+      { title: "Agência de Marketing Odontológico | LS para Clínicas" },
       {
         name: "description",
         content:
-          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
+          "Marketing odontológico para clínicas que querem atrair pacientes particulares com Google Ads, Meta Ads e landing pages focadas em conversão e agendamento.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
+      { property: "og:title", content: "Agência de Marketing Odontológico | LS para Clínicas" },
       {
         property: "og:description",
         content:
-          "Marketing digital para clínicas odontológicas: Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares.",
+          "Marketing odontológico para clínicas que querem atrair pacientes particulares com Google Ads, Meta Ads e landing pages focadas em conversão e agendamento.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { property: "og:site_name", content: "LS Agência de Marketing" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Marketing Odontológico para Clínicas | LS Agência de Marketing" },
-      { name: "twitter:description", content: "Google Ads, Meta Ads e landing pages para organizar a captação de pacientes particulares com uma estratégia de marketing odontológico da LS." },
+      { name: "twitter:title", content: "Agência de Marketing Odontológico | LS para Clínicas" },
+      { name: "twitter:description", content: "Marketing odontológico da LS com Google Ads, Meta Ads e landing pages para atrair pacientes particulares e melhorar a jornada até o agendamento." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
     ],

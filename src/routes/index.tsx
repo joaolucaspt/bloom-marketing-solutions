@@ -20,7 +20,7 @@ import teamWhiteboard from "@/assets/team-whiteboard.jpg";
 
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
-import ServiceVisual, { type ServiceVisualVariant } from "@/components/ServiceVisual";
+import ServicePhoto, { type ServicePhotoVariant } from "@/components/ServicePhoto";
 
 const dentalHeroImage = "https://images.pexels.com/photos/4687906/pexels-photo-4687906.jpeg?auto=compress&cs=tinysrgb&w=1800";
 
@@ -190,8 +190,8 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.23] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/78 to-background/50" />
+        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.32] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/68 to-background/42" />
       </div>
       <Blobs />
       <div className="relative mx-auto max-w-7xl px-6 w-full">
@@ -367,37 +367,37 @@ function Pillars() {
 const SERVICES: {
   t: string;
   d: string;
-  visual: ServiceVisualVariant;
+  photo: ServicePhotoVariant;
 }[] = [
   {
     t: "Google Ads",
     d: "Campanhas de pesquisa para posicionar a clínica diante de pessoas que já procuram serviços odontológicos na região.",
-    visual: "google",
+    photo: "google",
   },
   {
     t: "Meta Ads",
     d: "Anúncios nas redes sociais para apresentar especialidades e diferenciais da clínica a públicos relevantes e estimular conversas qualificadas.",
-    visual: "meta",
+    photo: "meta",
   },
   {
     t: "Landing Pages",
     d: "Páginas com mensagem clara, diferenciais e chamadas para ação pensadas para transformar interesse em contato.",
-    visual: "landing",
+    photo: "landing",
   },
   {
     t: "Presença Digital",
     d: "Consistência entre os principais pontos de contato digitais para transmitir profissionalismo e facilitar a escolha da clínica.",
-    visual: "presence",
+    photo: "presence",
   },
   {
     t: "Acompanhamento",
     d: "Leitura de investimento, custo por contato, qualidade dos leads e agendamentos para orientar ajustes com base nos dados disponíveis.",
-    visual: "analytics",
+    photo: "analytics",
   },
   {
     t: "Jornada do Paciente",
     d: "Organização das etapas entre o primeiro contato, a resposta da equipe e o agendamento para reduzir oportunidades perdidas.",
-    visual: "journey",
+    photo: "journey",
   },
 
 ];
@@ -453,8 +453,8 @@ function Services() {
           </div>
           <div className="relative group">
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-primary/40 to-transparent blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
-            <div key={SERVICES[active].visual} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
-              <ServiceVisual variant={SERVICES[active].visual} />
+            <div key={SERVICES[active].photo} className="relative fade-up transition-transform duration-700 group-hover:scale-[1.01]">
+              <ServicePhoto variant={SERVICES[active].photo} />
             </div>
           </div>
         </div>
@@ -470,14 +470,15 @@ function Belief() {
         <div className="h-full w-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5" aria-hidden="true" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6 text-center">
+        <p className="mb-5 font-caption text-xs text-primary/80">Gestão orientada por dados</p>
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
-          Crescimento consistente não vem de <br />
+          Crescimento da clínica com <br />
           <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-            promessas milagrosas.
+            estratégia e consistência.
           </span>
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
-          Cada clínica tem suas especialidades, região, concorrência e capacidade de atendimento. Por isso, planejamos campanhas, acompanhamos indicadores e ajustamos as ações com base no que os dados mostram — sem prometer números que dependem de muitas variáveis.
+          Unimos planejamento, campanhas e páginas de conversão com acompanhamento dos indicadores disponíveis. Cada decisão considera especialidades, região e capacidade de atendimento da clínica, para orientar o investimento e identificar oportunidades de melhoria ao longo da jornada.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
           Conversar com a LS

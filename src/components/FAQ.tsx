@@ -2,7 +2,7 @@ const faqs = [
   {
     question: "A LS garante uma quantidade de pacientes ou agendamentos?",
     answer:
-      "Não trabalhamos com números garantidos. O desempenho depende de fatores como região, especialidades, concorrência, investimento e atendimento dos contatos. O trabalho é planejar, acompanhar os indicadores disponíveis e ajustar a estratégia com base no que os dados mostram.",
+      "O foco é construir uma operação de aquisição com objetivos claros e indicadores acompanhados, sem atribuir a todas as clínicas um mesmo volume de resultados. Região, especialidades, concorrência, investimento e atendimento influenciam o desempenho; por isso, analisamos o cenário e ajustamos a estratégia com base nos dados.",
   },
   {
     question: "Preciso anunciar no Google e no Meta ao mesmo tempo?",
@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Como vocês avaliam se a estratégia está funcionando?",
     answer:
-      "Acompanhamos os indicadores disponíveis, como investimento, custo por contato, qualidade dos leads e agendamentos quando há dados para isso. Assim, a análise considera não só o volume de contatos, mas também o avanço da jornada.",
+      "Definimos os indicadores de acordo com a estrutura de mensuração da clínica e acompanhamos investimento, custo por contato, qualidade dos contatos e avanço até o agendamento. A otimização considera a jornada comercial, não apenas o volume de leads.",
   },
   {
     question: "Como é o primeiro passo para trabalhar com a LS?",

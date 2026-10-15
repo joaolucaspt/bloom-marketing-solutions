@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "ls-exit-intent-shown";
@@ -11,10 +11,16 @@ const MIN_DELAY_MS = 15000;
 
 export default function ExitIntentPopup() {
   const [open, setOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_KEY) === "1") return;
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === "1") return;
+    } catch {
+      // O pop-up continua funcional quando o armazenamento da sessão está bloqueado.
+    }
 
     const mountedAt = Date.now();
     let done = false;
@@ -23,7 +29,11 @@ export default function ExitIntentPopup() {
       if (done) return;
       if (Date.now() - mountedAt < MIN_DELAY_MS) return;
       done = true;
-      sessionStorage.setItem(STORAGE_KEY, "1");
+      try {
+        sessionStorage.setItem(STORAGE_KEY, "1");
+      } catch {
+        // Não impedir a chamada de conversão se o armazenamento estiver indisponível.
+      }
       setOpen(true);
       cleanup();
     };
@@ -51,31 +61,79 @@ export default function ExitIntentPopup() {
     return cleanup;
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousActive = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusable?.length) {
+        event.preventDefault();
+        dialogRef.current?.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      if (previousActive && previousActive !== document.body && previousActive.isConnected) {
+        previousActive.focus();
+      }
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 py-4 sm:items-center sm:py-8"
       style={{ background: "rgba(0,0,0,0.75)" }}
       onClick={() => setOpen(false)}
     >
       <div
+        ref={dialogRef}
+        id="exit-intent-dialog"
         role="dialog"
+        tabIndex={-1}
         aria-modal="true"
         aria-labelledby="exit-intent-title"
         aria-describedby="exit-intent-description"
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full"
+        className="relative w-full max-w-[430px] overflow-y-auto rounded-2xl border border-primary p-6 shadow-2xl sm:p-9"
         style={{
-          maxWidth: 430,
+          maxHeight: "calc(100dvh - 2rem)",
           background: "#0a0a0a",
-          border: "1.5px solid #D4AF37",
-          borderRadius: 16,
+          borderWidth: "1.5px",
           boxShadow: "0 0 40px rgba(212,175,55,0.2)",
-          padding: "40px 36px",
         }}
       >
         <button
+          ref={closeButtonRef}
           type="button"
           aria-label="Fechar"
           onClick={() => setOpen(false)}

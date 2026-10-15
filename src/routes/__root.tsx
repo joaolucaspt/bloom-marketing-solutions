@@ -95,8 +95,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "pt_BR" },
       { property: "og:site_name", content: "LS Agência de Marketing" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
-      { name: "twitter:description", content: "Estratégias de marketing digital, tráfego pago e landing pages para apoiar a captação de pacientes em clínicas odontológicas. Converse com a LS." },
+      { name: "twitter:title", content: "LS Agência de Marketing | Tráfego Pago e Landing Pages" },
+      { name: "twitter:description", content: "Agência de marketing especializada em tráfego pago e criação de landing pages de alta conversão para comércios e ecommerces. Fale com um dos fundadores, sem compromisso." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
     ],
@@ -116,7 +116,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>

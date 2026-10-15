@@ -24,7 +24,12 @@ export default function ParticleNetwork() {
     let height = 0;
     let particles: P[] = [];
     let raf = 0;
+    let running = false;
 
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const motionAllowed = () =>
+      desktopQuery.matches && !reducedMotionQuery.matches && document.visibilityState !== "hidden";
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const resize = () => {
@@ -63,7 +68,18 @@ export default function ParticleNetwork() {
       mouseRef.current.y = -9999;
     };
 
+    const stop = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      running = false;
+      ctx.clearRect(0, 0, width, height);
+    };
+
     const tick = () => {
+      if (!running || !motionAllowed()) {
+        stop();
+        return;
+      }
       ctx.clearRect(0, 0, width, height);
       const m = mouseRef.current;
       const pushRadius = 90;
@@ -152,17 +168,45 @@ export default function ParticleNetwork() {
       raf = requestAnimationFrame(tick);
     };
 
-    resize();
-    tick();
-    window.addEventListener("resize", resize);
+    const syncMotion = () => {
+      if (!motionAllowed()) {
+        stop();
+        return;
+      }
+      if (running) return;
+      resize();
+      running = true;
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onResize = () => {
+      if (!motionAllowed()) {
+        stop();
+        return;
+      }
+      resize();
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    syncMotion();
+    window.addEventListener("resize", onResize);
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseleave", onLeave);
+    desktopQuery.addEventListener("change", syncMotion);
+    reducedMotionQuery.addEventListener("change", syncMotion);
+    document.addEventListener("visibilitychange", syncMotion);
 
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      stop();
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseleave", onLeave);
+      desktopQuery.removeEventListener("change", syncMotion);
+      reducedMotionQuery.removeEventListener("change", syncMotion);
+      document.removeEventListener("visibilitychange", syncMotion);
     };
   }, []);
 

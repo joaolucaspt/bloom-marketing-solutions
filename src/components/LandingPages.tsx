@@ -1,12 +1,12 @@
 import { Gem } from "lucide-react";
-import exampleAsset from "@/assets/produzquality-hq.png.asset.json";
+const dentalReferenceImage = "https://images.pexels.com/photos/34779494/pexels-photo-34779494.jpeg?auto=compress&cs=tinysrgb&w=1600";
 
 const WA_LP =
   "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20landing%20page%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_PREMIUM =
   "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20o%20combo%20de%20landing%20page%20%2B%20campanha%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 const WA_EXAMPLE =
-  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20vi%20o%20exemplo%20de%20p%C3%A1gina%20que%20a%20LS%20fez%20e%20quero%20uma%20assim%20pra%20minha%20cl%C3%ADnica";
+  "https://wa.me/5531971169912?text=Ol%C3%A1%2C%20quero%20conversar%20sobre%20uma%20landing%20page%20para%20minha%20cl%C3%ADnica%20odontol%C3%B3gica";
 
 function Check() {
   return (
@@ -192,15 +192,15 @@ export default function LandingPages() {
         </div>
 
 
-        {/* Parte 2 — exemplo real */}
+        {/* Parte 2 — referência visual odontológica */}
         <div style={{ marginTop: 64 }} className="text-center">
-          <p className="font-caption text-xs text-primary">Exemplo real</p>
+          <p className="font-caption text-xs text-primary">Referência visual</p>
           <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-foreground">
-            Isso poderia ser a sua página, hoje mesmo
+            Uma presença digital alinhada ao padrão da sua clínica
           </h3>
           <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-[#a8a8a8]">
-            Um projeto real feito pela LS, com hero de impacto e calculadora interativa capturando o lead
-            logo na primeira dobra.
+            A página da sua clínica deve transmitir confiança, destacar seus diferenciais e facilitar o contato. A imagem
+            abaixo é uma referência do setor odontológico — não um case de cliente ou uma página criada pela LS.
           </p>
 
           <div className="mx-auto mt-8 max-w-[900px] overflow-hidden rounded-xl border border-primary">
@@ -208,11 +208,11 @@ export default function LandingPages() {
               <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-              <span className="ml-3 text-xs text-[#888]">produzquality.company</span>
+              <span className="ml-3 text-xs text-[#888]">referência visual · odontologia</span>
             </div>
             <img
-              src={exampleAsset.url}
-              alt="Exemplo real de landing page criada pela LS Agência de Marketing"
+              src={dentalReferenceImage}
+              alt="Referência visual de clínica odontológica moderna; não representa um projeto de cliente da LS"
               loading="lazy"
               className="block w-full"
             />
@@ -224,7 +224,7 @@ export default function LandingPages() {
             rel="noopener noreferrer"
             className="mt-8 inline-block rounded-xl bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Quero uma página assim
+            Quero uma landing page para minha clínica
           </a>
         </div>
       </div>

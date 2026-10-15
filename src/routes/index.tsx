@@ -150,7 +150,7 @@ function Nav() {
           <a href="#agendar" className="btn-primary hidden sm:inline-flex">
             Falar com especialista
           </a>
-          <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
+          <button type="button" onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu" aria-expanded={open} aria-controls="mobile-navigation">
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground" />
@@ -158,7 +158,7 @@ function Nav() {
         </div>
       </div>
       {open && (
-        <div className="lg:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
+        <div id="mobile-navigation" className="lg:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-sm text-foreground/80">
               {l.label}
@@ -190,7 +190,7 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dentalHeroImage} alt="" className="w-full h-full object-cover opacity-[0.32] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <img src={dentalHeroImage} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover opacity-[0.32] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/68 to-background/42" />
       </div>
       <Blobs />
@@ -426,7 +426,9 @@ function Services() {
         <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-border pb-6">
           {SERVICES.map((s, i) => (
             <button
+              type="button"
               key={s.t}
+              aria-pressed={active === i}
               onClick={() => setActive(i)}
               className={`relative font-caption text-xs md:text-sm transition-all pb-2 ${
                 active === i ? "text-primary" : "text-foreground/60 hover:text-foreground"

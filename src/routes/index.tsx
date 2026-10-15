@@ -4,6 +4,7 @@ import ParticleNetwork from "@/components/ParticleNetwork";
 import { LogoMark } from "@/components/Logo";
 import Calculator from "@/components/Calculator";
 import LandingPages from "@/components/LandingPages";
+import FAQ from "@/components/FAQ";
 import Booking from "@/components/Booking";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -53,14 +54,14 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
+          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "LS Agência de Marketing | Marketing para Clínicas Odontológicas" },
       {
         property: "og:description",
         content:
-          "Agência de marketing odontológico especializada em captação de pacientes para clínicas odontológicas: tráfego pago no Google e Meta Ads e landing pages que convertem. Fale com um dos fundadores, sem compromisso.",
+          "Marketing para clínicas odontológicas: Google Ads, Meta Ads e landing pages para estruturar a captação de pacientes particulares e acompanhar oportunidades até o agendamento.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
@@ -123,11 +124,11 @@ function Nav() {
 
   const links = [
     { href: "#top", label: "Início" },
-    { href: "#calculadora", label: "Calculadora" },
-    { href: "#landing-pages", label: "Landing Pages" },
+    { href: "#areas", label: "Estratégia" },
     { href: "#servicos", label: "Serviços" },
-    { href: "#metodologia", label: "Metodologia" },
-    { href: "#agendar", label: "Agendar" },
+    { href: "#metodologia", label: "Como funciona" },
+    { href: "#perguntas-frequentes", label: "Dúvidas" },
+    { href: "#agendar", label: "Contato" },
   ];
 
   return (
@@ -185,7 +186,7 @@ function SectionBg({ src, opacity = 0.18 }: { src?: string; opacity?: number }) 
 }
 
 function Hero() {
-  const words = ["pacientes novos", "agendamentos", "tratamentos de valor", "crescimento"];
+  const words = ["além das indicações", "com estratégia", "com consistência", "com clareza"];
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
@@ -200,23 +201,24 @@ function Hero() {
               <span className="font-caption text-xs text-primary/90">— LS · Agência de Marketing</span>
             </Reveal>
             <Reveal delay={120}>
-              <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.2] tracking-tight">
-                Sua clínica odontológica <br />
-                merece crescer <br />
-                <RotatingWords words={words} />
+              <h1 className="mt-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.14] tracking-tight text-balance">
+                <span className="block">Sua clínica odontológica</span>
+                <span className="block">merece crescer</span>
+                <span className="block"><RotatingWords words={words} /></span>
               </h1>
             </Reveal>
             <Reveal delay={260}>
               <p className="mt-8 font-caption normal-case tracking-normal text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed" style={{ letterSpacing: 0 }}>
-                Estratégias de marketing digital para atrair novos pacientes, fortalecer a presença
-                <br />
-                da sua clínica e transformar oportunidades em crescimento.
+                Marketing para clínicas odontológicas com Google Ads, Meta Ads e páginas de conversão — para atrair pacientes particulares, comunicar o valor das suas especialidades e acompanhar cada oportunidade até o agendamento.
               </p>
             </Reveal>
             <Reveal delay={400}>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <a href="#agendar" className="btn-primary">
                   Quero atrair mais pacientes
+                </a>
+                <a href="#servicos" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                  Conheça a estratégia <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </Reveal>
@@ -242,17 +244,16 @@ function About() {
         <Reveal>
           <span className="font-caption text-xs text-primary/80">Diagnóstico</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
-            O que impede <br />
+            Crescimento não deve depender <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              o crescimento da sua clínica?
+              só das indicações.
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed">
-            Muitas clínicas odontológicas dependem quase só de indicações e vivem com agenda irregular,
-            enquanto o marketing não gera contatos de qualidade.
+            Indicações são valiosas, mas não precisam ser a única fonte de novos pacientes. Quando a procura oscila ou as campanhas atraem contatos pouco alinhados, fica mais difícil planejar o crescimento da clínica.
           </p>
           <p className="mt-4 text-foreground/80 leading-relaxed">
-            A estratégia conecta a captação de pacientes particulares, a valorização dos tratamentos e uma jornada organizada do primeiro contato ao agendamento.
+            A LS conecta presença digital, mídia paga e páginas de conversão em uma estratégia orientada à realidade da clínica — suas especialidades, região, capacidade de atendimento e objetivos.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
             Quero melhorar a captação de pacientes
@@ -283,15 +284,13 @@ function Offer() {
         <Reveal>
           <span className="font-caption text-xs text-primary/80">Ecossistema</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
-            O que oferecemos? <br />
+            Marketing que conecta <br />
             <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-              Uma estratégia integrada para captar pacientes.
+              a procura ao agendamento.
             </span>
           </h2>
           <p className="mt-8 text-foreground/80 leading-relaxed max-w-lg">
-            A LS ajuda clínicas odontológicas a se posicionarem de forma profissional e a captarem
-            pacientes: tráfego pago no Google e Meta Ads, landing pages de conversão, presença digital e
-            acompanhamento de indicadores.
+            Integramos campanhas de Google Ads e Meta Ads, páginas de conversão e acompanhamento de indicadores para organizar a aquisição de pacientes particulares. Cada frente é definida conforme as especialidades, a região e a estrutura de atendimento da clínica.
           </p>
           <a href="#agendar" className="btn-primary mt-8">
             Conversar com a LS
@@ -316,19 +315,19 @@ function Pillars() {
   const pillars = [
     {
       t: "Captação de Pacientes",
-      d: "Campanhas de tráfego pago que colocam sua clínica na frente de quem procura serviços odontológicos.",
+      d: "Campanhas direcionadas a pessoas que procuram serviços odontológicos, com segmentação e mensagem alinhadas à região e às especialidades da clínica.",
     },
-    { t: "Vendas", d: "Melhoramos a eficiência entre o marketing e o atendimento comercial da sua clínica." },
+    { t: "Conversão", d: "Alinhamos a mensagem, a página e o próximo passo para que os contatos recebidos tenham uma jornada clara até o atendimento." },
     {
       t: "Tecnologia",
-      d: "Landing pages e ferramentas que transformam visitantes em agendamentos.",
+      d: "Páginas de conversão que apresentam a proposta da clínica e facilitam o contato, com uma experiência pensada para desktop e celular.",
     },
     {
       t: "Gestão",
-      d: "Estruturamos a aquisição de pacientes com dados, processos e acompanhamento de indicadores.",
+      d: "Organizamos a aquisição com acompanhamento de investimento, contatos e agendamentos, de acordo com os dados disponíveis.",
     },
   ];
-  const words = ["atrair pacientes", "lotar a agenda", "aumentar agendamentos", "captar mais leads", "vender mais tratamentos"];
+  const words = ["atrair pacientes", "organizar a captação", "medir oportunidades", "valorizar especialidades"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg />
@@ -372,32 +371,32 @@ const SERVICES: {
 }[] = [
   {
     t: "Google Ads",
-    d: "Campanhas para alcançar pessoas que pesquisam por serviços odontológicos e criar oportunidades de contato.",
+    d: "Campanhas de pesquisa para posicionar a clínica diante de pessoas que já procuram serviços odontológicos na região.",
     visual: "google",
   },
   {
     t: "Meta Ads",
-    d: "Campanhas nas redes sociais para apresentar a proposta da clínica e gerar oportunidades comerciais.",
+    d: "Anúncios nas redes sociais para apresentar especialidades e diferenciais da clínica a públicos relevantes e estimular conversas qualificadas.",
     visual: "meta",
   },
   {
     t: "Landing Pages",
-    d: "Páginas de captação que explicam a proposta da clínica e facilitam o contato.",
+    d: "Páginas com mensagem clara, diferenciais e chamadas para ação pensadas para transformar interesse em contato.",
     visual: "landing",
   },
   {
     t: "Presença Digital",
-    d: "Uma apresentação digital consistente para comunicar especialidades, diferenciais e formas de contato.",
+    d: "Consistência entre os principais pontos de contato digitais para transmitir profissionalismo e facilitar a escolha da clínica.",
     visual: "presence",
   },
   {
     t: "Acompanhamento",
-    d: "Organização de indicadores para avaliar campanhas e orientar próximos passos, usando dados reais do projeto.",
+    d: "Leitura de investimento, custo por contato, qualidade dos leads e agendamentos para orientar ajustes com base nos dados disponíveis.",
     visual: "analytics",
   },
   {
     t: "Jornada do Paciente",
-    d: "Um fluxo claro entre o primeiro contato, o atendimento da equipe e o acompanhamento do agendamento.",
+    d: "Organização das etapas entre o primeiro contato, a resposta da equipe e o agendamento para reduzir oportunidades perdidas.",
     visual: "journey",
   },
 
@@ -405,19 +404,18 @@ const SERVICES: {
 
 function Services() {
   const [active, setActive] = useState(0);
-  const words = ["de Pacientes", "de Agendamentos", "de Tratamentos", "de Resultados", "de Crescimento"];
+  const words = ["captar pacientes", "converter contatos", "acompanhar campanhas", "fortalecer a presença"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
       <SectionBg />
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
-            Aproveite o nosso ecossistema <br />
+            Estratégia integrada para <br />
             <RotatingWords words={words} />
           </h2>
           <p className="mt-6 text-foreground/70">
-            Como podemos ajudar a sua clínica a crescer de forma sustentável? Formamos um ecossistema
-            integrado para atrair e converter pacientes.
+            Unimos mídia paga, páginas de conversão e leitura de indicadores para apoiar uma aquisição mais organizada de pacientes particulares — com ações definidas a partir do cenário e dos objetivos da clínica.
           </p>
         </div>
 
@@ -467,22 +465,19 @@ function Services() {
 
 function Belief() {
   return (
-    <section id="sobre" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
+    <section id="diferenciais" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">
       <div className="absolute inset-0 opacity-10">
         <div className="h-full w-full bg-gradient-to-br from-primary/10 via-transparent to-primary/5" aria-hidden="true" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-5xl md:text-7xl font-black leading-tight">
-          Não acreditamos... <br />
+          Crescimento consistente não vem de <br />
           <span className="text-primary" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
-            em hacks milagrosos
+            promessas milagrosas.
           </span>
         </h2>
         <p className="mt-10 text-lg leading-relaxed text-[#a8a8a8]">
-          Nossa cultura vem da mentalidade Growth, da experimentação através de testes com inteligência de
-          dados para validar rotas e trazer resultados sustentáveis. Acreditamos que o crescimento da sua
-          clínica está vinculado à estratégia certa, e não ao tamanho da estrutura ou da cidade onde ela
-          atende.
+          Cada clínica tem suas especialidades, região, concorrência e capacidade de atendimento. Por isso, planejamos campanhas, acompanhamos indicadores e ajustamos as ações com base no que os dados mostram — sem prometer números que dependem de muitas variáveis.
         </p>
         <a href="#agendar" className="btn-primary mt-10">
           Conversar com a LS
@@ -494,10 +489,10 @@ function Belief() {
 
 function Methodology() {
   const steps = [
-    { t: "Diagnóstico", d: "Entendemos o momento da sua clínica, especialidades, dores e oportunidades." },
-    { t: "Estratégia", d: "Desenhamos um plano de captação de pacientes com metas claras e mensuráveis." },
-    { t: "Execução", d: "Rodamos campanhas, criamos páginas e implantamos os processos." },
-    { t: "Otimização", d: "Analisamos dados, testamos hipóteses e escalamos o que funciona." },
+    { t: "Diagnóstico", d: "Entendemos especialidades, região, capacidade de atendimento, objetivos e ponto de partida da clínica." },
+    { t: "Planejamento", d: "Definimos canais, proposta, página de conversão e indicadores adequados ao cenário." },
+    { t: "Implementação", d: "Configuramos as campanhas e os recursos acordados, com mensagem alinhada às especialidades da clínica." },
+    { t: "Otimização", d: "Avaliamos os dados disponíveis, identificamos ajustes e alinhamos os próximos passos com transparência." },
   ];
   return (
     <section id="metodologia" className="relative py-24 md:py-32 border-t border-border">
@@ -526,17 +521,18 @@ function Methodology() {
 function Footer() {
   const nav = [
     { href: "#top", label: "Início" },
-    { href: "#calculadora", label: "Calculadora" },
-    { href: "#landing-pages", label: "Landing Pages" },
+    { href: "#areas", label: "Estratégia" },
     { href: "#servicos", label: "Serviços" },
-    { href: "#metodologia", label: "Metodologia" },
-    { href: "#agendar", label: "Agendar" },
+    { href: "#metodologia", label: "Como funciona" },
+    { href: "#perguntas-frequentes", label: "Perguntas frequentes" },
+    { href: "#agendar", label: "Contato" },
   ];
   const servicos = [
     { href: "#servicos", label: "Google Ads" },
     { href: "#servicos", label: "Meta Ads" },
     { href: "#servicos", label: "Landing Pages" },
     { href: "#servicos", label: "Presença Digital" },
+    { href: "#servicos", label: "Acompanhamento" },
     { href: "#servicos", label: "Jornada do Paciente" },
   ];
   return (
@@ -626,6 +622,7 @@ function Index() {
         <Services />
         <Belief />
         <Methodology />
+        <FAQ />
         <Booking />
       </main>
       <Footer />

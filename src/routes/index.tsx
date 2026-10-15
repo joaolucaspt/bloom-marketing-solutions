@@ -90,8 +90,28 @@ function Logo({ className = "" }: { className?: string }) {
 function RotatingWords({ words }: { words: string[] }) {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2400);
-    return () => clearInterval(t);
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const syncMotionPreference = () => {
+      if (motionQuery.matches) {
+        if (timer) clearInterval(timer);
+        timer = undefined;
+        setI(0);
+        return;
+      }
+
+      if (!timer) {
+        timer = setInterval(() => setI((v) => (v + 1) % words.length), 2400);
+      }
+    };
+
+    syncMotionPreference();
+    motionQuery.addEventListener("change", syncMotionPreference);
+    return () => {
+      if (timer) clearInterval(timer);
+      motionQuery.removeEventListener("change", syncMotionPreference);
+    };
   }, [words.length]);
   return (
     <span

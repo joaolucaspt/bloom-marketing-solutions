@@ -12,6 +12,7 @@ const check = (name, condition, detail = "") => {
 const home = read("src/routes/index.tsx");
 const rootRoute = read("src/routes/__root.tsx");
 const booking = read("src/components/Booking.tsx");
+const calculator = read("src/components/Calculator.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
@@ -110,6 +111,14 @@ check(
     /\.join\(", "\)/.test(responsiveHelper),
 );
 
+check(
+  "Calculator supports keyboard submission with the same validation path",
+  calculator.includes("<form") &&
+    calculator.includes("onSubmit={(event) => {") &&
+    calculator.includes("event.preventDefault();") &&
+    calculator.includes("calculate();") &&
+    calculator.includes('type="submit"'),
+);
 check(
   "Phone click-to-call uses the official number and an accessible label",
   booking.includes('href="tel:+5531971169912"') &&

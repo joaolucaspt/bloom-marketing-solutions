@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 const STORAGE_KEY = "cookie-consent";
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -14,6 +15,34 @@ export default function CookieBanner() {
       setVisible(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (!visible) {
+      document.documentElement.style.removeProperty("--ls-cookie-banner-height");
+      return;
+    }
+
+    const banner = bannerRef.current;
+    if (!banner) return;
+
+    const updateHeight = () => {
+      document.documentElement.style.setProperty(
+        "--ls-cookie-banner-height",
+        `${Math.ceil(banner.getBoundingClientRect().height)}px`,
+      );
+    };
+
+    updateHeight();
+    const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(updateHeight) : null;
+    observer?.observe(banner);
+    window.addEventListener("resize", updateHeight);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", updateHeight);
+      document.documentElement.style.removeProperty("--ls-cookie-banner-height");
+    };
+  }, [visible]);
 
   if (!visible) return null;
 
@@ -28,6 +57,7 @@ export default function CookieBanner() {
 
   return (
     <div
+      ref={bannerRef}
       role="region"
       aria-label="Aviso sobre cookies e serviços externos"
       aria-live="polite"

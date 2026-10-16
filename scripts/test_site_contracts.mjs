@@ -185,6 +185,17 @@ check(
 );
 
 check(
+  "Mobile menu is exposed as a named navigation landmark",
+  (() => {
+    const navStart = home.indexOf('<nav id="mobile-navigation" aria-label="Navegação principal móvel"');
+    const navEnd = home.indexOf("</nav>", navStart);
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      home.includes('aria-controls="mobile-navigation"');
+  })(),
+);
+
+check(
   "Mobile navigation closes on Escape and restores focus to its trigger",
   (() => {
     const navStart = home.indexOf("function Nav()");

@@ -23,7 +23,7 @@ export type ServiceVisualVariant =
 
 function Frame({ children, label }: { children: ReactNode; label: string }) {
   return (
-    <div className="service-visual-frame">
+    <div className="service-visual-frame" role="img" aria-label={label}>
       <div className="service-visual-topbar">
         <div className="flex items-center gap-1.5" aria-hidden="true">
           <span className="h-2 w-2 rounded-full bg-[#565656]" />

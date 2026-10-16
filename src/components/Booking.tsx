@@ -144,14 +144,14 @@ export default function Booking() {
                 aria-label="Instagram da LS Agência de Marketing"
                 className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"
               >
-                <Instagram className="h-4 w-4" strokeWidth={1.5} />
+                <Instagram aria-hidden="true" className="h-4 w-4" strokeWidth={1.5} />
               </a>
               <a
                 href="mailto:contato@lsagenciademarketing.com.br"
                 aria-label="Enviar e-mail para a LS Agência de Marketing"
                 className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"
               >
-                <Mail className="h-4 w-4" strokeWidth={1.5} />
+                <Mail aria-hidden="true" className="h-4 w-4" strokeWidth={1.5} />
               </a>
             </div>
 

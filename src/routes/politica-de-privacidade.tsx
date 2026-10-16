@@ -43,7 +43,13 @@ function PrivacyPage() {
       </a>
       <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#050505] px-5 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-[760px]">
-        <LogoMark scale={0.85} />
+        <a
+          href="/"
+          aria-label="LS Agência de Marketing — voltar ao início"
+          className="inline-flex min-h-[44px] items-center"
+        >
+          <LogoMark scale={0.85} />
+        </a>
 
         <h1 className="mt-10 text-3xl font-semibold text-foreground md:text-4xl">
           Política de Privacidade

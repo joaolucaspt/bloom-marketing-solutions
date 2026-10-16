@@ -226,6 +226,23 @@ check(
     styles.includes(".skip-to-content:focus") &&
     styles.includes(":where(a, button, input, textarea, select, summary):focus-visible"),
 );
+
+check(
+  "Privacy policy brand mark links back home with an accessible touch target",
+  (() => {
+    const logoIndex = privacy.indexOf('<LogoMark scale={0.85} />');
+    const anchorStart = privacy.lastIndexOf("<a", logoIndex);
+    const anchorEnd = privacy.indexOf("</a>", logoIndex);
+    const anchor = privacy.slice(anchorStart, anchorEnd);
+    return logoIndex >= 0 &&
+      anchorStart >= 0 &&
+      anchorEnd > anchorStart &&
+      anchor.includes('href="/"') &&
+      anchor.includes('aria-label="LS Agência de Marketing — voltar ao início"') &&
+      anchor.includes('className="inline-flex min-h-[44px] items-center"') &&
+      anchor.includes('<LogoMark scale={0.85} />');
+  })(),
+);
 check(
   "Privacy policy home return link provides a 44px touch target",
   (() => {

@@ -53,7 +53,7 @@ export default function Booking() {
             </ul>
 
             <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#a8a8a8]">
-              {["Gratuito", "30 minutos", "Sem compromisso", "Resposta em até 1 dia útil"].map((s, i) => (
+              {["Gratuito", "30 minutos", "Sem compromisso"].map((s, i) => (
                 <span key={s} className="flex items-center gap-3">
                   {i > 0 && <span className="h-1.5 w-1.5 rounded-full bg-primary" />}
                   {s}
@@ -164,7 +164,7 @@ export default function Booking() {
             >
               Falar agora no WhatsApp
             </a>
-            <p className="mt-3 text-center text-xs text-[#888]">Resposta em até 1 dia útil</p>
+            
           </div>
         </div>
 

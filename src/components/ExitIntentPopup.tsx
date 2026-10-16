@@ -24,6 +24,7 @@ export default function ExitIntentPopup() {
 
     const mountedAt = Date.now();
     let done = false;
+    let eligibilityTimer: number | undefined;
 
     const trigger = () => {
       if (done) return;
@@ -50,11 +51,20 @@ export default function ExitIntentPopup() {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch) {
       window.addEventListener("scroll", onScroll, { passive: true });
+      // Recheck once the minimum delay elapses in case the user stopped scrolling
+      // after crossing the threshold too early.
+      eligibilityTimer = window.setTimeout(() => {
+        if (!done) onScroll();
+      }, Math.max(0, MIN_DELAY_MS - (Date.now() - mountedAt)));
     } else {
       document.addEventListener("mouseout", onMouseOut);
     }
 
     function cleanup() {
+      if (eligibilityTimer !== undefined) {
+        window.clearTimeout(eligibilityTimer);
+        eligibilityTimer = undefined;
+      }
       document.removeEventListener("mouseout", onMouseOut);
       window.removeEventListener("scroll", onScroll);
     }

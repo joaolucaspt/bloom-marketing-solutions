@@ -18,6 +18,7 @@ const cookieBanner = read("src/components/CookieBanner.tsx");
 const exitIntent = read("src/components/ExitIntentPopup.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
 const serviceVisual = read("src/components/ServiceVisual.tsx");
+const adsPanel = read("src/components/AdsPanel.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
 const revealHook = read("src/hooks/useReveal.ts");
@@ -43,6 +44,22 @@ const organizations = graph.filter((entry) => entry["@type"] === "Organization")
 const websites = graph.filter((entry) => entry["@type"] === "WebSite");
 const organization = organizations[0];
 const website = websites[0];
+
+check(
+  "Ads optimization stages expose their accessible group label through a named group role",
+  (() => {
+    const label = 'aria-label="Etapas de acompanhamento de campanhas"';
+    const labelIndex = adsPanel.indexOf(label);
+    const tagStart = adsPanel.lastIndexOf("<div", labelIndex);
+    const tagEnd = adsPanel.indexOf(">", labelIndex);
+    const openingTag = adsPanel.slice(tagStart, tagEnd + 1);
+    return labelIndex >= 0 &&
+      tagStart >= 0 &&
+      tagEnd > labelIndex &&
+      openingTag.includes(label) &&
+      openingTag.includes('role="group"');
+  })(),
+);
 
 check("JSON-LD exists and parses as JSON", Boolean(structuredData), structuredDataError);
 check("JSON-LD graph contains one Organization", organizations.length === 1);

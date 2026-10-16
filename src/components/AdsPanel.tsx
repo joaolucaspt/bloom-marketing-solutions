@@ -37,7 +37,7 @@ export default function AdsPanel() {
           <p className="text-[11px] text-[#8f8f8f]">Ciclo de otimização</p>
           <p className="text-[11px] font-semibold text-primary">Baseado em indicadores</p>
         </div>
-        <div className="mt-5 grid grid-cols-4 gap-2" aria-label="Etapas de acompanhamento de campanhas">
+        <div className="mt-5 grid grid-cols-4 gap-2" role="group" aria-label="Etapas de acompanhamento de campanhas">
           {optimizationStages.map((stage, index) => (
             <div key={stage} className="min-w-0 text-center">
               <div className="flex items-center">

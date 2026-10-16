@@ -191,6 +191,26 @@ check(
 );
 const whatsappNumbers = [...booking.matchAll(/wa\.me\/(\d+)/g)].map((match) => match[1]);
 check("Booking WhatsApp links keep the official number", whatsappNumbers.length > 0 && whatsappNumbers.every((number) => number === "5531971169912"));
+check(
+  "Booking contact social links provide 44px touch targets",
+  (() => {
+    const instagramLabel = 'aria-label="Instagram da LS Agência de Marketing"';
+    const emailLabel = 'aria-label="Enviar e-mail para a LS Agência de Marketing"';
+    const instagramText = booking.indexOf(instagramLabel);
+    const emailText = booking.indexOf(emailLabel);
+    const instagramStart = booking.lastIndexOf("<a", instagramText);
+    const emailStart = booking.lastIndexOf("<a", emailText);
+    const instagramEnd = booking.indexOf("</a>", instagramText);
+    const emailEnd = booking.indexOf("</a>", emailText);
+    const instagramLink = booking.slice(instagramStart, instagramEnd);
+    const emailLink = booking.slice(emailStart, emailEnd);
+    const targetClass = 'className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-primary p-2 text-primary transition hover:bg-primary hover:text-primary-foreground"';
+    return instagramText >= 0 && emailText >= 0 &&
+      instagramStart >= 0 && emailStart >= 0 &&
+      instagramEnd > instagramText && emailEnd > emailText &&
+      instagramLink.includes(targetClass) && emailLink.includes(targetClass);
+  })(),
+);
 check("Booking keeps the existing Cal.com diagnostic", booking.includes('calLink="ls.agenciademarketing/diagnostico-gratuito"'));
 check(
   "Cal.com fallback stays below the embed and fits the booking column on mobile",

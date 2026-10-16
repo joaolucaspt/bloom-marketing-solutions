@@ -716,6 +716,21 @@ const floatingWhatsAppEnd = home.indexOf("function Index()", floatingWhatsAppSta
 const floatingWhatsApp = home.slice(floatingWhatsAppStart, floatingWhatsAppEnd);
 
 check(
+  "Floating WhatsApp launcher names its action accessibly",
+  (() => {
+    const start = home.indexOf("function FloatingWhatsApp()");
+    const end = home.indexOf("function Index()", start);
+    const launcher = home.slice(start, end);
+    return start >= 0 &&
+      end > start &&
+      launcher.includes('aria-label="Abrir conversa com a LS pelo WhatsApp"') &&
+      launcher.includes("href={WHATSAPP_URL}") &&
+      launcher.includes('target="_blank"') &&
+      launcher.includes('rel="noopener noreferrer"');
+  })(),
+);
+
+check(
   "Floating WhatsApp launcher stays above the responsive cookie notice",
   floatingWhatsAppStart >= 0 &&
     floatingWhatsAppEnd > floatingWhatsAppStart &&

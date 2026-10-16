@@ -239,8 +239,7 @@ function Nav() {
           </button>
         </div>
       </div>
-      {open && (
-        <nav id="mobile-navigation" aria-label="Navegação principal móvel" className="lg:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
+      <nav id="mobile-navigation" aria-label="Navegação principal móvel" className={`lg:hidden border-t border-border bg-background px-6 py-4 ${open ? "flex" : "hidden"} flex-col gap-4`}>
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="min-h-[44px] inline-flex items-center text-sm text-foreground/80">
               {l.label}
@@ -249,8 +248,7 @@ function Nav() {
           <a href="#agendar" onClick={() => setOpen(false)} className="btn-primary sm:hidden min-h-[44px] inline-flex items-center">
             Falar com especialista
           </a>
-        </nav>
-      )}
+      </nav>
     </header>
   );
 }

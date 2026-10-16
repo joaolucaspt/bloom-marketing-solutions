@@ -80,6 +80,23 @@ check(
     styles.includes(".skip-to-content:focus") &&
     styles.includes(":where(a, button, input, textarea, select, summary):focus-visible"),
 );
+check(
+  "Privacy policy home return link provides a 44px touch target",
+  (() => {
+    const label = "Voltar para a página inicial";
+    const labelStart = privacy.indexOf(label);
+    const linkStart = privacy.lastIndexOf("<Link", labelStart);
+    const linkEnd = privacy.indexOf("</Link>", labelStart);
+    const link = privacy.slice(linkStart, linkEnd);
+    return labelStart >= 0 &&
+      linkStart >= 0 &&
+      linkEnd > labelStart &&
+      link.includes('to="/"') &&
+      link.includes("inline-flex") &&
+      link.includes("min-h-[44px]");
+  })(),
+);
+
 check("robots.txt points to the canonical sitemap", robots.includes("Sitemap: https://lsagenciademarketing.com/sitemap.xml"));
 check(
   "Sitemap uses the canonical domain and includes the privacy page",

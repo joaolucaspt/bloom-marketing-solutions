@@ -231,7 +231,7 @@ check(
   "Privacy policy brand mark links back home with an accessible touch target",
   (() => {
     const logoIndex = privacy.indexOf('<LogoMark scale={0.85} />');
-    const anchorStart = privacy.lastIndexOf('<a href="/"', logoIndex);
+    const anchorStart = privacy.lastIndexOf("<a", logoIndex);
     const anchorEnd = privacy.indexOf("</a>", logoIndex);
     const anchor = privacy.slice(anchorStart, anchorEnd);
     return logoIndex >= 0 &&

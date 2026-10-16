@@ -64,7 +64,7 @@ export default function CookieBanner() {
       aria-atomic="true"
       className="fixed bottom-0 left-0 w-full"
       style={{
-        zIndex: 9999,
+        zIndex: 90,
         background: "#0a0a0a",
         borderTop: "1px solid #D4AF37",
         padding: "16px 24px",

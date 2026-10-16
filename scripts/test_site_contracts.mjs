@@ -117,6 +117,35 @@ check(
   })(),
 );
 
+
+check(
+  "Journey mockup step numbers meet 4.5:1 contrast",
+  (() => {
+    const journeyStart = serviceVisual.indexOf("function JourneyVisual()");
+    const journeyEnd = serviceVisual.indexOf("\nexport default function ServiceVisual", journeyStart);
+    const journey = serviceVisual.slice(journeyStart, journeyEnd);
+    const row = journey.match(/<div className="flex items-center gap-4 rounded-xl border border-\[#([0-9a-f]{6})\] bg-\[#([0-9a-f]{6})\] p-4">[\s\S]*?<span className="text-xs tabular-nums text-\[#([0-9a-f]{3}|[0-9a-f]{6})\]">0\{index \+ 1\}<\/span>/i);
+    const normalizeHex = (hex) => hex.length === 3 ? hex.split("").map((channel) => channel + channel).join("") : hex;
+    const luminance = (hex) => {
+      const channels = normalizeHex(hex).match(/.{2}/g).map((channel) => parseInt(channel, 16) / 255);
+      const linear = channels.map((channel) =>
+        channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4,
+      );
+      return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+    };
+    const contrast = (foreground, background) => {
+      const foregroundLuminance = luminance(foreground);
+      const backgroundLuminance = luminance(background);
+      return (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+        (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+    };
+    return journeyStart >= 0 &&
+      journeyEnd > journeyStart &&
+      Boolean(row) &&
+      contrast(row[3], row[2]) >= 4.5;
+  })(),
+);
+
 check(
   "Service visual mockup root is a named illustration",
   (() => {

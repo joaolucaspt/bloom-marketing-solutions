@@ -173,7 +173,7 @@ function PrivacyPage() {
         <div className="mt-12">
           <Link
             to="/"
-            className="inline-block rounded-xl border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex min-h-[44px] items-center rounded-xl border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
             Voltar para a página inicial
           </Link>

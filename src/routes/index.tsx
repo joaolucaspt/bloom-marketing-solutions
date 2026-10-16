@@ -120,7 +120,9 @@ function RotatingWords({ words }: { words: string[] }) {
       className="relative inline-flex align-bottom overflow-hidden text-primary"
       style={{ fontFamily: "var(--font-display)", fontWeight: 600, height: "1.35em", minWidth: "5ch" }}
     >
+      <span className="sr-only">{words[0]}</span>
       <span
+        aria-hidden="true"
         className="flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]"
         style={{ transform: `translateY(-${i * 1.35}em)` }}
       >
@@ -349,7 +351,7 @@ function Pillars() {
       d: "Acompanhamos investimento, custo por contato, qualidade das oportunidades e evolução dos agendamentos para orientar decisões e ajustes na estratégia.",
     },
   ];
-  const words = ["atrair pacientes", "organizar a captação", "medir oportunidades", "valorizar especialidades"];
+  const words = ["captar pacientes", "organizar o fluxo", "medir contatos", "valorizar serviços"];
   return (
     <section className="relative py-24 md:py-32 border-t border-border">
       <SectionBg />
@@ -426,7 +428,7 @@ const SERVICES: {
 
 function Services() {
   const [active, setActive] = useState(0);
-  const words = ["captar pacientes", "converter contatos", "acompanhar campanhas", "fortalecer a presença"];
+  const words = ["captar pacientes", "converter contatos", "medir campanhas", "reforçar presença"];
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
       <SectionBg />

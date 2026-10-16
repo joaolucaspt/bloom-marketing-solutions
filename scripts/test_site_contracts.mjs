@@ -137,6 +137,19 @@ check(
 );
 
 check(
+  "Exit-intent close button provides a 44px touch target and accessible contrast",
+  (() => {
+    const closeStart = exitIntent.indexOf('aria-label="Fechar"');
+    const closeEnd = exitIntent.indexOf("</button>", closeStart);
+    const closeButton = exitIntent.slice(closeStart, closeEnd);
+    return closeStart >= 0 &&
+      closeEnd > closeStart &&
+      closeButton.includes('className="absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[#a8a8a8] transition-colors hover:text-foreground"') &&
+      !closeButton.includes('style={{ color: "#666" }}');
+  })(),
+);
+
+check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&
     calculator.includes("onSubmit={(event) => {") &&

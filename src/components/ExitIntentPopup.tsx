@@ -149,7 +149,7 @@ export default function ExitIntentPopup() {
           onClick={() => setOpen(false)}
           className="absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[#a8a8a8] transition-colors hover:text-foreground"
         >
-          <X size={18} />
+          <X aria-hidden="true" size={18} />
         </button>
 
         <p className="text-center font-caption text-[11px] text-primary">ANTES DE VOCÊ IR</p>

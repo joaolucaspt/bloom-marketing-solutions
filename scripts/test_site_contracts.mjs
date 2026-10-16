@@ -208,6 +208,24 @@ check(
   })(),
 );
 check(
+  "Named Booking and exit-intent icons are hidden from assistive technology",
+  (() => {
+    const bookingIcons = [
+      booking.match(/<Instagram\b[^>]*\/>/)?.[0] ?? "",
+      booking.match(/<Mail\b[^>]*\/>/)?.[0] ?? "",
+    ];
+    const closeIcon = exitIntent.match(/<X\b[^>]*\/>/)?.[0] ?? "";
+    const icons = [...bookingIcons, closeIcon];
+    return bookingIcons.every(Boolean) &&
+      Boolean(closeIcon) &&
+      icons.every((icon) => /\baria-hidden\s*=\s*["']true["']/.test(icon)) &&
+      booking.includes('aria-label="Instagram da LS Agência de Marketing"') &&
+      booking.includes('aria-label="Enviar e-mail para a LS Agência de Marketing"') &&
+      exitIntent.includes('aria-label="Fechar"');
+  })(),
+);
+
+check(
   "ServiceVisual decorative icons are hidden from assistive technology",
   (() => {
     const iconOpenings = [

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+
 
 const STORAGE_KEY = "cookie-consent";
 
@@ -75,9 +75,9 @@ export default function CookieBanner() {
           Este site utiliza armazenamento local para lembrar que o aviso foi fechado e carrega serviços
           de terceiros, como o agendamento online. Esses serviços podem aplicar suas próprias tecnologias
           de armazenamento. Consulte a{" "}
-          <Link to="/politica-de-privacidade" className="text-primary underline">
+          <a href="/politica-de-privacidade" className="text-primary underline">
             Política de Privacidade
-          </Link>
+          </a>
           para saber mais.
         </p>
         <button

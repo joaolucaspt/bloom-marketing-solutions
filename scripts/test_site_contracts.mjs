@@ -528,6 +528,22 @@ const c31NotFound = rootRoute.slice(c31NotFoundStart, c31ErrorStart);
 const c31ErrorComponent = rootRoute.slice(c31ErrorStart, c31RouteStart);
 
 check(
+  "Not-found fallback provides a semantic main landmark and keeps its recovery action",
+  c31NotFound.includes('<main className="flex min-h-screen items-center justify-center bg-background px-4">') &&
+    c31NotFound.includes("</main>") &&
+    c31NotFound.includes("Página não encontrada") &&
+    c31NotFound.includes("Voltar ao início"),
+);
+check(
+  "Application error fallback exposes a named main landmark and announces its summary",
+  c31ErrorComponent.includes('<main aria-labelledby="error-title" aria-describedby="error-description"') &&
+    c31ErrorComponent.includes('id="error-title"') &&
+    c31ErrorComponent.includes('id="error-description" role="alert"') &&
+    c31ErrorComponent.includes("router.invalidate();") &&
+    c31ErrorComponent.includes("reset();"),
+);
+
+check(
   "404 recovery link provides a 44px touch target",
   (() => {
     const label = "Voltar ao início";

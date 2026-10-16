@@ -31,6 +31,16 @@ export default function Calculator() {
     });
   };
 
+  const updateInput = (field: "budget" | "costPerContact", value: string) => {
+    if (field === "budget") {
+      setBudget(value);
+    } else {
+      setCostPerContact(value);
+    }
+    setError("");
+    setResult(null);
+  };
+
   const field =
     "w-full rounded-lg bg-[#0d0d0d] border border-[#333] px-3 py-2.5 text-sm text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
 
@@ -64,7 +74,7 @@ export default function Calculator() {
             inputMode="decimal"
             autoComplete="off"
             value={budget}
-            onChange={(event) => setBudget(event.target.value)}
+            onChange={(event) => updateInput("budget", event.target.value)}
             placeholder="R$ 2.000"
             className={field}
           />
@@ -78,7 +88,7 @@ export default function Calculator() {
             inputMode="decimal"
             autoComplete="off"
             value={costPerContact}
-            onChange={(event) => setCostPerContact(event.target.value)}
+            onChange={(event) => updateInput("costPerContact", event.target.value)}
             placeholder="R$ 40"
             className={field}
           />

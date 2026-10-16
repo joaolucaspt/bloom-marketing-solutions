@@ -251,6 +251,22 @@ check(
     footer.includes("href={WHATSAPP_URL}"),
 );
 
+check(
+  "Editing either calculator amount invalidates the previous estimate and validation error",
+  (() => {
+    const updater = calculator.match(
+      /const updateInput = \(field: "budget" \| "costPerContact", value: string\) => \{([\s\S]*?)\n  \};/,
+    )?.[1];
+    return Boolean(updater) &&
+      updater.includes("setBudget(value)") &&
+      updater.includes("setCostPerContact(value)") &&
+      updater.includes("setError(\"\")") &&
+      updater.includes("setResult(null)") &&
+      calculator.includes('updateInput("budget", event.target.value)') &&
+      calculator.includes('updateInput("costPerContact", event.target.value)');
+  })(),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

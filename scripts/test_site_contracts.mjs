@@ -274,6 +274,19 @@ check(
 );
 
 check(
+  "Desktop navigation links meet the 44px touch target minimum",
+  (() => {
+    const navStart = home.indexOf('<nav className="hidden lg:flex items-center gap-10">');
+    const navEnd = home.indexOf("</nav>", navStart);
+    const desktopNav = home.slice(navStart, navEnd);
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      desktopNav.includes("{links.map((l) => (") &&
+      desktopNav.includes('className="inline-flex min-h-[44px] items-center text-sm text-foreground/80 hover:text-primary transition-colors"');
+  })(),
+);
+
+check(
   "Mobile menu is exposed as a named navigation landmark",
   (() => {
     const navStart = home.indexOf('<nav id="mobile-navigation" aria-label="Navegação principal móvel"');

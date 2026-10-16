@@ -812,11 +812,11 @@ check(
     const start = home.indexOf("function FloatingWhatsApp()");
     const end = home.indexOf("function Index()", start);
     const launcher = home.slice(start, end);
-    const icon = launcher.match(/<svg\\b[^>]*>/)?.[0] ?? "";
+    const icon = launcher.match(/<svg[^>]*>/)?.[0] ?? "";
     return start >= 0 &&
       end > start &&
       icon.length > 0 &&
-      /\\baria-hidden\\s*=\\s*["']true["']/.test(icon) &&
+      icon.includes('aria-hidden="true"') &&
       launcher.includes('aria-label="Abrir conversa com a LS pelo WhatsApp"');
   })(),
 );

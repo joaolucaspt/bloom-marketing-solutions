@@ -120,7 +120,7 @@ export default function LandingPages() {
               items={[
                 "Design exclusivo, sem templates",
                 "Copy focada em conversão",
-                "Otimizada pra qualquer tela",
+                "Layout adaptado para desktop e celular",
                 "Prazo definido no escopo do projeto",
                 "Suporte direto durante a criação",
               ]}

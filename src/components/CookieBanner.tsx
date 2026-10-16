@@ -28,8 +28,10 @@ export default function CookieBanner() {
 
   return (
     <div
-      role="dialog"
-      aria-label="Aviso de cookies"
+      role="region"
+      aria-label="Aviso sobre cookies e serviços externos"
+      aria-live="polite"
+      aria-atomic="true"
       className="fixed bottom-0 left-0 w-full"
       style={{
         zIndex: 9999,
@@ -49,6 +51,7 @@ export default function CookieBanner() {
           para saber mais.
         </p>
         <button
+          type="button"
           onClick={dismiss}
           className="shrink-0 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
         >

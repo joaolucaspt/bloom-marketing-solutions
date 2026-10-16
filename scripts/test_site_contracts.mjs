@@ -64,7 +64,7 @@ check(
 check(
   "Landing page featured-card Gem icon is hidden from assistive technology",
   (() => {
-    const icon = landingPages.match(/<Gem\\b[^>]*\\/>/)?.[0] ?? "";
+    const icon = landingPages.match(/<Gem\b[^>]*\/>/)?.[0] ?? "";
     return icon.length > 0 &&
       icon.includes('aria-hidden="true"') &&
       icon.includes('className="card-icon h-6 w-6 text-primary"');

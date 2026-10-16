@@ -250,7 +250,7 @@ function JourneyVisual() {
                   <p className="text-sm font-medium text-white">{step.title}</p>
                   <p className="mt-1 text-xs text-[#9c9c9c]">{step.detail}</p>
                 </div>
-                <span className="text-xs tabular-nums text-[#777]">0{index + 1}</span>
+                <span className="text-xs tabular-nums text-[#858585]">0{index + 1}</span>
               </div>
               {index < steps.length - 1 && (
                 <div className="flex h-5 items-center pl-8 text-[#776638]" aria-hidden="true">

@@ -123,6 +123,18 @@ check(
     !cookieBanner.includes('role="dialog"'),
 );
 check(
+  "Cookie notice dismiss action provides a 44px touch target",
+  (() => {
+    const buttonStart = cookieBanner.indexOf("<button");
+    const buttonEnd = cookieBanner.indexOf("</button>", buttonStart);
+    const button = cookieBanner.slice(buttonStart, buttonEnd);
+    return buttonStart >= 0 &&
+      buttonEnd > buttonStart &&
+      button.includes('className="shrink-0 min-h-[44px] rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"');
+  })(),
+);
+
+check(
   "Cookie notice dismissal persists only the notice preference",
   cookieBanner.includes('const STORAGE_KEY = "cookie-consent"') &&
     cookieBanner.includes('localStorage.setItem(STORAGE_KEY, "dismissed")') &&

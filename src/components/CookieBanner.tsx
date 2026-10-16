@@ -53,7 +53,7 @@ export default function CookieBanner() {
         <button
           type="button"
           onClick={dismiss}
-          className="shrink-0 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+          className="shrink-0 min-h-[44px] rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
         >
           Entendi
         </button>

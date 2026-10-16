@@ -189,6 +189,20 @@ check(
   booking.includes('href="tel:+5531971169912"') &&
     booking.includes("aria-label={`Ligar para a LS pelo número ${PHONE_DISPLAY}`}"),
 );
+check(
+  "Booking phone click-to-call provides a 44px touch target",
+  (() => {
+    const target = booking.indexOf('href="tel:+5531971169912"');
+    const start = booking.lastIndexOf("<a", target);
+    const end = booking.indexOf("</a>", target);
+    const link = booking.slice(start, end);
+    return target >= 0 &&
+      start >= 0 &&
+      end > target &&
+      /min-h-\[44px\]/.test(link);
+  })(),
+);
+
 const whatsappNumbers = [...booking.matchAll(/wa\.me\/(\d+)/g)].map((match) => match[1]);
 check("Booking WhatsApp links keep the official number", whatsappNumbers.length > 0 && whatsappNumbers.every((number) => number === "5531971169912"));
 check(

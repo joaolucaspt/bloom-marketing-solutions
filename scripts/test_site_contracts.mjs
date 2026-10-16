@@ -381,6 +381,35 @@ const photoUrls = [...servicePhoto.matchAll(/src:\s*"(https:\/\/images\.pexels\.
 const photoAlts = [...servicePhoto.matchAll(/alt:\s*"([^"]+)"/g)].map((match) => match[1]);
 check("Six service cards use six unique Pexels photographs", photoUrls.length === 6 && new Set(photoUrls).size === 6);
 check("Each service photograph has a unique descriptive alt", photoAlts.length === 6 && photoAlts.every(Boolean) && new Set(photoAlts).size === 6);
+
+check(
+  "Service photo badge contrast meets 4.5:1 on the lightest photo background",
+  (() => {
+    const badge = servicePhoto.match(/<span className="([^"]*)"[^>]*>\\s*\\{photo\\.eyebrow\\}\\s*<\\/span>/)?.[1];
+    const backgroundOpacity = badge?.match(/bg-black\\/(\\d+)/)?.[1];
+    const foregroundOpacity = badge?.match(/text-white\\/(\\d+)/)?.[1];
+    if (!badge || backgroundOpacity === undefined || foregroundOpacity === undefined) return false;
+
+    const backgroundAlpha = Number(backgroundOpacity) / 100;
+    const foregroundAlpha = Number(foregroundOpacity) / 100;
+    if (backgroundAlpha < 0 || backgroundAlpha > 1 || foregroundAlpha < 0 || foregroundAlpha > 1) return false;
+
+    // Worst case: the photo underneath the black overlay is pure white.
+    const backgroundChannel = 255 * (1 - backgroundAlpha);
+    const foregroundChannel = 255 * foregroundAlpha + backgroundChannel * (1 - foregroundAlpha);
+    const luminance = (channel) => {
+      const normalized = channel / 255;
+      return normalized <= 0.04045
+        ? normalized / 12.92
+        : ((normalized + 0.055) / 1.055) ** 2.4;
+    };
+    const backgroundLuminance = luminance(backgroundChannel);
+    const foregroundLuminance = luminance(foregroundChannel);
+    const contrast = (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+      (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+    return contrast >= 4.5;
+  })(),
+);
 check(
   "Landing page decorative SVG icons are hidden from assistive technology",
   (() => {

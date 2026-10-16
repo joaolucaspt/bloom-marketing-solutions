@@ -530,6 +530,45 @@ check(
   home.includes('id={`servicos-${s.id}`}'),
 );
 check(
+  "Service selector exposes accessible tablist, selected tabs and a labelled panel",
+  (() => {
+    const selectorStart = home.indexOf("function Services()");
+    const selectorEnd = home.indexOf("\nfunction Belief()", selectorStart);
+    const selector = home.slice(selectorStart, selectorEnd < 0 ? undefined : selectorEnd);
+    return selectorStart >= 0 &&
+      selectorEnd > selectorStart &&
+      selector.includes('role="tablist"') &&
+      selector.includes('aria-label="Frentes de crescimento odontológico"') &&
+      selector.includes('role="tab"') &&
+      selector.includes('aria-selected={active === i}') &&
+      selector.includes('aria-controls="service-panel"') &&
+      selector.includes('tabIndex={active === i ? 0 : -1}') &&
+      selector.includes('id="service-panel"') &&
+      selector.includes('role="tabpanel"') &&
+      selector.includes('aria-labelledby={`servicos-${SERVICES[active].id}`}');
+  })(),
+);
+check(
+  "Service tabs support Arrow, Home and End keyboard navigation",
+  (() => {
+    const selectorStart = home.indexOf("function Services()");
+    const selectorEnd = home.indexOf("\nfunction Belief()", selectorStart);
+    const selector = home.slice(selectorStart, selectorEnd < 0 ? undefined : selectorEnd);
+    return selectorStart >= 0 &&
+      selectorEnd > selectorStart &&
+      selector.includes("useRef<Array<HTMLButtonElement | null>>([])") &&
+      selector.includes('case "ArrowRight":') &&
+      selector.includes("nextIndex = (index + 1) % SERVICES.length;") &&
+      selector.includes('case "ArrowLeft":') &&
+      selector.includes("nextIndex = (index - 1 + SERVICES.length) % SERVICES.length;") &&
+      selector.includes('case "Home":') &&
+      selector.includes('case "End":') &&
+      selector.includes("tabRefs.current[nextIndex]?.focus();") &&
+      selector.includes("onKeyDown={(event) => handleServiceTabKeyDown(event, i)}");
+  })(),
+);
+
+check(
   "Opening a service fragment selects its tab and tracks hash navigation",
   home.includes('const prefix = "#servicos-";') &&
     home.includes("const hash = window.location.hash;") &&

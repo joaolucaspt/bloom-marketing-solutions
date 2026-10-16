@@ -503,7 +503,32 @@ const SERVICES: {
 
 function Services() {
   const [active, setActive] = useState(0);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const words = ["captar pacientes", "converter contatos", "medir campanhas", "reforçar presença"];
+
+  const handleServiceTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number;
+    switch (event.key) {
+      case "ArrowRight":
+        nextIndex = (index + 1) % SERVICES.length;
+        break;
+      case "ArrowLeft":
+        nextIndex = (index - 1 + SERVICES.length) % SERVICES.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = SERVICES.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    setActive(nextIndex);
+    tabRefs.current[nextIndex]?.focus();
+  };
 
   useEffect(() => {
     const syncActiveFromHash = () => {
@@ -534,18 +559,29 @@ function Services() {
           </p>
         </div>
 
-        <h3 className="mt-20 text-center text-3xl md:text-4xl font-black uppercase tracking-wider">
+        <h3 id="service-tabs-heading" className="mt-20 text-center text-3xl md:text-4xl font-black uppercase tracking-wider">
           Frentes de crescimento odontológico
         </h3>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-border pb-6">
+        <div
+          role="tablist"
+          aria-label="Frentes de crescimento odontológico"
+          className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-border pb-6"
+        >
           {SERVICES.map((s, i) => (
             <button
+              ref={(node) => {
+                tabRefs.current[i] = node;
+              }}
               type="button"
+              role="tab"
               key={s.t}
               id={`servicos-${s.id}`}
-              aria-pressed={active === i}
+              aria-selected={active === i}
+              aria-controls="service-panel"
+              tabIndex={active === i ? 0 : -1}
               onClick={() => setActive(i)}
+              onKeyDown={(event) => handleServiceTabKeyDown(event, i)}
               className={`relative inline-flex min-h-[44px] items-center px-1 font-caption text-xs md:text-sm transition-all pb-2 ${
                 active === i ? "text-primary" : "text-foreground/60 hover:text-foreground"
               }`}
@@ -560,7 +596,12 @@ function Services() {
           ))}
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-12 items-center">
+        <div
+          id="service-panel"
+          role="tabpanel"
+          aria-labelledby={`servicos-${SERVICES[active].id}`}
+          className="mt-12 grid md:grid-cols-2 gap-12 items-center"
+        >
           <div key={`txt-${active}`} className="fade-up">
             <span className="font-caption text-xs text-primary/80">Serviço {String(active + 1).padStart(2, "0")}</span>
             <h4 className="mt-3 text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
@@ -580,7 +621,6 @@ function Services() {
     </section>
   );
 }
-
 function Belief() {
   return (
     <section id="diferenciais" className="relative py-24 md:py-32 bg-[#050505]/40 overflow-hidden border-t border-border">

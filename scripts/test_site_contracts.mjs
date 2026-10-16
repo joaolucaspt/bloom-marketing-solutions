@@ -14,6 +14,7 @@ const rootRoute = read("src/routes/__root.tsx");
 const booking = read("src/components/Booking.tsx");
 const calculator = read("src/components/Calculator.tsx");
 const cookieBanner = read("src/components/CookieBanner.tsx");
+const exitIntent = read("src/components/ExitIntentPopup.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
@@ -127,6 +128,14 @@ check(
     cookieBanner.includes('localStorage.setItem(STORAGE_KEY, "dismissed")') &&
     cookieBanner.includes('to="/politica-de-privacidade"'),
 );
+check(
+  "Touch exit-intent rechecks scroll eligibility after the initial delay",
+  exitIntent.includes("let eligibilityTimer: number | undefined;") &&
+    exitIntent.includes("eligibilityTimer = window.setTimeout(") &&
+    exitIntent.includes("if (!done) onScroll();") &&
+    exitIntent.includes("window.clearTimeout(eligibilityTimer);"),
+);
+
 check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&

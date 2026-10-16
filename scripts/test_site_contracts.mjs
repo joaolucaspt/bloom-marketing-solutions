@@ -336,6 +336,25 @@ check(
     footer.includes('href: `#servicos-${id}`') &&
     footer.includes("label: t"),
 );
+
+check(
+  "Footer navigation and service links provide 44px touch targets",
+  (() => {
+    const navHeading = footer.indexOf(">Navegação</p>");
+    const serviceHeading = footer.indexOf(">Serviços</p>");
+    const contactHeading = footer.indexOf(">Contato</p>");
+    const navigationGroup = footer.slice(navHeading, serviceHeading);
+    const servicesGroup = footer.slice(serviceHeading, contactHeading);
+    const expectedClass = 'className="flex min-h-[44px] items-center text-sm text-[#a8a8a8] hover:text-primary transition-colors"';
+    return navHeading >= 0 &&
+      serviceHeading > navHeading &&
+      contactHeading > serviceHeading &&
+      navigationGroup.includes("nav.map((l) => (") &&
+      servicesGroup.includes("servicos.map((l) => (") &&
+      navigationGroup.includes(expectedClass) &&
+      servicesGroup.includes(expectedClass);
+  })(),
+);
 check(
   "Each service tab provides the matching footer anchor",
   home.includes('id={`servicos-${s.id}`}'),

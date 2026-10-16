@@ -665,7 +665,7 @@ function Footer() {
           <ul className="mt-4 space-y-2">
             {nav.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                <a href={l.href} className="flex min-h-[44px] items-center text-sm text-[#a8a8a8] hover:text-primary transition-colors">
                   {l.label}
                 </a>
               </li>
@@ -677,7 +677,7 @@ function Footer() {
           <ul className="mt-4 space-y-2">
             {servicos.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="text-sm text-[#a8a8a8] hover:text-primary transition-colors">
+                <a href={l.href} className="flex min-h-[44px] items-center text-sm text-[#a8a8a8] hover:text-primary transition-colors">
                   {l.label}
                 </a>
               </li>

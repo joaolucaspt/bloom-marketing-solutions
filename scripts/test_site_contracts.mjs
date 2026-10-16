@@ -45,6 +45,8 @@ const websites = graph.filter((entry) => entry["@type"] === "WebSite");
 const organization = organizations[0];
 const website = websites[0];
 
+
+
 check(
   "Ads optimization stages expose their accessible group label through a named group role",
   (() => {
@@ -68,6 +70,20 @@ check(
     return icon.length > 0 &&
       icon.includes('aria-hidden="true"') &&
       icon.includes('className="card-icon h-6 w-6 text-primary"');
+  })(),
+);
+
+check(
+  "Service visual mockup root is a named illustration",
+  (() => {
+    const frameStart = serviceVisual.indexOf("function Frame(");
+    const nextFunction = serviceVisual.indexOf("\nfunction ", frameStart + 1);
+    const frame = serviceVisual.slice(frameStart, nextFunction < 0 ? undefined : nextFunction);
+    const root = frame.match(/<div\b[^>]*className="service-visual-frame"[^>]*>/)?.[0] ?? "";
+    return frameStart >= 0 &&
+      root.includes('role="img"') &&
+      root.includes("aria-label={label}") &&
+      frame.includes('<span className="truncate text-xs text-[#a7a7a7]">{label}</span>');
   })(),
 );
 

@@ -231,12 +231,12 @@ check(
         input.includes(`aria-invalid={${invalidState}}`) &&
         input.includes(`aria-describedby={${invalidState} ? "calculator-error" : undefined}`);
     });
-    const errorTextIndex = calculator.indexOf("Informe valores maiores que zero");
-    const errorTagStart = calculator.lastIndexOf("<p", errorTextIndex);
+    const alertIndex = calculator.indexOf('role="alert"');
+    const errorTagStart = calculator.lastIndexOf("<p", alertIndex);
     const errorTagEnd = calculator.indexOf(">", errorTagStart);
     const errorTag = calculator.slice(errorTagStart, errorTagEnd);
     return eachFieldHasAssociatedError &&
-      errorTextIndex >= 0 &&
+      alertIndex >= 0 &&
       errorTagStart >= 0 &&
       errorTagEnd > errorTagStart &&
       errorTag.includes('id="calculator-error"') &&

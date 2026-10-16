@@ -290,6 +290,38 @@ check(
 );
 
 check(
+  "Calculator placeholder text meets WCAG AA contrast for normal text",
+  (() => {
+    const fieldClass = calculator.match(/const field =\s*"([^"]+)";/)?.[1];
+    const backgroundRaw = fieldClass?.match(/bg-\[(#[0-9a-fA-F]{3,6})\]/)?.[1];
+    const placeholderRaw = fieldClass?.match(/placeholder:text-\[(#[0-9a-fA-F]{3,6})\]/)?.[1];
+    const normalizeHex = (value) => {
+      if (!value) return null;
+      const hex = value.slice(1);
+      if (hex.length === 3) return `#${hex.split("").map((digit) => digit + digit).join("")}`;
+      return hex.length === 6 ? value : null;
+    };
+    const luminance = (color) => {
+      if (!color) return Number.NaN;
+      const channels = color.slice(1).match(/../g)?.map((pair) => {
+        const value = parseInt(pair, 16) / 255;
+        return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+      });
+      return channels?.length === 3
+        ? 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+        : Number.NaN;
+    };
+    const background = normalizeHex(backgroundRaw);
+    const placeholder = normalizeHex(placeholderRaw);
+    const backgroundLuminance = luminance(background);
+    const placeholderLuminance = luminance(placeholder);
+    const contrast = (Math.max(backgroundLuminance, placeholderLuminance) + 0.05) /
+      (Math.min(backgroundLuminance, placeholderLuminance) + 0.05);
+    return Boolean(background && placeholder) && contrast >= 4.5;
+  })(),
+);
+
+check(
   "Calculator associates validation state and error copy to the invalid field",
   (() => {
     const expectedFields = [

@@ -760,7 +760,7 @@ function FloatingWhatsApp() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp"
+      aria-label="Abrir conversa com a LS pelo WhatsApp"
       className="fixed right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition"
       style={{ bottom: "calc(var(--ls-cookie-banner-height, 0px) + 1.5rem)", backgroundColor: "#25D366", boxShadow: "0 10px 40px rgba(37,211,102,0.5)" }}
     >

@@ -181,6 +181,13 @@ check(
     footer.includes('label: "Política de Privacidade"'),
 );
 
+check(
+  "Footer exposes separate click-to-call and WhatsApp actions",
+  footer.includes('href="tel:+5531971169912"') &&
+    footer.includes("Falar no WhatsApp") &&
+    footer.includes("href={WHATSAPP_URL}"),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

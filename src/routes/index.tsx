@@ -227,7 +227,7 @@ function Nav() {
     >
       <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
         <Logo />
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="inline-flex min-h-[44px] items-center text-sm text-foreground/80 hover:text-primary transition-colors">
               {l.label}

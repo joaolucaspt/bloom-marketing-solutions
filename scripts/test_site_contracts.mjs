@@ -385,9 +385,9 @@ check("Each service photograph has a unique descriptive alt", photoAlts.length =
 check(
   "Service photo badge contrast meets 4.5:1 on the lightest photo background",
   (() => {
-    const badge = servicePhoto.match(/<span className="([^"]*)"[^>]*>\\s*\\{photo\\.eyebrow\\}\\s*<\\/span>/)?.[1];
-    const backgroundOpacity = badge?.match(/bg-black\\/(\\d+)/)?.[1];
-    const foregroundOpacity = badge?.match(/text-white\\/(\\d+)/)?.[1];
+    const badge = servicePhoto.match(/<span className="([^"]*)"[^>]*>\s*\{photo\.eyebrow\}\s*<\/span>/)?.[1];
+    const backgroundOpacity = badge?.match(/bg-black\/(\d+)/)?.[1];
+    const foregroundOpacity = badge?.match(/text-white\/(\d+)/)?.[1];
     if (!badge || backgroundOpacity === undefined || foregroundOpacity === undefined) return false;
 
     const backgroundAlpha = Number(backgroundOpacity) / 100;

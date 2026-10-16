@@ -168,7 +168,8 @@ check(
 check(
   "Opening a service fragment selects its tab and tracks hash navigation",
   home.includes('const prefix = "#servicos-";') &&
-    home.includes("window.location.hash.slice(prefix.length)") &&
+    home.includes("const hash = window.location.hash;") &&
+    home.includes("const slug = hash.slice(prefix.length)") &&
     home.includes("SERVICES.findIndex((service) => service.id === slug)") &&
     home.includes('window.addEventListener("hashchange", syncActiveFromHash)') &&
     home.includes('window.removeEventListener("hashchange", syncActiveFromHash)'),

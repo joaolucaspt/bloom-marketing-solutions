@@ -21,7 +21,7 @@ function List({ items }: { items: string[] }) {
     <ul className="card-benefits-list">
       {items.map((i) => (
         <li key={i} className="text-sm leading-relaxed text-foreground">
-          <Check />
+          <Check aria-hidden="true" />
           <span>{i}</span>
         </li>
       ))}

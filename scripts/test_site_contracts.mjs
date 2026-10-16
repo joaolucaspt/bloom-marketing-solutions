@@ -73,6 +73,21 @@ check(
   })(),
 );
 
+
+check(
+  "LandingPages benefit list Check icon is hidden from assistive technology",
+  (() => {
+    const listStart = landingPages.indexOf("function List(");
+    const listEnd = landingPages.indexOf("export default function LandingPages()", listStart);
+    const list = landingPages.slice(listStart, listEnd);
+    const iconTag = list.split("\n").find((line) => line.includes("<Check")) ?? "";
+    return listStart >= 0 &&
+      listEnd > listStart &&
+      iconTag.includes("<Check") &&
+      iconTag.includes('aria-hidden="true"');
+  })(),
+);
+
 check(
   "Service visual mockup root is a named illustration",
   (() => {

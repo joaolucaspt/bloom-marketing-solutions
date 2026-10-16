@@ -248,7 +248,7 @@ check(
       start >= 0 &&
       end > textStart &&
       link.includes('href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"') &&
-      /min-h-\\[44px\\]/.test(link);
+      /min-h-\[44px\]/.test(link);
   })(),
 );
 

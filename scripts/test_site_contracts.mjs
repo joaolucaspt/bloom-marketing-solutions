@@ -192,6 +192,33 @@ const ogUrl = home.match(/property: "og:url",\s*content: "([^"]+)"/)?.[1];
 check("Homepage canonical and og:url agree", canonical === ogUrl && canonical === "https://lsagenciademarketing.com/");
 check("Privacy policy canonical uses the same production domain", privacy.includes('href: "https://lsagenciademarketing.com/politica-de-privacidade"'));
 check(
+  "Cal.com route transitions use native document navigation instead of SPA embed remounts",
+  (() => {
+    const cookieLabel = "Política de Privacidade";
+    const cookieLabelStart = cookieBanner.indexOf(cookieLabel);
+    const cookieLinkStart = cookieBanner.lastIndexOf('<a href="/politica-de-privacidade"', cookieLabelStart);
+    const cookieLinkEnd = cookieBanner.indexOf("</a>", cookieLabelStart);
+    const cookieLink = cookieBanner.slice(cookieLinkStart, cookieLinkEnd);
+    const returnLabel = "Voltar para a página inicial";
+    const returnLabelStart = privacy.indexOf(returnLabel);
+    const returnLinkStart = privacy.lastIndexOf("<a", returnLabelStart);
+    const returnLinkEnd = privacy.indexOf("</a>", returnLabelStart);
+    const returnLink = privacy.slice(returnLinkStart, returnLinkEnd);
+    return cookieLabelStart >= 0 &&
+      cookieLinkStart >= 0 &&
+      cookieLinkEnd > cookieLabelStart &&
+      cookieLink.includes('href="/politica-de-privacidade"') &&
+      cookieLink.includes('className="text-primary underline"') &&
+      returnLabelStart >= 0 &&
+      returnLinkStart >= 0 &&
+      returnLinkEnd > returnLabelStart &&
+      returnLink.includes('href="/"') &&
+      returnLink.includes("min-h-[44px]") &&
+      !cookieBanner.includes('import { Link } from "@tanstack/react-router";') &&
+      !privacy.includes('import { createFileRoute, Link } from "@tanstack/react-router";');
+  })(),
+);
+check(
   "Privacy policy provides a keyboard skip link to a focusable main target",
   privacy.includes('<a href="#main-content" className="skip-to-content">') &&
     privacy.includes("Pular para o conteúdo principal") &&
@@ -204,13 +231,13 @@ check(
   (() => {
     const label = "Voltar para a página inicial";
     const labelStart = privacy.indexOf(label);
-    const linkStart = privacy.lastIndexOf("<Link", labelStart);
-    const linkEnd = privacy.indexOf("</Link>", labelStart);
+    const linkStart = privacy.lastIndexOf("<a", labelStart);
+    const linkEnd = privacy.indexOf("</a>", labelStart);
     const link = privacy.slice(linkStart, linkEnd);
     return labelStart >= 0 &&
       linkStart >= 0 &&
       linkEnd > labelStart &&
-      link.includes('to="/"') &&
+      link.includes('href="/"') &&
       link.includes("inline-flex") &&
       link.includes("min-h-[44px]");
   })(),
@@ -409,7 +436,7 @@ check(
   "Cookie notice dismissal persists only the notice preference",
   cookieBanner.includes('const STORAGE_KEY = "cookie-consent"') &&
     cookieBanner.includes('localStorage.setItem(STORAGE_KEY, "dismissed")') &&
-    cookieBanner.includes('to="/politica-de-privacidade"'),
+    cookieBanner.includes('href="/politica-de-privacidade"'),
 );
 check(
   "Touch exit-intent rechecks scroll eligibility after the initial delay",

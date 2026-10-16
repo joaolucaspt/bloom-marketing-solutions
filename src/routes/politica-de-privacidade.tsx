@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { LogoMark } from "@/components/Logo";
 
 export const Route = createFileRoute("/politica-de-privacidade")({
@@ -171,12 +171,12 @@ function PrivacyPage() {
         </Section>
 
         <div className="mt-12">
-          <Link
-            to="/"
+          <a
+            href="/"
             className="inline-flex min-h-[44px] items-center rounded-xl border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
             Voltar para a página inicial
-          </Link>
+          </a>
         </div>
       </div>
       </main>

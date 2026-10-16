@@ -37,7 +37,11 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#050505] px-5 py-16 md:px-6 md:py-24">
+    <>
+      <a href="#main-content" className="skip-to-content">
+        Pular para o conteúdo principal
+      </a>
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#050505] px-5 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-[760px]">
         <LogoMark scale={0.85} />
 
@@ -175,6 +179,7 @@ function PrivacyPage() {
           </Link>
         </div>
       </div>
-    </main>
+      </main>
+    </> 
   );
 }

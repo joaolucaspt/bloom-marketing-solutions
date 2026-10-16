@@ -629,6 +629,7 @@ function Footer() {
     { href: "#metodologia", label: "Como funciona" },
     { href: "#perguntas-frequentes", label: "Perguntas frequentes" },
     { href: "#agendar", label: "Contato" },
+    { href: "/politica-de-privacidade", label: "Política de Privacidade" },
   ];
   const servicos = SERVICES.map(({ id, t }) => ({
     href: `#servicos-${id}`,

@@ -175,6 +175,12 @@ check(
     home.includes('window.removeEventListener("hashchange", syncActiveFromHash)'),
 );
 
+check(
+  "Footer provides a persistent link to the privacy policy",
+  footer.includes('href: "/politica-de-privacidade"') &&
+    footer.includes('label: "Política de Privacidade"'),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

@@ -15,7 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
@@ -31,7 +31,7 @@ function NotFoundComponent() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -43,12 +43,12 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main aria-labelledby="error-title" aria-describedby="error-description" className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 id="error-title" className="text-xl font-semibold tracking-tight text-foreground">
           Esta página não carregou
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p id="error-description" role="alert" className="mt-2 text-sm text-muted-foreground">
           Ocorreu um problema ao carregar a página. Atualize para tentar novamente ou volte ao início.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -69,7 +69,7 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

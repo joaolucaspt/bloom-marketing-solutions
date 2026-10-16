@@ -697,6 +697,19 @@ check(
   !booking.includes("Resposta em até 1 dia útil"),
 );
 
+check(
+  "Booking section exposes a named landmark for the primary conversion flow",
+  (() => {
+    const sectionStart = booking.indexOf('<section id="agendar"');
+    const sectionEnd = booking.indexOf("</section>", sectionStart);
+    const section = booking.slice(sectionStart, sectionEnd);
+    return sectionStart >= 0 &&
+      sectionEnd > sectionStart &&
+      section.includes('aria-labelledby="booking-heading"') &&
+      section.includes('<h2 id="booking-heading"');
+  })(),
+);
+
 check("Booking keeps the existing public email and Instagram", booking.includes('mailto:contato@lsagenciademarketing.com.br') && booking.includes("https://www.instagram.com/ls.agenciademarketing"));
 
 check(

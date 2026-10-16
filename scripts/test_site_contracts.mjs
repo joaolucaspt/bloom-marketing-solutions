@@ -201,7 +201,7 @@ check(
     const cookieLink = cookieBanner.slice(cookieLinkStart, cookieLinkEnd);
     const returnLabel = "Voltar para a página inicial";
     const returnLabelStart = privacy.indexOf(returnLabel);
-    const returnLinkStart = privacy.lastIndexOf('<a href="/"', returnLabelStart);
+    const returnLinkStart = privacy.lastIndexOf("<a", returnLabelStart);
     const returnLinkEnd = privacy.indexOf("</a>", returnLabelStart);
     const returnLink = privacy.slice(returnLinkStart, returnLinkEnd);
     return cookieLabelStart >= 0 &&
@@ -231,13 +231,13 @@ check(
   (() => {
     const label = "Voltar para a página inicial";
     const labelStart = privacy.indexOf(label);
-    const linkStart = privacy.lastIndexOf("<Link", labelStart);
-    const linkEnd = privacy.indexOf("</Link>", labelStart);
+    const linkStart = privacy.lastIndexOf("<a", labelStart);
+    const linkEnd = privacy.indexOf("</a>", labelStart);
     const link = privacy.slice(linkStart, linkEnd);
     return labelStart >= 0 &&
       linkStart >= 0 &&
       linkEnd > labelStart &&
-      link.includes('to="/"') &&
+      link.includes('href="/"') &&
       link.includes("inline-flex") &&
       link.includes("min-h-[44px]");
   })(),
@@ -436,7 +436,7 @@ check(
   "Cookie notice dismissal persists only the notice preference",
   cookieBanner.includes('const STORAGE_KEY = "cookie-consent"') &&
     cookieBanner.includes('localStorage.setItem(STORAGE_KEY, "dismissed")') &&
-    cookieBanner.includes('to="/politica-de-privacidade"'),
+    cookieBanner.includes('href="/politica-de-privacidade"'),
 );
 check(
   "Touch exit-intent rechecks scroll eligibility after the initial delay",

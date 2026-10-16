@@ -120,7 +120,7 @@ check(
   "Header logo link provides a 44px touch target",
   (() => {
     const logoStart = home.indexOf("function Logo({ className");
-    const logoEnd = home.indexOf("\\n}", logoStart) + 2;
+    const logoEnd = home.indexOf("\n/* Rotating words", logoStart);
     const logo = home.slice(logoStart, logoEnd);
     const linkStart = logo.indexOf('<a href="#top"');
     const linkEnd = logo.indexOf("</a>", linkStart);

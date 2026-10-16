@@ -134,6 +134,25 @@ check(
       link.includes("<LogoMark scale={0.85} />");
   })(),
 );
+check(
+  "Header logo has a concise accessible name for the home link",
+  (() => {
+    const logoStart = home.indexOf("function Logo({ className");
+    const logoEnd = home.indexOf("\n/* Rotating words", logoStart);
+    const logo = home.slice(logoStart, logoEnd);
+    const linkStart = logo.indexOf('<a href="#top"');
+    const linkEnd = logo.indexOf("</a>", linkStart);
+    const link = logo.slice(linkStart, linkEnd);
+    return logoStart >= 0 &&
+      logoEnd > logoStart &&
+      linkStart >= 0 &&
+      linkEnd > linkStart &&
+      link.includes('href="#top"') &&
+      link.includes('aria-label="LS Agência de Marketing — voltar ao início"') &&
+      link.includes("min-h-[44px]") &&
+      link.includes("<LogoMark scale={0.85} />");
+  })(),
+);
 check("Hero keeps high-priority loading", /fetchPriority="high"/.test(home) && /decoding="async"/.test(home));
 check(
   "Service photos expose responsive candidates",

@@ -60,7 +60,13 @@ export default function Calculator() {
         Informe o investimento mensal em anúncios e um custo por contato hipotético para visualizar uma estimativa simples.
       </p>
 
-      <div className="mt-5 space-y-3.5">
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          calculate();
+        }}
+      >
+        <div className="mt-5 space-y-3.5">
         <div>
           <label htmlFor="calc-budget" className="mb-1.5 block text-[13px] font-medium text-foreground">
             Orçamento mensal para anúncios
@@ -89,17 +95,17 @@ export default function Calculator() {
             className={field}
           />
         </div>
-      </div>
+        </div>
 
-      {error && <p className="mt-3 text-[13px] text-[#e07070]" role="alert">{error}</p>}
+        {error && <p className="mt-3 text-[13px] text-[#e07070]" role="alert">{error}</p>}
 
-      <button
-        type="button"
-        onClick={calculate}
-        className="mt-4 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
-      >
-        Calcular cenário
-      </button>
+        <button
+          type="submit"
+          className="mt-4 w-full rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+        >
+          Calcular cenário
+        </button>
+      </form>
 
       {result && (
         <div className="mt-4 rounded-xl border border-primary bg-[#0d0d0d] p-4 fade-up" aria-live="polite">

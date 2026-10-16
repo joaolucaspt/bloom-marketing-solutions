@@ -444,6 +444,23 @@ check(
   })(),
 );
 
+check(
+  "Footer phone click-to-call provides a 44px touch target",
+  (() => {
+    const target = footer.indexOf('href="tel:+5531971169912"');
+    const start = footer.lastIndexOf("<a", target);
+    const end = footer.indexOf("</a>", target);
+    const link = footer.slice(start, end);
+    return target >= 0 &&
+      start >= 0 &&
+      end > target &&
+      link.includes('href="tel:+5531971169912"') &&
+      /min-h-\\[44px\\]/.test(link) &&
+      /\\b(?:inline-)?flex\\b/.test(link) &&
+      /\\bitems-center\\b/.test(link);
+  })(),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

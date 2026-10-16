@@ -773,6 +773,33 @@ check(
   "Each service tab provides the matching footer anchor",
   home.includes('id={`servicos-${s.id}`}'),
 );
+
+check(
+  "Service CTA pre-fills WhatsApp with the selected service",
+  (() => {
+    const helperStart = home.indexOf("function buildServiceWhatsAppUrl(serviceName: string)");
+    const helperEnd = home.indexOf("\nfunction Logo(", helperStart);
+    const helper = home.slice(helperStart, helperEnd);
+    const selectorStart = home.indexOf("function Services()");
+    const selectorEnd = home.indexOf("\nfunction Belief()", selectorStart);
+    const selector = home.slice(selectorStart, selectorEnd);
+    const labelIndex = selector.indexOf("Quero este serviço");
+    const anchorStart = selector.lastIndexOf("<a ", labelIndex);
+    const anchorEnd = selector.indexOf("</a>", labelIndex);
+    const cta = selector.slice(anchorStart, anchorEnd);
+    return helperStart >= 0 &&
+      helperEnd > helperStart &&
+      helper.includes('"https://wa.me/5531971169912?text="') &&
+      helper.includes("encodeURIComponent(message)") &&
+      helper.includes("sobre o serviço \${serviceName}.") &&
+      labelIndex >= 0 &&
+      anchorStart >= 0 &&
+      anchorEnd > labelIndex &&
+      cta.includes("href={buildServiceWhatsAppUrl(SERVICES[active].t)}") &&
+      !cta.includes("href={WHATSAPP_URL}");
+  })(),
+);
+
 check(
   "Service selector exposes accessible tablist, selected tabs and a labelled panel",
   (() => {

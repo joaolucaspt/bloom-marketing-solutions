@@ -122,6 +122,12 @@ const WHATSAPP_URL =
     "Olá! Sou responsável por uma clínica odontológica e gostaria de conhecer as estratégias da LS para atrair novos pacientes."
   );
 
+function buildServiceWhatsAppUrl(serviceName: string) {
+  const message =
+    `Olá! Sou responsável por uma clínica odontológica e gostaria de conversar com a LS sobre o serviço ${serviceName}.`;
+  return "https://wa.me/5531971169912?text=" + encodeURIComponent(message);
+}
+
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" aria-label="LS Agência de Marketing — voltar ao início" className={`inline-flex min-h-[44px] items-center ${className}`}>
@@ -604,7 +610,7 @@ function Services() {
             <span className="font-caption text-xs text-primary/80">Serviço {String(active + 1).padStart(2, "0")}</span>
             <h4 className="mt-3 text-3xl md:text-4xl font-black">{SERVICES[active].t}</h4>
             <p className="mt-6 text-foreground/70 leading-relaxed max-w-md">{SERVICES[active].d}</p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8">
+            <a href={buildServiceWhatsAppUrl(SERVICES[active].t)} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8">
               Quero este serviço
             </a>
           </div>

@@ -457,6 +457,26 @@ check(
 );
 
 check(
+  "Mobile navigation aria-controls always references a mounted landmark",
+  (() => {
+    const navStart = home.indexOf("function Nav()");
+    const navEnd = home.indexOf("/* Reusable ambient background", navStart);
+    const nav = home.slice(navStart, navEnd);
+    const mobileNavStart = nav.indexOf('<nav id="mobile-navigation" aria-label="Navegação principal móvel"');
+    const mobileNavEnd = nav.indexOf("</nav>", mobileNavStart);
+    const mobileNav = nav.slice(mobileNavStart, mobileNavEnd);
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      nav.includes('aria-controls="mobile-navigation"') &&
+      mobileNavStart >= 0 &&
+      mobileNavEnd > mobileNavStart &&
+      !nav.includes("{open && (") &&
+      mobileNav.includes('open ? "flex" : "hidden"') &&
+      mobileNav.includes("flex-col");
+  })(),
+);
+
+check(
   "Mobile navigation links meet the 44px touch target minimum",
   home.includes("{links.map((l) => (") &&
     home.includes('className="min-h-[44px] inline-flex items-center text-sm text-foreground/80"') &&

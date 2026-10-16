@@ -17,6 +17,7 @@ const calculator = read("src/components/Calculator.tsx");
 const cookieBanner = read("src/components/CookieBanner.tsx");
 const exitIntent = read("src/components/ExitIntentPopup.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
+const serviceVisual = read("src/components/ServiceVisual.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
 const revealHook = read("src/hooks/useReveal.ts");
@@ -206,6 +207,17 @@ check(
       iconOpenings.every((opening) => /\baria-hidden\s*=\s*["']true["']/.test(opening));
   })(),
 );
+check(
+  "ServiceVisual decorative icons are hidden from assistive technology",
+  (() => {
+    const iconOpenings = [
+      ...serviceVisual.matchAll(/<(ArrowDownRight|ArrowRight|CalendarCheck|Check|ClipboardCheck|MapPin|MessageCircle|MousePointer2|PanelsTopLeft|Search|Target|Icon)\\b[^>]*>/g),
+    ].map((match) => match[0]);
+    return iconOpenings.length === 11 &&
+      iconOpenings.every((opening) => /\\baria-hidden\\s*=\\s*["']true["']/.test(opening));
+  })(),
+);
+
 check(
   "Service imagery has no visible client-disclaimer copy",
   !/(não representa cliente|foto ilustrativa|banco fotográfico)/i.test(servicePhoto),

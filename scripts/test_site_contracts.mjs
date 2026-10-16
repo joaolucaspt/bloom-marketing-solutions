@@ -190,6 +190,19 @@ check(
     booking.includes("aria-label={`Ligar para a LS pelo número ${PHONE_DISPLAY}`}"),
 );
 check(
+  "Exit-intent modal stacks above the privacy notice",
+  (() => {
+    const overlayClass = exitIntent.match(/className="fixed inset-0 ([^"]+)"/)?.[1];
+    const popupZIndex = overlayClass?.match(/(?:^|\s)z-\[(\d+)\]/)?.[1];
+    const bannerZIndex = cookieBanner.match(/zIndex:\s*(\d+)/)?.[1];
+    return exitIntent.includes('aria-modal="true"') &&
+      popupZIndex !== undefined &&
+      bannerZIndex !== undefined &&
+      Number(popupZIndex) > Number(bannerZIndex);
+  })(),
+);
+
+check(
   "Booking phone click-to-call provides a 44px touch target",
   (() => {
     const target = booking.indexOf('href="tel:+5531971169912"');

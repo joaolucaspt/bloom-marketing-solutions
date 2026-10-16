@@ -59,3 +59,18 @@ export function parseBRL(raw) {
   const parsed = Number(normalized);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : NaN;
 }
+
+/**
+ * Display whole-real values without redundant cents and preserve cents otherwise.
+ *
+ * @param {number} value
+ * @returns {string}
+ */
+export function formatBRL(value) {
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+}

@@ -174,13 +174,19 @@ check(
 
 check(
   "Mobile navigation links meet the 44px touch target minimum",
+  home.includes("{links.map((l) => (") &&
+    home.includes('className="min-h-[44px] inline-flex items-center text-sm text-foreground/80"') &&
+    home.includes('className="btn-primary sm:hidden min-h-[44px] inline-flex items-center"'),
+);
+
+check(
+  "Mobile menu is exposed as a named navigation landmark",
   (() => {
-    const navStart = home.indexOf('<div id="mobile-navigation"');
-    const navEnd = home.indexOf("</div>", navStart);
-    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
-    return nav.includes("{links.map((l) => (") &&
-      nav.includes('className="min-h-[44px] inline-flex items-center text-sm text-foreground/80"') &&
-      nav.includes('className="btn-primary sm:hidden min-h-[44px] inline-flex items-center"');
+    const navStart = home.indexOf('<nav id="mobile-navigation" aria-label="Navegação principal móvel"');
+    const navEnd = home.indexOf("</nav>", navStart);
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      home.includes('aria-controls="mobile-navigation"');
   })(),
 );
 

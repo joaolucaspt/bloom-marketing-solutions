@@ -97,8 +97,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Agência de Marketing Odontológico | LS para Clínicas" },
       { name: "twitter:description", content: "Marketing odontológico da LS com Google Ads, Meta Ads e landing pages para atrair pacientes particulares e melhorar a jornada até o agendamento." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4555183b-c11c-40ea-8a41-497104601a87" },
+      { property: "og:image", content: "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+      { property: "og:image:alt", content: "Fotografia de atendimento odontológico em consultório profissional." },
+      { name: "twitter:image", content: "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1200" },
+      { name: "twitter:image:alt", content: "Fotografia de atendimento odontológico em consultório profissional." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

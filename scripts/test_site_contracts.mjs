@@ -173,6 +173,23 @@ check(
 );
 
 check(
+  "Mobile navigation links meet the 44px touch target minimum",
+  (() => {
+    const navStart = home.indexOf('<div id="mobile-navigation"');
+    const navEnd = home.indexOf("</div>", navStart);
+    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
+    const anchors = [...nav.matchAll(/<a\\b[^>]*>/g)].map((match) => match[0]);
+    return anchors.length === 7 &&
+      anchors.every((anchor) => {
+        const className = anchor.match(/className="([^"]*)"/)?.[1] ?? "";
+        return ["min-h-[44px]", "inline-flex", "items-center"].every((token) =>
+          className.split(/\\s+/).includes(token),
+        );
+      });
+  })(),
+);
+
+check(
   "Mobile navigation closes on Escape and restores focus to its trigger",
   (() => {
     const navStart = home.indexOf("function Nav()");

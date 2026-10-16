@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ParticleNetwork from "@/components/ParticleNetwork";
 import { LogoMark } from "@/components/Logo";
 import Calculator from "@/components/Calculator";
@@ -181,12 +181,28 @@ function RotatingWords({ words }: { words: string[] }) {
 function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 20);
     on();
     window.addEventListener("scroll", on);
     return () => window.removeEventListener("scroll", on);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setOpen(false);
+      triggerRef.current?.focus();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   const links = [
     { href: "#top", label: "Início" },
@@ -216,7 +232,7 @@ function Nav() {
           <a href="#agendar" className="btn-primary hidden sm:inline-flex">
             Falar com especialista
           </a>
-          <button type="button" onClick={() => setOpen(!open)} className="lg:hidden flex min-h-[44px] min-w-[44px] flex-col items-center justify-center rounded-lg p-2" aria-label={open ? "Fechar menu de navegação" : "Abrir menu de navegação"} aria-expanded={open} aria-controls="mobile-navigation">
+          <button ref={triggerRef} type="button" onClick={() => setOpen(!open)} className="lg:hidden flex min-h-[44px] min-w-[44px] flex-col items-center justify-center rounded-lg p-2" aria-label={open ? "Fechar menu de navegação" : "Abrir menu de navegação"} aria-expanded={open} aria-controls="mobile-navigation">
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground mb-1.5" />
             <div className="w-6 h-0.5 bg-foreground" />

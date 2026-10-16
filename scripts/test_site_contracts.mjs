@@ -785,6 +785,22 @@ check(
   })(),
 );
 check(
+  "Error retry action explicitly declares its button type",
+  (() => {
+    const labelStart = c31ErrorComponent.indexOf("Tentar novamente");
+    const buttonStart = c31ErrorComponent.lastIndexOf("<button", labelStart);
+    const buttonEnd = c31ErrorComponent.indexOf("</button>", labelStart);
+    const button = c31ErrorComponent.slice(buttonStart, buttonEnd);
+    return labelStart >= 0 &&
+      buttonStart >= 0 &&
+      buttonEnd > labelStart &&
+      button.includes('type="button"') &&
+      button.includes("router.invalidate();") &&
+      button.includes("reset();");
+  })(),
+);
+
+check(
   "Error recovery link provides a 44px touch target",
   (() => {
     const label = "Voltar ao início";

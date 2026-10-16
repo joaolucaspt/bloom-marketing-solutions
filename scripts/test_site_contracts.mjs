@@ -126,6 +126,24 @@ check(
     home.includes('aria-controls="mobile-navigation"') &&
     home.includes('id="mobile-navigation"'),
 );
+
+check(
+  "Mobile navigation closes on Escape and restores focus to its trigger",
+  (() => {
+    const navStart = home.indexOf("function Nav()");
+    const navEnd = home.indexOf("/* Reusable ambient background", navStart);
+    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
+    return /import \{[^}]*\buseRef\b[^}]*\} from "react";/.test(home) &&
+      /const triggerRef = useRef<HTMLButtonElement>\(null\)/.test(nav) &&
+      nav.includes("ref={triggerRef}") &&
+      nav.includes("if (!open) return;") &&
+      nav.includes('if (event.key !== "Escape") return;') &&
+      nav.includes("setOpen(false);") &&
+      nav.includes("triggerRef.current?.focus();") &&
+      nav.includes('document.addEventListener("keydown", onKeyDown)') &&
+      nav.includes('document.removeEventListener("keydown", onKeyDown)');
+  })(),
+);
 check(
   "Rotating headings expose readable text and hide animated duplicates",
   home.includes('<span className="sr-only">{words[0]}</span>') &&

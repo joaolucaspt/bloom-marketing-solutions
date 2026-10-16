@@ -91,6 +91,23 @@ check(
   /src=\{dentalHeroImage\}\s+srcSet=\{dentalHeroSrcSet\}\s+sizes=/.test(home) &&
     /src=\{dentalAboutImage\}\s+srcSet=\{dentalAboutSrcSet\}\s+sizes=/.test(home),
 );
+check(
+  "Hero secondary CTA provides a 44px touch target",
+  (() => {
+    const heroStart = home.indexOf("function Hero()");
+    const heroEnd = home.indexOf("\nfunction ", heroStart + 1);
+    const hero = home.slice(heroStart, heroEnd < 0 ? undefined : heroEnd);
+    const labelStart = hero.indexOf("Conheça a estratégia");
+    const linkStart = hero.lastIndexOf('<a href="#servicos"', labelStart);
+    const linkEnd = hero.indexOf("</a>", labelStart);
+    const link = hero.slice(linkStart, linkEnd);
+    return labelStart >= 0 &&
+      linkStart >= 0 &&
+      linkEnd > labelStart &&
+      link.includes('href="#servicos"') &&
+      link.includes('className="inline-flex min-h-[44px] items-center text-sm font-semibold text-foreground transition-colors hover:text-primary"');
+  })(),
+);
 check("Hero keeps high-priority loading", /fetchPriority="high"/.test(home) && /decoding="async"/.test(home));
 check(
   "Service photos expose responsive candidates",

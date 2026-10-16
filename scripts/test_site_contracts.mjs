@@ -807,6 +807,21 @@ check(
 );
 
 check(
+  "Floating WhatsApp decorative SVG is hidden from assistive technology",
+  (() => {
+    const start = home.indexOf("function FloatingWhatsApp()");
+    const end = home.indexOf("function Index()", start);
+    const launcher = home.slice(start, end);
+    const icon = launcher.match(/<svg[^>]*>/)?.[0] ?? "";
+    return start >= 0 &&
+      end > start &&
+      icon.length > 0 &&
+      icon.includes('aria-hidden="true"') &&
+      launcher.includes('aria-label="Abrir conversa com a LS pelo WhatsApp"');
+  })(),
+);
+
+check(
   "Floating WhatsApp launcher stays above the responsive cookie notice",
   floatingWhatsAppStart >= 0 &&
     floatingWhatsAppEnd > floatingWhatsAppStart &&

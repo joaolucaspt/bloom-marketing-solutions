@@ -177,6 +177,26 @@ check(
 );
 
 check(
+  "Calculator inputs provide a 44px minimum touch target",
+  (() => {
+    const fieldClass = calculator.match(/const field =\s*([\s\S]*?);\n/)?.[1];
+    const budgetId = calculator.indexOf('id="calc-budget"');
+    const budgetStart = calculator.lastIndexOf("<input", budgetId);
+    const budgetEnd = calculator.indexOf("/>", budgetStart);
+    const cplId = calculator.indexOf('id="calc-cpl"');
+    const cplStart = calculator.lastIndexOf("<input", cplId);
+    const cplEnd = calculator.indexOf("/>", cplStart);
+    const budgetInput = calculator.slice(budgetStart, budgetEnd);
+    const cplInput = calculator.slice(cplStart, cplEnd);
+    return Boolean(fieldClass?.includes("min-h-[44px]")) &&
+      budgetId >= 0 && budgetEnd > budgetStart &&
+      cplId >= 0 && cplEnd > cplStart &&
+      budgetInput.includes("className={field}") &&
+      cplInput.includes("className={field}");
+  })(),
+);
+
+check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&
     calculator.includes("onSubmit={(event) => {") &&

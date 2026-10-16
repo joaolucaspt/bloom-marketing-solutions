@@ -26,13 +26,13 @@ export default function Booking() {
   }, []);
 
   return (
-    <section id="agendar" className="relative bg-[#050505]/40 py-20 md:py-28">
+    <section id="agendar" aria-labelledby="booking-heading" className="relative bg-[#050505]/40 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:items-start">
           {/* Coluna esquerda */}
           <div>
             <p className="font-caption text-xs text-primary">Conversa estratégica</p>
-            <h2 className="mt-4 text-3xl md:text-4xl font-semibold leading-tight text-foreground">
+            <h2 id="booking-heading" className="mt-4 text-3xl md:text-4xl font-semibold leading-tight text-foreground">
               Sua próxima fase de crescimento começa com uma estratégia de captação bem definida.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-[#a8a8a8]">

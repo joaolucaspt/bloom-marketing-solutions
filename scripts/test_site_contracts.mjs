@@ -159,7 +159,7 @@ check(
     return textStart >= 0 &&
       buttonStart >= 0 &&
       buttonEnd > textStart &&
-      continueButton.includes('className="mt-4 flex min-h-[44px] w-full items-center justify-center text-center underline text-[#a8a8a8] transition-colors hover:text-foreground"') &&
+      continueButton.includes('className="mt-4 flex min-h-[44px] w-full items-center justify-center text-center text-xs text-[#a8a8a8] underline transition-colors hover:text-foreground"') &&
       !continueButton.includes('style={{ color: "#666"');
   })(),
 );

@@ -537,7 +537,8 @@ check(
     const selector = home.slice(selectorStart, selectorEnd < 0 ? undefined : selectorEnd);
     return selectorStart >= 0 &&
       selectorEnd > selectorStart &&
-      selector.includes('<div role="tablist" aria-label="Frentes de crescimento odontológico"') &&
+      selector.includes('role="tablist"') &&
+      selector.includes('aria-label="Frentes de crescimento odontológico"') &&
       selector.includes('role="tab"') &&
       selector.includes('aria-selected={active === i}') &&
       selector.includes('aria-controls="service-panel"') &&

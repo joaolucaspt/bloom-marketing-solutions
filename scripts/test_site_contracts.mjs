@@ -252,6 +252,11 @@ check(
   })(),
 );
 
+check(
+  "Booking copy avoids an unverified one-business-day response promise",
+  !booking.includes("Resposta em até 1 dia útil"),
+);
+
 check("Booking keeps the existing public email and Instagram", booking.includes('mailto:contato@lsagenciademarketing.com.br') && booking.includes("https://www.instagram.com/ls.agenciademarketing"));
 
 check(

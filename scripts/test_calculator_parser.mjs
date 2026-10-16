@@ -1,14 +1,5 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
-import path from "node:path";
-import vm from "node:vm";
-
-const root = process.cwd();
-const calculator = fs.readFileSync(path.join(root, "src/components/Calculator.tsx"), "utf8");
-const parserMatch = calculator.match(/const parseBRL = \(raw: string\) => \{([\s\S]*?)\n\};/);
-
-assert.ok(parserMatch, "The calculator must expose its current parseBRL implementation");
-const parseBRL = vm.runInNewContext(`(raw) => { ${parserMatch[1]}\n}`);
+import { parseBRL } from "../src/lib/parse-brl.js";
 
 const cases = [
   { label: "Brazilian thousands separator", raw: "R$ 2.000", expected: 2000 },
@@ -16,6 +7,9 @@ const cases = [
   { label: "decimal point", raw: "40.50", expected: 40.5 },
   { label: "Brazilian thousands and cents", raw: "R$ 1.234,56", expected: 1234.56 },
   { label: "international grouping and decimal point", raw: "1,234.56", expected: 1234.56 },
+  { label: "dot thousands without cents", raw: "1.234", expected: 1234 },
+  { label: "comma thousands without cents", raw: "1,234", expected: 1234 },
+  { label: "decimal fraction below one", raw: "0,50", expected: 0.5 },
 ];
 
 for (const testCase of cases) {
@@ -27,4 +21,8 @@ for (const testCase of cases) {
   console.log(`PASS ${testCase.label}`);
 }
 
-console.log(`Calculator money parsing: ${cases.length}/${cases.length} passed.`);
+for (const invalid of ["", "0", "-40,50", "1.23.4", "abc"]) {
+  assert.ok(Number.isNaN(parseBRL(invalid)), `Expected a non-positive or malformed value to be rejected: "${invalid}"`);
+}
+console.log("PASS invalid and non-positive values are rejected");
+console.log(`Calculator money parsing: ${cases.length + 1}/${cases.length + 1} passed.`);

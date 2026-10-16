@@ -10,7 +10,7 @@ const WA_EXAMPLE =
 
 function Check() {
   return (
-    <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5">
       <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -104,7 +104,7 @@ export default function LandingPages() {
               Projeto de página
             </span>
             <div className="card-header">
-              <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
                 <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
               </svg>
@@ -152,7 +152,7 @@ export default function LandingPages() {
               Estrutura integrada
             </span>
             <div className="card-header">
-              <svg viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="card-icon h-6 w-6 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 17l6-6 4 4 7-7" />
                 <path d="M14 8h6v6" />
               </svg>

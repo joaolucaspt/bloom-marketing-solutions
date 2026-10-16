@@ -10,6 +10,7 @@ const check = (name, condition, detail = "") => {
 };
 
 const home = read("src/routes/index.tsx");
+const landingPages = read("src/components/LandingPages.tsx");
 const rootRoute = read("src/routes/__root.tsx");
 const booking = read("src/components/Booking.tsx");
 const calculator = read("src/components/Calculator.tsx");
@@ -197,6 +198,14 @@ const photoUrls = [...servicePhoto.matchAll(/src:\s*"(https:\/\/images\.pexels\.
 const photoAlts = [...servicePhoto.matchAll(/alt:\s*"([^"]+)"/g)].map((match) => match[1]);
 check("Six service cards use six unique Pexels photographs", photoUrls.length === 6 && new Set(photoUrls).size === 6);
 check("Each service photograph has a unique descriptive alt", photoAlts.length === 6 && photoAlts.every(Boolean) && new Set(photoAlts).size === 6);
+check(
+  "Landing page decorative SVG icons are hidden from assistive technology",
+  (() => {
+    const iconOpenings = [...landingPages.matchAll(/<svg\b[^>]*>/g)].map(([opening]) => opening);
+    return iconOpenings.length === 3 &&
+      iconOpenings.every((opening) => /\baria-hidden\s*=\s*["']true["']/.test(opening));
+  })(),
+);
 check(
   "Service imagery has no visible client-disclaimer copy",
   !/(não representa cliente|foto ilustrativa|banco fotográfico)/i.test(servicePhoto),

@@ -91,6 +91,17 @@ export default function Booking() {
                 config={{ theme: "dark", layout: "month_view" }}
               />
             </div>
+            <p className="mt-4 text-center text-sm text-[#a8a8a8]">
+              Problemas para visualizar a agenda?{" "}
+              <a
+                href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary underline underline-offset-4 transition hover:text-foreground"
+              >
+                Abrir agendamento em nova aba
+              </a>
+            </p>
           </div>
 
         </div>
@@ -111,7 +122,13 @@ export default function Booking() {
             <p className="text-center text-xs uppercase tracking-[0.2em] text-[#888]">
               Telefone e WhatsApp
             </p>
-            <p className="mt-2 text-center text-2xl font-medium text-foreground">{PHONE_DISPLAY}</p>
+            <a
+              href="tel:+5531971169912"
+              aria-label={`Ligar para a LS pelo número ${PHONE_DISPLAY}`}
+              className="mt-2 block text-center text-2xl font-medium text-foreground transition-colors hover:text-primary"
+            >
+              {PHONE_DISPLAY}
+            </a>
 
             <div className="my-6 h-px bg-[#333]" />
             <p className="text-center text-xs uppercase tracking-[0.2em] text-[#888]">

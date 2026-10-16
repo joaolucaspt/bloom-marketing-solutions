@@ -211,10 +211,10 @@ check(
   "ServiceVisual decorative icons are hidden from assistive technology",
   (() => {
     const iconOpenings = [
-      ...serviceVisual.matchAll(/<(ArrowDownRight|ArrowRight|CalendarCheck|Check|ClipboardCheck|MapPin|MessageCircle|MousePointer2|PanelsTopLeft|Search|Target|Icon)\\b[^>]*>/g),
+      ...serviceVisual.matchAll(/<(ArrowDownRight|ArrowRight|CalendarCheck|Check|ClipboardCheck|MapPin|MessageCircle|MousePointer2|PanelsTopLeft|Search|Target|Icon)\b[^>]*>/g),
     ].map((match) => match[0]);
     return iconOpenings.length === 11 &&
-      iconOpenings.every((opening) => /\\baria-hidden\\s*=\\s*["']true["']/.test(opening));
+      iconOpenings.every((opening) => /\baria-hidden\s*=\s*["']true["']/.test(opening));
   })(),
 );
 

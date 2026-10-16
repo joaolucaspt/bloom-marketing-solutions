@@ -18,6 +18,7 @@ const exitIntent = read("src/components/ExitIntentPopup.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
+const revealHook = read("src/hooks/useReveal.ts");
 const sitemap = read("src/routes/sitemap[.]xml.ts");
 const robots = read("public/robots.txt");
 const privacy = read("src/routes/politica-de-privacidade.tsx");
@@ -503,6 +504,20 @@ check(
       nav.includes('document.removeEventListener("keydown", onKeyDown)');
   })(),
 );
+check(
+  "Reveal hook keeps sections visible when IntersectionObserver is unavailable",
+  (() => {
+    const fallbackStart = revealHook.indexOf('if (typeof IntersectionObserver === "undefined")');
+    const visibleIndex = revealHook.indexOf('el.classList.add("is-visible")', fallbackStart);
+    const fallbackReturn = revealHook.indexOf("return;", visibleIndex);
+    const observerIndex = revealHook.indexOf("new IntersectionObserver(");
+    return fallbackStart >= 0 &&
+      visibleIndex > fallbackStart &&
+      fallbackReturn > visibleIndex &&
+      observerIndex > fallbackReturn;
+  })(),
+);
+
 check(
   "Rotating headings expose readable text and hide animated duplicates",
   home.includes('<span className="sr-only">{words[0]}</span>') &&

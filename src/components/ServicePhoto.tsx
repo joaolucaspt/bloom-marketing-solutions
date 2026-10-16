@@ -1,3 +1,5 @@
+import { responsivePexelsSrcSet } from "@/lib/responsive-pexels";
+
 export type ServicePhotoVariant =
   | "google"
   | "meta"
@@ -55,11 +57,14 @@ const photos: Record<ServicePhotoVariant, PhotoContent> = {
 
 export default function ServicePhoto({ variant }: { variant: ServicePhotoVariant }) {
   const photo = photos[variant];
+  const srcSet = responsivePexelsSrcSet(photo.src, [480, 640, 960, 1280, 1600]);
 
   return (
     <figure className="group relative isolate aspect-[4/3] w-full overflow-hidden rounded-2xl border border-primary/25 bg-[#111] shadow-[0_24px_64px_rgba(0,0,0,0.34)]">
       <img
         src={photo.src}
+        srcSet={srcSet}
+        sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1279px) 50vw, 560px"
         alt={photo.alt}
         loading="lazy"
         decoding="async"

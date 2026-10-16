@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test:contracts": "node scripts/test_site_contracts.mjs"
+    "test:contracts": "node scripts/test_site_contracts.mjs && node scripts/test_calculator_parser.mjs"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

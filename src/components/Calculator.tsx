@@ -1,23 +1,11 @@
 import { useState } from "react";
+import { formatBRL, parseBRL } from "@/lib/parse-brl.js";
 
 const WA_CALC =
   "https://wa.me/5531971169912?text=" +
   encodeURIComponent(
     "Olá! Quero conversar sobre investimento em mídia e captação de pacientes para minha clínica odontológica."
   );
-
-const brl = (value: number) =>
-  value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    maximumFractionDigits: 0,
-  });
-
-const parseBRL = (raw: string) => {
-  const normalized = raw.trim().replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".");
-  const value = Number(normalized);
-  return Number.isFinite(value) && value > 0 ? value : NaN;
-};
 
 export default function Calculator() {
   const [budget, setBudget] = useState("");
@@ -117,11 +105,11 @@ export default function Calculator() {
           <div className="mt-4 space-y-2 border-t border-[#333] pt-3 text-xs text-[#a8a8a8]">
             <div className="flex items-center justify-between gap-3">
               <span>Investimento mensal</span>
-              <span className="font-semibold text-foreground">{brl(result.budget)}</span>
+              <span className="font-semibold text-foreground">{formatBRL(result.budget)}</span>
             </div>
             <div className="flex items-center justify-between gap-3">
               <span>Custo estimado por contato</span>
-              <span className="font-semibold text-foreground">{brl(result.costPerContact)}</span>
+              <span className="font-semibold text-foreground">{formatBRL(result.costPerContact)}</span>
             </div>
           </div>
         </div>

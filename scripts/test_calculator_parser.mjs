@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { parseBRL } from "../src/lib/parse-brl.js";
+import { formatBRL, parseBRL } from "../src/lib/parse-brl.js";
 
 const cases = [
   { label: "Brazilian thousands separator", raw: "R$ 2.000", expected: 2000 },
@@ -26,3 +26,8 @@ for (const invalid of ["", "0", "-40,50", "1.23.4", "abc"]) {
 }
 console.log("PASS invalid and non-positive values are rejected");
 console.log(`Calculator money parsing: ${cases.length + 1}/${cases.length + 1} passed.`);
+
+assert.ok(formatBRL(40.5).includes("40,50"), "Currency output must preserve decimal cents instead of rounding to R$ 41");
+assert.ok(formatBRL(2000).includes("2.000"), "Whole-real values should keep Brazilian thousands grouping");
+assert.ok(!formatBRL(2000).includes(",00"), "Whole-real values should not gain redundant cents");
+console.log("PASS currency result formatting preserves cents and keeps integer amounts compact");

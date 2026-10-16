@@ -72,6 +72,14 @@ const canonical = home.match(/rel: "canonical",\s*href: "([^"]+)"/)?.[1];
 const ogUrl = home.match(/property: "og:url",\s*content: "([^"]+)"/)?.[1];
 check("Homepage canonical and og:url agree", canonical === ogUrl && canonical === "https://lsagenciademarketing.com/");
 check("Privacy policy canonical uses the same production domain", privacy.includes('href: "https://lsagenciademarketing.com/politica-de-privacidade"'));
+check(
+  "Privacy policy provides a keyboard skip link to a focusable main target",
+  privacy.includes('<a href="#main-content" className="skip-to-content">') &&
+    privacy.includes("Pular para o conteúdo principal") &&
+    privacy.includes('<main id="main-content" tabIndex={-1}') &&
+    styles.includes(".skip-to-content:focus") &&
+    styles.includes(":where(a, button, input, textarea, select, summary):focus-visible"),
+);
 check("robots.txt points to the canonical sitemap", robots.includes("Sitemap: https://lsagenciademarketing.com/sitemap.xml"));
 check(
   "Sitemap uses the canonical domain and includes the privacy page",

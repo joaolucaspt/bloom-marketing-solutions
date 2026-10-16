@@ -746,6 +746,25 @@ check(
   })(),
 );
 check(
+  "Mobile navigation restores trigger focus when destination links close the menu",
+  (() => {
+    const navStart = home.indexOf("function Nav()");
+    const navEnd = home.indexOf("/* Reusable ambient background", navStart);
+    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
+    const linkHandler =
+      nav.match(/<a key=\{l\.href\} href=\{l\.href\} onClick=\{([\s\S]*?)\} className="min-h-\[44px\]/)?.[1] ?? "";
+    const ctaHandler =
+      nav.match(/<a href="#agendar" onClick=\{([\s\S]*?)\} className="btn-primary sm:hidden/)?.[1] ?? "";
+    const restoresTrigger = (handler) =>
+      handler.includes("setOpen(false)") && handler.includes("triggerRef.current?.focus()");
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      restoresTrigger(linkHandler) &&
+      restoresTrigger(ctaHandler);
+  })(),
+);
+
+check(
   "Reveal hook keeps sections visible when IntersectionObserver is unavailable",
   (() => {
     const fallbackStart = revealHook.indexOf('if (typeof IntersectionObserver === "undefined")');

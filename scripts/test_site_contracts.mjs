@@ -95,7 +95,7 @@ check(
   "Hero secondary CTA provides a 44px touch target",
   (() => {
     const heroStart = home.indexOf("function Hero()");
-    const heroEnd = home.indexOf("\\nfunction ", heroStart + 1);
+    const heroEnd = home.indexOf("\nfunction ", heroStart + 1);
     const hero = home.slice(heroStart, heroEnd < 0 ? undefined : heroEnd);
     const labelStart = hero.indexOf("Conheça a estratégia");
     const linkStart = hero.lastIndexOf('<a href="#servicos"', labelStart);

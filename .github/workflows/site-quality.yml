@@ -30,6 +30,9 @@ jobs:
 
       # The current repository has pre-existing Prettier-only violations across untouched files.
       # Keep all other ESLint rules active while avoiding a repository-wide reformat in this landing-page task.
+      - name: Run site integrity contracts
+        run: bun run test:contracts
+
       - name: Run ESLint (excluding formatting-only baseline)
         run: "bun run lint -- --rule 'prettier/prettier: off'"
 

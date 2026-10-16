@@ -396,6 +396,12 @@ check(
 );
 
 check(
+  "Direct service fragments clear the fixed header",
+  styles.includes('[id^="servicos-"]') &&
+    /section\[id\],[\s\S]*?\[id\^="servicos-"\],[\s\S]*?#main-content\s*\{\s*scroll-margin-top:\s*6rem;/.test(styles),
+);
+
+check(
   "Footer provides a persistent link to the privacy policy",
   footer.includes('href: "/politica-de-privacidade"') &&
     footer.includes('label: "Política de Privacidade"'),

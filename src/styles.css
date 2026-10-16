@@ -304,6 +304,7 @@
 
 /* Evita que a navegação por âncoras esconda títulos sob o cabeçalho fixo. */
 section[id],
+[id^="servicos-"],
 #main-content {
   scroll-margin-top: 6rem;
 }

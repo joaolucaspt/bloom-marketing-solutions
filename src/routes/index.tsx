@@ -441,36 +441,43 @@ function Pillars() {
 }
 
 const SERVICES: {
+  id: string;
   t: string;
   d: string;
   photo: ServicePhotoVariant;
 }[] = [
   {
+    id: "google-ads",
     t: "Google Ads",
     d: "Campanhas de pesquisa para posicionar a clínica diante de pessoas que já procuram serviços odontológicos na região.",
     photo: "google",
   },
   {
+    id: "meta-ads",
     t: "Meta Ads",
     d: "Anúncios nas redes sociais para apresentar especialidades e diferenciais da clínica a públicos relevantes e estimular conversas qualificadas.",
     photo: "meta",
   },
   {
+    id: "landing-pages",
     t: "Landing Pages",
     d: "Páginas com mensagem clara, diferenciais e chamadas para ação pensadas para transformar interesse em contato.",
     photo: "landing",
   },
   {
+    id: "presenca-digital",
     t: "Presença Digital",
     d: "Consistência entre os principais pontos de contato digitais para transmitir profissionalismo e facilitar a escolha da clínica.",
     photo: "presence",
   },
   {
+    id: "acompanhamento",
     t: "Acompanhamento",
     d: "Leitura de investimento, custo por contato, qualidade dos leads e agendamentos para orientar ajustes com base nos dados disponíveis.",
     photo: "analytics",
   },
   {
+    id: "jornada-paciente",
     t: "Jornada do Paciente",
     d: "Organização das etapas entre o primeiro contato, a resposta da equipe e o agendamento para reduzir oportunidades perdidas.",
     photo: "journey",
@@ -481,6 +488,22 @@ const SERVICES: {
 function Services() {
   const [active, setActive] = useState(0);
   const words = ["captar pacientes", "converter contatos", "medir campanhas", "reforçar presença"];
+
+  useEffect(() => {
+    const syncActiveFromHash = () => {
+      const prefix = "#servicos-";
+      const hash = window.location.hash;
+      if (!hash.startsWith(prefix)) return;
+      const slug = hash.slice(prefix.length);
+      const index = SERVICES.findIndex((service) => service.id === slug);
+      if (index >= 0) setActive(index);
+    };
+
+    syncActiveFromHash();
+    window.addEventListener("hashchange", syncActiveFromHash);
+    return () => window.removeEventListener("hashchange", syncActiveFromHash);
+  }, []);
+
   return (
     <section id="servicos" className="relative py-24 md:py-32 border-t border-border">
       <SectionBg />
@@ -504,6 +527,7 @@ function Services() {
             <button
               type="button"
               key={s.t}
+              id={`servicos-${s.id}`}
               aria-pressed={active === i}
               onClick={() => setActive(i)}
               className={`relative inline-flex min-h-[44px] items-center px-1 font-caption text-xs md:text-sm transition-all pb-2 ${
@@ -606,14 +630,10 @@ function Footer() {
     { href: "#perguntas-frequentes", label: "Perguntas frequentes" },
     { href: "#agendar", label: "Contato" },
   ];
-  const servicos = [
-    { href: "#servicos", label: "Google Ads" },
-    { href: "#servicos", label: "Meta Ads" },
-    { href: "#servicos", label: "Landing Pages" },
-    { href: "#servicos", label: "Presença Digital" },
-    { href: "#servicos", label: "Acompanhamento" },
-    { href: "#servicos", label: "Jornada do Paciente" },
-  ];
+  const servicos = SERVICES.map(({ id, t }) => ({
+    href: `#servicos-${id}`,
+    label: t,
+  }));
   return (
     <footer className="border-t border-border bg-[#050505]/40 py-14">
       <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-4">

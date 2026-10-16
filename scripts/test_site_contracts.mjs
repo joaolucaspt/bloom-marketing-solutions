@@ -116,6 +116,24 @@ check(
       link.includes('className="inline-flex min-h-[44px] items-center text-sm font-semibold text-foreground transition-colors hover:text-primary"');
   })(),
 );
+check(
+  "Header logo link provides a 44px touch target",
+  (() => {
+    const logoStart = home.indexOf("function Logo({ className");
+    const logoEnd = home.indexOf("\\n}", logoStart) + 2;
+    const logo = home.slice(logoStart, logoEnd);
+    const linkStart = logo.indexOf('<a href="#top"');
+    const linkEnd = logo.indexOf("</a>", linkStart);
+    const link = logo.slice(linkStart, linkEnd);
+    return logoStart >= 0 &&
+      logoEnd > logoStart &&
+      linkStart >= 0 &&
+      linkEnd > linkStart &&
+      link.includes('href="#top"') &&
+      link.includes("min-h-[44px]") &&
+      link.includes("<LogoMark scale={0.85} />");
+  })(),
+);
 check("Hero keeps high-priority loading", /fetchPriority="high"/.test(home) && /decoding="async"/.test(home));
 check(
   "Service photos expose responsive candidates",

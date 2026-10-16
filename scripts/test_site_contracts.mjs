@@ -393,6 +393,57 @@ check(
   })(),
 );
 
+
+const c31NotFoundStart = rootRoute.indexOf("function NotFoundComponent()");
+const c31ErrorStart = rootRoute.indexOf("function ErrorComponent");
+const c31RouteStart = rootRoute.indexOf("export const Route");
+const c31NotFound = rootRoute.slice(c31NotFoundStart, c31ErrorStart);
+const c31ErrorComponent = rootRoute.slice(c31ErrorStart, c31RouteStart);
+
+check(
+  "404 recovery link provides a 44px touch target",
+  (() => {
+    const label = "Voltar ao início";
+    const labelStart = c31NotFound.indexOf(label);
+    const linkStart = c31NotFound.lastIndexOf("<Link", labelStart);
+    const linkEnd = c31NotFound.indexOf("</Link>", labelStart);
+    const link = c31NotFound.slice(linkStart, linkEnd);
+    return labelStart >= 0 &&
+      linkStart >= 0 &&
+      linkEnd > labelStart &&
+      link.includes("min-h-[44px]");
+  })(),
+);
+check(
+  "Error retry button provides a 44px touch target",
+  (() => {
+    const label = "Tentar novamente";
+    const labelStart = c31ErrorComponent.indexOf(label);
+    const buttonStart = c31ErrorComponent.lastIndexOf("<button", labelStart);
+    const buttonEnd = c31ErrorComponent.indexOf("</button>", labelStart);
+    const button = c31ErrorComponent.slice(buttonStart, buttonEnd);
+    return labelStart >= 0 &&
+      buttonStart >= 0 &&
+      buttonEnd > labelStart &&
+      button.includes("min-h-[44px]");
+  })(),
+);
+check(
+  "Error recovery link provides a 44px touch target",
+  (() => {
+    const label = "Voltar ao início";
+    const labelStart = c31ErrorComponent.indexOf(label);
+    const linkStart = c31ErrorComponent.lastIndexOf("<a", labelStart);
+    const linkEnd = c31ErrorComponent.indexOf("</a>", labelStart);
+    const link = c31ErrorComponent.slice(linkStart, linkEnd);
+    return labelStart >= 0 &&
+      linkStart >= 0 &&
+      linkEnd > labelStart &&
+      link.includes('href="/"') &&
+      link.includes("min-h-[44px]");
+  })(),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

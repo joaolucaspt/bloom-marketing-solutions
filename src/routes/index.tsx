@@ -672,12 +672,19 @@ function Footer() {
           <p className="font-caption text-xs text-primary">Contato</p>
           <p className="mt-4 text-xs uppercase tracking-[0.2em] text-[#888]">Telefone e WhatsApp</p>
           <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+5531971169912"
+            aria-label={`Ligar para a LS pelo número ${PHONE_DISPLAY}`}
             className="mt-2 block text-lg font-medium text-foreground hover:text-primary transition-colors"
           >
             {PHONE_DISPLAY}
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex min-h-[40px] items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-foreground"
+          >
+            Falar no WhatsApp <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>

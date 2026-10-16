@@ -105,11 +105,11 @@ check(
     const utilityStart = styles.indexOf("@utility btn-primary {");
     const utilityEnd = styles.indexOf("\n.btn-primary:hover", utilityStart);
     const utility = styles.slice(utilityStart, utilityEnd);
-    const primaryActionLinks = [...home.matchAll(/className="[^"]*\\bbtn-primary\\b[^"]*"/g)];
+    const primaryActionLinks = [...home.matchAll(/className="[^"]*\bbtn-primary\b[^"]*"/g)];
     return utilityStart >= 0 &&
       utilityEnd > utilityStart &&
       primaryActionLinks.length >= 5 &&
-      /min-height:\\s*44px;/.test(utility);
+      /min-height:\s*44px;/.test(utility);
   })(),
 );
 

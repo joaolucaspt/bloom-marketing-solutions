@@ -124,7 +124,7 @@ const WHATSAPP_URL =
 
 function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`inline-flex items-center ${className}`}>
+    <a href="#top" className={`inline-flex min-h-[44px] items-center ${className}`}>
       <LogoMark scale={0.85} />
     </a>
   );

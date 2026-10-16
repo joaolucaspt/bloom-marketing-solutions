@@ -461,6 +461,21 @@ check(
   })(),
 );
 
+const floatingWhatsAppStart = home.indexOf("function FloatingWhatsApp()");
+const floatingWhatsAppEnd = home.indexOf("\\nfunction Index()", floatingWhatsAppStart);
+const floatingWhatsApp = home.slice(floatingWhatsAppStart, floatingWhatsAppEnd);
+
+check(
+  "Floating WhatsApp launcher stays above the responsive cookie notice",
+  floatingWhatsAppStart >= 0 &&
+    floatingWhatsAppEnd > floatingWhatsAppStart &&
+    cookieBanner.includes("const bannerRef = useRef<HTMLDivElement>(null)") &&
+    cookieBanner.includes("new ResizeObserver(updateHeight)") &&
+    cookieBanner.includes("--ls-cookie-banner-height") &&
+    floatingWhatsApp.includes('bottom: "calc(var(--ls-cookie-banner-height, 0px) + 1.5rem)"') &&
+    !floatingWhatsApp.includes("bottom-6"),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

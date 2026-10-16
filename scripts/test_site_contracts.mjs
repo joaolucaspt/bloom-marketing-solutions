@@ -192,6 +192,33 @@ const ogUrl = home.match(/property: "og:url",\s*content: "([^"]+)"/)?.[1];
 check("Homepage canonical and og:url agree", canonical === ogUrl && canonical === "https://lsagenciademarketing.com/");
 check("Privacy policy canonical uses the same production domain", privacy.includes('href: "https://lsagenciademarketing.com/politica-de-privacidade"'));
 check(
+  "Cal.com route transitions use native document navigation instead of SPA embed remounts",
+  (() => {
+    const cookieLabel = "Política de Privacidade";
+    const cookieLabelStart = cookieBanner.indexOf(cookieLabel);
+    const cookieLinkStart = cookieBanner.lastIndexOf('<a href="/politica-de-privacidade"', cookieLabelStart);
+    const cookieLinkEnd = cookieBanner.indexOf("</a>", cookieLabelStart);
+    const cookieLink = cookieBanner.slice(cookieLinkStart, cookieLinkEnd);
+    const returnLabel = "Voltar para a página inicial";
+    const returnLabelStart = privacy.indexOf(returnLabel);
+    const returnLinkStart = privacy.lastIndexOf('<a href="/"', returnLabelStart);
+    const returnLinkEnd = privacy.indexOf("</a>", returnLabelStart);
+    const returnLink = privacy.slice(returnLinkStart, returnLinkEnd);
+    return cookieLabelStart >= 0 &&
+      cookieLinkStart >= 0 &&
+      cookieLinkEnd > cookieLabelStart &&
+      cookieLink.includes('href="/politica-de-privacidade"') &&
+      cookieLink.includes('className="text-primary underline"') &&
+      returnLabelStart >= 0 &&
+      returnLinkStart >= 0 &&
+      returnLinkEnd > returnLabelStart &&
+      returnLink.includes('href="/"') &&
+      returnLink.includes("min-h-[44px]") &&
+      !cookieBanner.includes('import { Link } from "@tanstack/react-router";') &&
+      !privacy.includes('import { createFileRoute, Link } from "@tanstack/react-router";');
+  })(),
+);
+check(
   "Privacy policy provides a keyboard skip link to a focusable main target",
   privacy.includes('<a href="#main-content" className="skip-to-content">') &&
     privacy.includes("Pular para o conteúdo principal") &&

@@ -455,9 +455,9 @@ check(
       start >= 0 &&
       end > target &&
       link.includes('href="tel:+5531971169912"') &&
-      /min-h-\\[44px\\]/.test(link) &&
-      /\\b(?:inline-)?flex\\b/.test(link) &&
-      /\\bitems-center\\b/.test(link);
+      link.includes("min-h-[44px]") &&
+      (link.includes("inline-flex") || link.includes(" flex ")) &&
+      link.includes("items-center");
   })(),
 );
 

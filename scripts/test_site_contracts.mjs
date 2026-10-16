@@ -747,6 +747,25 @@ check(
 );
 
 check(
+  "Desktop primary navigation exposes a named navigation landmark",
+  (() => {
+    const navStart = home.indexOf("function Nav()");
+    const navEnd = home.indexOf("/* Reusable ambient background", navStart);
+    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
+    const desktopNavStart = nav.indexOf("lg:flex items-center gap-10");
+    const tagStart = nav.lastIndexOf("<nav", desktopNavStart);
+    const tagEnd = nav.indexOf(">", tagStart);
+    const tag = nav.slice(tagStart, tagEnd + 1);
+    return navStart >= 0 &&
+      navEnd > navStart &&
+      desktopNavStart >= 0 &&
+      tagStart >= 0 &&
+      tagEnd > tagStart &&
+      tag.includes('aria-label="Navegação principal"');
+  })(),
+);
+
+check(
   "Desktop navigation links meet the 44px touch target minimum",
   (() => {
     const navStart = home.indexOf('<nav className="hidden lg:flex items-center gap-10">');

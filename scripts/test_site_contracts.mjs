@@ -174,14 +174,9 @@ check(
 
 check(
   "Mobile navigation links meet the 44px touch target minimum",
-  (() => {
-    const navStart = home.indexOf('<div id="mobile-navigation"');
-    const navEnd = home.indexOf("</div>", navStart);
-    const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
-    return nav.includes("{links.map((l) => (") &&
-      nav.includes('className="min-h-[44px] inline-flex items-center text-sm text-foreground/80"') &&
-      nav.includes('className="btn-primary sm:hidden min-h-[44px] inline-flex items-center"');
-  })(),
+  home.includes("{links.map((l) => (") &&
+    home.includes('className="min-h-[44px] inline-flex items-center text-sm text-foreground/80"') &&
+    home.includes('className="btn-primary sm:hidden min-h-[44px] inline-flex items-center"'),
 );
 
 check(

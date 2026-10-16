@@ -178,13 +178,13 @@ check(
     const navStart = home.indexOf('<div id="mobile-navigation"');
     const navEnd = home.indexOf("</div>", navStart);
     const nav = home.slice(navStart, navEnd < 0 ? undefined : navEnd);
-    const anchors = [...nav.matchAll(/<a\\b[^>]*>/g)].map((match) => match[0]);
+    const anchors = [...nav.matchAll(/<a\b[^>]*>/g)].map((match) => match[0]);
     return anchors.length === 2 &&
       nav.includes("{links.map((l) => (") &&
       anchors.every((anchor) => {
         const className = anchor.match(/className="([^"]*)"/)?.[1] ?? "";
         return ["min-h-[44px]", "inline-flex", "items-center"].every((token) =>
-          className.split(/\\s+/).includes(token),
+          className.split(/\s+/).includes(token),
         );
       });
   })(),

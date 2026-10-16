@@ -1,3 +1,5 @@
+import { responsivePexelsSrcSet } from "@/lib/responsive-pexels";
+
 export type ServicePhotoVariant =
   | "google"
   | "meta"
@@ -52,8 +54,6 @@ const photos: Record<ServicePhotoVariant, PhotoContent> = {
     caption: "Conecte o primeiro contato ao agendamento",
   },
 };
-
-import { responsivePexelsSrcSet } from "@/lib/responsive-pexels";
 
 export default function ServicePhoto({ variant }: { variant: ServicePhotoVariant }) {
   const photo = photos[variant];

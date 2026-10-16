@@ -91,7 +91,7 @@ function MetaVisual() {
         <div className="relative overflow-hidden bg-[#e9e3d7] px-6 py-8 text-[#201f1b]">
           <div className="absolute -right-8 -top-12 h-36 w-36 rounded-full border border-[#b7a16d]/70" />
           <div className="absolute -right-1 -top-5 h-24 w-24 rounded-full border border-[#b7a16d]/70" />
-          <p className="relative text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b733b]">
+          <p className="relative text-[10px] font-semibold uppercase tracking-[0.2em] text-[#755f32]">
             Comunicação da clínica
           </p>
           <h3 className="relative mt-4 max-w-[230px] text-2xl font-semibold leading-tight">

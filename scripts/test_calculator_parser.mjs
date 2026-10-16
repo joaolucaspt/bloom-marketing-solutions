@@ -21,7 +21,7 @@ for (const testCase of cases) {
   console.log(`PASS ${testCase.label}`);
 }
 
-for (const invalid of ["", "0", "-40,50", "1.23.4", "abc"]) {
+for (const invalid of ["", "0", "-40,50", "1.23.4", "1,234,56", "1.234.56", "abc"]) {
   assert.ok(Number.isNaN(parseBRL(invalid)), `Expected a non-positive or malformed value to be rejected: "${invalid}"`);
 }
 console.log("PASS invalid and non-positive values are rejected");

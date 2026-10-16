@@ -24,7 +24,10 @@ let structuredData = null;
 let structuredDataError = "";
 try {
   assert.ok(structuredMatch, "SITE_STRUCTURED_DATA constant must exist");
-  structuredData = JSON.parse(structuredMatch[1]);
+  // The source is a TypeScript object literal, so strip only legal trailing commas
+  // before parsing its data as strict JSON. Runtime still serializes with JSON.stringify.
+  const jsonCompatibleSource = structuredMatch[1].replace(/,\\s*([}\\]])/g, "$1");
+  structuredData = JSON.parse(jsonCompatibleSource);
 } catch (error) {
   structuredDataError = error instanceof Error ? error.message : String(error);
 }

@@ -214,6 +214,37 @@ check(
 );
 
 check(
+  "Calculator associates validation state and error copy to the invalid field",
+  (() => {
+    const expectedFields = [
+      { id: "calc-budget", invalidState: "budgetInvalid" },
+      { id: "calc-cpl", invalidState: "costPerContactInvalid" },
+    ];
+    const eachFieldHasAssociatedError = expectedFields.every(({ id, invalidState }) => {
+      const idIndex = calculator.indexOf(`id="${id}"`);
+      const inputStart = calculator.lastIndexOf("<input", idIndex);
+      const inputEnd = calculator.indexOf("/>", idIndex);
+      const input = calculator.slice(inputStart, inputEnd);
+      return idIndex >= 0 &&
+        inputStart >= 0 &&
+        inputEnd > inputStart &&
+        input.includes(`aria-invalid={${invalidState}}`) &&
+        input.includes(`aria-describedby={${invalidState} ? "calculator-error" : undefined}`);
+    });
+    const errorTextIndex = calculator.indexOf("Informe valores maiores que zero");
+    const errorTagStart = calculator.lastIndexOf("<p", errorTextIndex);
+    const errorTagEnd = calculator.indexOf(">", errorTagStart);
+    const errorTag = calculator.slice(errorTagStart, errorTagEnd);
+    return eachFieldHasAssociatedError &&
+      errorTextIndex >= 0 &&
+      errorTagStart >= 0 &&
+      errorTagEnd > errorTagStart &&
+      errorTag.includes('id="calculator-error"') &&
+      errorTag.includes('role="alert"');
+  })(),
+);
+
+check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&
     calculator.includes("onSubmit={(event) => {") &&

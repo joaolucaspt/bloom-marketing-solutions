@@ -330,6 +330,20 @@ check(
 );
 
 check(
+  "Footer WhatsApp link provides a 44px touch target",
+  (() => {
+    const label = footer.indexOf("Falar no WhatsApp");
+    const linkStart = footer.lastIndexOf("<a", label);
+    const linkEnd = footer.indexOf("</a>", label);
+    const link = footer.slice(linkStart, linkEnd);
+    return label >= 0 &&
+      linkStart >= 0 &&
+      linkEnd > label &&
+      link.includes('href={WHATSAPP_URL}') &&
+      link.includes('className="mt-2 inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-foreground"');
+  })(),
+);
+check(
   "Editing either calculator amount invalidates the previous estimate and validation error",
   (() => {
     const updater = calculator.match(

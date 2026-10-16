@@ -13,6 +13,7 @@ const home = read("src/routes/index.tsx");
 const rootRoute = read("src/routes/__root.tsx");
 const booking = read("src/components/Booking.tsx");
 const calculator = read("src/components/Calculator.tsx");
+const cookieBanner = read("src/components/CookieBanner.tsx");
 const servicePhoto = read("src/components/ServicePhoto.tsx");
 const responsiveHelper = read("src/lib/responsive-pexels.ts");
 const styles = read("src/styles.css");
@@ -111,6 +112,21 @@ check(
     /\.join\(", "\)/.test(responsiveHelper),
 );
 
+check(
+  "Cookie notice is a named non-modal live region with an explicit action button",
+  cookieBanner.includes('role="region"') &&
+    cookieBanner.includes('aria-label="Aviso sobre cookies e serviços externos"') &&
+    cookieBanner.includes('aria-live="polite"') &&
+    cookieBanner.includes('aria-atomic="true"') &&
+    cookieBanner.includes('type="button"') &&
+    !cookieBanner.includes('role="dialog"'),
+);
+check(
+  "Cookie notice dismissal persists only the notice preference",
+  cookieBanner.includes('const STORAGE_KEY = "cookie-consent"') &&
+    cookieBanner.includes('localStorage.setItem(STORAGE_KEY, "dismissed")') &&
+    cookieBanner.includes('to="/politica-de-privacidade"'),
+);
 check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&

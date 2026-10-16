@@ -97,7 +97,7 @@ export default function Booking() {
                 href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] items-center font-semibold text-primary underline underline-offset-4 transition hover:text-foreground"
+                className="font-semibold text-primary underline underline-offset-4 transition hover:text-foreground"
               >
                 Abrir agendamento em nova aba
               </a>

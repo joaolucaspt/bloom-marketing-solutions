@@ -61,7 +61,7 @@ export default function LandingPages() {
               Mais completo
             </span>
             <div className="card-header">
-              <Gem className="card-icon h-6 w-6 text-primary" strokeWidth={1.8} />
+              <Gem aria-hidden="true" className="card-icon h-6 w-6 text-primary" strokeWidth={1.8} />
               <h3 className="card-title font-semibold text-foreground" style={{ fontSize: 19, lineHeight: "24px" }}>
                 GESTÃO COMPLETA
               </h3>

@@ -196,8 +196,7 @@ export default function ExitIntentPopup() {
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="mt-4 block w-full text-center underline"
-          style={{ color: "#666", fontSize: 12 }}
+          className="mt-4 flex min-h-[44px] w-full items-center justify-center text-center text-xs text-[#a8a8a8] underline transition-colors hover:text-foreground"
         >
           Continuar navegando
         </button>

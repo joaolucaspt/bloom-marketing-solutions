@@ -150,6 +150,21 @@ check(
 );
 
 check(
+  "Exit-intent continue action provides a 44px touch target and accessible contrast",
+  (() => {
+    const textStart = exitIntent.indexOf("Continuar navegando");
+    const buttonStart = exitIntent.lastIndexOf("<button", textStart);
+    const buttonEnd = exitIntent.indexOf("</button>", textStart);
+    const continueButton = exitIntent.slice(buttonStart, buttonEnd);
+    return textStart >= 0 &&
+      buttonStart >= 0 &&
+      buttonEnd > textStart &&
+      continueButton.includes('className="mt-4 flex min-h-[44px] w-full items-center justify-center text-center text-xs text-[#a8a8a8] underline transition-colors hover:text-foreground"') &&
+      !continueButton.includes('style={{ color: "#666"');
+  })(),
+);
+
+check(
   "Calculator supports keyboard submission with the same validation path",
   calculator.includes("<form") &&
     calculator.includes("onSubmit={(event) => {") &&

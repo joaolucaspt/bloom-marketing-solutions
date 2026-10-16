@@ -83,7 +83,7 @@ export default function Booking() {
           </div>
 
           {/* Coluna direita — Cal.com */}
-          <div className="flex justify-center md:justify-end">
+          <div className="flex flex-col items-center md:items-end">
             <div className="h-[540px] w-full max-w-[420px] overflow-hidden rounded-xl bg-[#141414] shadow-2xl sm:h-[580px]">
               <Cal
                 calLink="ls.agenciademarketing/diagnostico-gratuito"
@@ -91,7 +91,7 @@ export default function Booking() {
                 config={{ theme: "dark", layout: "month_view" }}
               />
             </div>
-            <p className="mt-4 text-center text-sm text-[#a8a8a8]">
+            <p className="mt-4 w-full max-w-[420px] text-center text-sm text-[#a8a8a8] md:text-right">
               Problemas para visualizar a agenda?{" "}
               <a
                 href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"

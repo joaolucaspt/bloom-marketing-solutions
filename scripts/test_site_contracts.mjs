@@ -118,6 +118,17 @@ check(
 const whatsappNumbers = [...booking.matchAll(/wa\.me\/(\d+)/g)].map((match) => match[1]);
 check("Booking WhatsApp links keep the official number", whatsappNumbers.length > 0 && whatsappNumbers.every((number) => number === "5531971169912"));
 check("Booking keeps the existing Cal.com diagnostic", booking.includes('calLink="ls.agenciademarketing/diagnostico-gratuito"'));
+check(
+  "Cal.com fallback stays below the embed and fits the booking column on mobile",
+  (() => {
+    const start = booking.indexOf("{/* Coluna direita — Cal.com */");
+    const end = booking.indexOf("{/* Card de contato", start);
+    const layout = booking.slice(start, end < 0 ? undefined : end);
+    return layout.includes('className="flex flex-col items-center md:items-end"') &&
+      layout.includes('className="mt-4 w-full max-w-[420px] text-center text-sm text-[#a8a8a8] md:text-right"') &&
+      layout.includes('href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"');
+  })(),
+);
 check("Booking keeps the existing public email and Instagram", booking.includes('mailto:contato@lsagenciademarketing.com.br') && booking.includes("https://www.instagram.com/ls.agenciademarketing"));
 
 check(

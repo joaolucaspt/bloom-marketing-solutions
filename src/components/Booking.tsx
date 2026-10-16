@@ -125,7 +125,7 @@ export default function Booking() {
             <a
               href="tel:+5531971169912"
               aria-label={`Ligar para a LS pelo número ${PHONE_DISPLAY}`}
-              className="mt-2 block text-center text-2xl font-medium text-foreground transition-colors hover:text-primary"
+              className="mt-2 flex min-h-[44px] items-center justify-center text-center text-2xl font-medium text-foreground transition-colors hover:text-primary"
             >
               {PHONE_DISPLAY}
             </a>

@@ -20,9 +20,12 @@ import { useReveal } from "@/hooks/useReveal";
 import AdsPanel from "@/components/AdsPanel";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import ServicePhoto, { type ServicePhotoVariant } from "@/components/ServicePhoto";
+import { responsivePexelsSrcSet } from "@/lib/responsive-pexels";
 
 const dentalHeroImage = "https://images.pexels.com/photos/3881423/pexels-photo-3881423.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const dentalHeroSrcSet = responsivePexelsSrcSet(dentalHeroImage, [640, 960, 1280, 1800]);
 const dentalAboutImage = "https://images.pexels.com/photos/5355703/pexels-photo-5355703.jpeg?auto=compress&cs=tinysrgb&w=1400";
+const dentalAboutSrcSet = responsivePexelsSrcSet(dentalAboutImage, [480, 640, 960, 1200, 1400]);
 
 
 
@@ -214,7 +217,15 @@ function Hero() {
   return (
     <section id="top" className="relative flex items-center pt-28 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={dentalHeroImage} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover opacity-[0.32] scale-105 animate-[floaty_20s_ease-in-out_infinite]" />
+        <img
+          src={dentalHeroImage}
+          srcSet={dentalHeroSrcSet}
+          sizes="100vw"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="w-full h-full object-cover opacity-[0.32] scale-105 animate-[floaty_20s_ease-in-out_infinite]"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/68 to-background/42" />
       </div>
       <Blobs />
@@ -288,6 +299,8 @@ function About() {
             <div className="absolute -inset-3 rounded-3xl border border-primary/40" />
             <img
               src={dentalAboutImage}
+              srcSet={dentalAboutSrcSet}
+              sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1279px) 50vw, 560px"
               alt="Profissional odontológico em atendimento a paciente em consultório contemporâneo"
               loading="lazy"
               className="relative rounded-2xl w-full object-cover aspect-[4/3]"

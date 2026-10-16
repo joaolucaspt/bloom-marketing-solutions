@@ -307,7 +307,7 @@ function Hero() {
                 <a href="#agendar" className="btn-primary">
                   Quero atrair mais pacientes
                 </a>
-                <a href="#servicos" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">
+                <a href="#servicos" className="inline-flex min-h-[44px] items-center text-sm font-semibold text-foreground transition-colors hover:text-primary">
                   Conheça a estratégia <span aria-hidden="true">↗</span>
                 </a>
               </div>

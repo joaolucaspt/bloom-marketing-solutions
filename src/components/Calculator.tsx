@@ -41,6 +41,9 @@ export default function Calculator() {
     setResult(null);
   };
 
+  const budgetInvalid = Boolean(error) && Number.isNaN(parseBRL(budget));
+  const costPerContactInvalid = Boolean(error) && Number.isNaN(parseBRL(costPerContact));
+
   const field =
     "w-full min-h-[44px] rounded-lg bg-[#0d0d0d] border border-[#333] px-3 py-2.5 text-sm text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
 
@@ -73,6 +76,8 @@ export default function Calculator() {
             id="calc-budget"
             inputMode="decimal"
             autoComplete="off"
+            aria-invalid={budgetInvalid}
+            aria-describedby={budgetInvalid ? "calculator-error" : undefined}
             value={budget}
             onChange={(event) => updateInput("budget", event.target.value)}
             placeholder="R$ 2.000"
@@ -87,6 +92,8 @@ export default function Calculator() {
             id="calc-cpl"
             inputMode="decimal"
             autoComplete="off"
+            aria-invalid={costPerContactInvalid}
+            aria-describedby={costPerContactInvalid ? "calculator-error" : undefined}
             value={costPerContact}
             onChange={(event) => updateInput("costPerContact", event.target.value)}
             placeholder="R$ 40"
@@ -95,7 +102,7 @@ export default function Calculator() {
         </div>
         </div>
 
-        {error && <p className="mt-3 text-[13px] text-[#e07070]" role="alert">{error}</p>}
+        {error && <p id="calculator-error" className="mt-3 text-[13px] text-[#e07070]" role="alert">{error}</p>}
 
         <button
           type="submit"

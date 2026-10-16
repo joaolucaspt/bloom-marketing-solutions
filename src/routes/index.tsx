@@ -65,7 +65,9 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
+      { property: "og:url", content: "https://lsagenciademarketing.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://lsagenciademarketing.com/" }],
   }),
 
   component: Index,

@@ -42,7 +42,7 @@ export default function Calculator() {
   };
 
   const field =
-    "w-full rounded-lg bg-[#0d0d0d] border border-[#333] px-3 py-2.5 text-sm text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
+    "w-full min-h-[44px] rounded-lg bg-[#0d0d0d] border border-[#333] px-3 py-2.5 text-sm text-foreground placeholder:text-[#666] outline-none focus:border-primary transition-colors";
 
   return (
     <div

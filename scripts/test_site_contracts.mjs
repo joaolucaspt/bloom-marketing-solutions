@@ -100,6 +100,20 @@ check(
     /src=\{dentalAboutImage\}\s+srcSet=\{dentalAboutSrcSet\}\s+sizes=/.test(home),
 );
 check(
+  "Shared primary conversion CTA class guarantees a 44px touch target",
+  (() => {
+    const utilityStart = styles.indexOf("@utility btn-primary {");
+    const utilityEnd = styles.indexOf("\n.btn-primary:hover", utilityStart);
+    const utility = styles.slice(utilityStart, utilityEnd);
+    const primaryActionLinks = [...home.matchAll(/className="[^"]*\bbtn-primary\b[^"]*"/g)];
+    return utilityStart >= 0 &&
+      utilityEnd > utilityStart &&
+      primaryActionLinks.length >= 5 &&
+      /min-height:\s*44px;/.test(utility);
+  })(),
+);
+
+check(
   "Hero secondary CTA provides a 44px touch target",
   (() => {
     const heroStart = home.indexOf("function Hero()");

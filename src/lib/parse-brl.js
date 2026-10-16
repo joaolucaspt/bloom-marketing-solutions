@@ -34,7 +34,16 @@ export function parseBRL(raw) {
     const decimalIndex = value.lastIndexOf(decimalSeparator);
     integerPart = value.slice(0, decimalIndex);
     fractionalPart = value.slice(decimalIndex + 1);
-    if (fractionalPart.length > 2 || !/^\d*$/.test(fractionalPart)) return NaN;
+
+    // One punctuation mark cannot simultaneously group thousands and mark cents.
+    // Inputs such as "1,234,56" and "1.234.56" are malformed, not 1234.56.
+    if (
+      fractionalPart.length > 2 ||
+      !/^\d*$/.test(fractionalPart) ||
+      integerPart.includes(decimalSeparator)
+    ) {
+      return NaN;
+    }
   }
 
   const hasDot = integerPart.includes(".");

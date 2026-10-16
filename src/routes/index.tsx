@@ -50,6 +50,39 @@ function Blobs() {
   );
 }
 
+const SITE_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lsagenciademarketing.com/#organization",
+      "name": "LS Agência de Marketing",
+      "url": "https://lsagenciademarketing.com/",
+      "description":
+        "Marketing odontológico para clínicas que querem atrair pacientes particulares com Google Ads, Meta Ads e landing pages focadas em conversão e agendamento.",
+      "telephone": "+55-31-97116-9912",
+      "email": "contato@lsagenciademarketing.com.br",
+      "sameAs": ["https://www.instagram.com/ls.agenciademarketing"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-31-97116-9912",
+        "email": "contato@lsagenciademarketing.com.br",
+        "contactType": "sales",
+        "availableLanguage": "pt-BR",
+        "areaServed": "BR",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lsagenciademarketing.com/#website",
+      "url": "https://lsagenciademarketing.com/",
+      "name": "LS Agência de Marketing",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://lsagenciademarketing.com/#organization" },
+    },
+  ],
+} as const;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -71,6 +104,12 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://lsagenciademarketing.com/" },
     ],
     links: [{ rel: "canonical", href: "https://lsagenciademarketing.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(SITE_STRUCTURED_DATA),
+      },
+    ],
   }),
 
   component: Index,

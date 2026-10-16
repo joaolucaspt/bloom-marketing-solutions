@@ -134,6 +134,28 @@ check(
 );
 
 check(
+  "Landing-page conversion CTAs guarantee 44px minimum touch targets",
+  (() => {
+    const labels = [
+      "Quero a gestão completa",
+      "Quero minha landing page",
+      "Quero combinar página e campanha",
+      "Quero uma landing page para minha clínica",
+    ];
+    return labels.every((label) => {
+      const labelStart = landingPages.indexOf(label);
+      const anchorStart = landingPages.lastIndexOf("<a", labelStart);
+      const anchorEnd = landingPages.indexOf("</a>", labelStart);
+      const anchor = landingPages.slice(anchorStart, anchorEnd);
+      return labelStart >= 0 &&
+        anchorStart >= 0 &&
+        anchorEnd > labelStart &&
+        anchor.includes("min-h-[44px]");
+    });
+  })(),
+);
+
+check(
   "Hero secondary CTA provides a 44px touch target",
   (() => {
     const heroStart = home.indexOf("function Hero()");

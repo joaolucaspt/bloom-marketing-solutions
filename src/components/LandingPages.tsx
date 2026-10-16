@@ -82,7 +82,7 @@ export default function LandingPages() {
             <div className="spacer-bottom" />
             <a
               href="#agendar"
-              className="card-button block rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+              className="card-button block min-h-[44px] rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition hover:brightness-110"
             >
               Quero a gestão completa
             </a>
@@ -130,7 +130,7 @@ export default function LandingPages() {
               href={WA_LP}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-button block rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="card-button block min-h-[44px] rounded-xl border border-primary py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
               Quero minha landing page
             </a>
@@ -178,7 +178,7 @@ export default function LandingPages() {
               href={WA_PREMIUM}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-button block rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
+              className="card-button block min-h-[44px] rounded-xl py-3 text-center text-sm font-semibold transition hover:brightness-110"
               style={{ background: "#D4AF37", color: "#050505" }}
             >
               Quero combinar página e campanha
@@ -205,7 +205,7 @@ export default function LandingPages() {
             href={WA_EXAMPLE}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block rounded-xl bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition hover:brightness-110"
+            className="mt-8 inline-block min-h-[44px] rounded-xl bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition hover:brightness-110"
           >
             Quero uma landing page para minha clínica
           </a>

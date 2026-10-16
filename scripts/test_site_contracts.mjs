@@ -237,6 +237,21 @@ check(
       layout.includes('href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"');
   })(),
 );
+check(
+  "Cal.com fallback link provides a 44px touch target",
+  (() => {
+    const textStart = booking.indexOf("Abrir agendamento em nova aba");
+    const start = booking.lastIndexOf("<a", textStart);
+    const end = booking.indexOf("</a>", textStart);
+    const link = booking.slice(start, end);
+    return textStart >= 0 &&
+      start >= 0 &&
+      end > textStart &&
+      link.includes('href="https://cal.com/ls.agenciademarketing/diagnostico-gratuito"') &&
+      /min-h-\\[44px\\]/.test(link);
+  })(),
+);
+
 check("Booking keeps the existing public email and Instagram", booking.includes('mailto:contato@lsagenciademarketing.com.br') && booking.includes("https://www.instagram.com/ls.agenciademarketing"));
 
 check(

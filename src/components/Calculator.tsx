@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { parseBRL } from "@/lib/parse-brl.js";
 
 const WA_CALC =
   "https://wa.me/5531971169912?text=" +
@@ -13,11 +14,7 @@ const brl = (value: number) =>
     maximumFractionDigits: 0,
   });
 
-const parseBRL = (raw: string) => {
-  const normalized = raw.trim().replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", ".");
-  const value = Number(normalized);
-  return Number.isFinite(value) && value > 0 ? value : NaN;
-};
+
 
 export default function Calculator() {
   const [budget, setBudget] = useState("");

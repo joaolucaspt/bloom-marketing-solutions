@@ -43,7 +43,7 @@ function GoogleVisual() {
     <Frame label="Pesquisa e intenção">
       <div className="mx-auto max-w-md">
         <div className="flex items-center gap-3 rounded-full border border-[#343434] bg-[#101010] px-4 py-3 text-sm text-[#bababa]">
-          <Search size={16} className="shrink-0 text-primary" />
+          <Search aria-hidden="true" size={16} className="shrink-0 text-primary" />
           <span>dentista na minha região</span>
         </div>
         <div className="mt-5 rounded-xl border border-[#343434] bg-[#111111] p-5">
@@ -58,11 +58,11 @@ function GoogleVisual() {
             Informações claras sobre especialidades, localização e como falar com a equipe.
           </p>
           <div className="mt-4 flex items-center gap-2 text-xs font-medium text-primary">
-            Ver página de destino <ArrowRight size={14} />
+            Ver página de destino <ArrowRight aria-hidden="true" size={14} />
           </div>
         </div>
         <div className="mt-3 flex items-start gap-3 rounded-xl border border-dashed border-[#363636] p-4">
-          <Target className="mt-0.5 shrink-0 text-primary" size={18} />
+          <Target aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={18} />
           <div>
             <p className="text-sm font-medium text-white">Intenção de busca</p>
             <p className="mt-1 text-xs leading-relaxed text-[#9f9f9f]">
@@ -81,7 +81,7 @@ function MetaVisual() {
       <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-[#343434] bg-[#111111]">
         <div className="flex items-center gap-3 border-b border-[#2a2a2a] px-4 py-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#202020] text-primary">
-            <MessageCircle size={17} />
+            <MessageCircle aria-hidden="true" size={17} />
           </div>
           <div>
             <p className="text-sm font-medium text-white">Clínica odontológica</p>
@@ -101,7 +101,7 @@ function MetaVisual() {
             Uma mensagem que informa, orienta e convida à conversa.
           </p>
           <div className="relative mt-6 inline-flex items-center gap-2 rounded-full bg-[#1d1c19] px-4 py-2 text-[11px] font-semibold text-white">
-            Conheça a clínica <ArrowRight size={13} />
+            Conheça a clínica <ArrowRight aria-hidden="true" size={13} />
           </div>
         </div>
         <div className="px-4 py-3">
@@ -134,7 +134,7 @@ function LandingVisual() {
               Conteúdo alinhado à especialidade, à região e à proposta de atendimento.
             </p>
             <div className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-[11px] font-semibold text-[#080808]">
-              Falar com a equipe <ArrowRight size={13} />
+              Falar com a equipe <ArrowRight aria-hidden="true" size={13} />
             </div>
           </div>
           <div className="rounded-xl border border-[#333] bg-[#151515] p-4">
@@ -170,7 +170,7 @@ function PresenceVisual() {
       <div className="mx-auto max-w-md rounded-2xl border border-[#343434] bg-[#111111] p-5">
         <div className="flex items-start gap-3 border-b border-[#292929] pb-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#242019] text-primary">
-            <MapPin size={22} />
+            <MapPin aria-hidden="true" size={22} />
           </div>
           <div>
             <p className="text-base font-semibold text-white">Pontos de contato da clínica</p>
@@ -180,7 +180,7 @@ function PresenceVisual() {
         <ul className="mt-5 space-y-3">
           {points.map((point) => (
             <li key={point} className="flex items-start gap-3 text-sm text-[#d0d0d0]">
-              <Check className="mt-0.5 shrink-0 text-primary" size={16} />
+              <Check aria-hidden="true" className="mt-0.5 shrink-0 text-primary" size={16} />
               <span>{point}</span>
             </li>
           ))}
@@ -205,7 +205,7 @@ function AnalyticsVisual() {
             <p className="text-base font-semibold text-white">Indicadores da operação</p>
             <p className="mt-1 text-xs text-[#9a9a9a]">Leitura integrada de desempenho</p>
           </div>
-          <ClipboardCheck size={21} className="shrink-0 text-primary" />
+          <ClipboardCheck aria-hidden="true" size={21} className="shrink-0 text-primary" />
         </div>
         <div className="mt-6 space-y-4">
           {rows.map((row) => (
@@ -244,7 +244,7 @@ function JourneyVisual() {
             <div key={step.title}>
               <div className="flex items-center gap-4 rounded-xl border border-[#343434] bg-[#111111] p-4">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#272216] text-primary">
-                  <Icon size={18} />
+                  <Icon aria-hidden="true" size={18} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-white">{step.title}</p>
@@ -254,7 +254,7 @@ function JourneyVisual() {
               </div>
               {index < steps.length - 1 && (
                 <div className="flex h-5 items-center pl-8 text-[#776638]" aria-hidden="true">
-                  <ArrowDownRight size={15} />
+                  <ArrowDownRight aria-hidden="true" size={15} />
                 </div>
               )}
             </div>

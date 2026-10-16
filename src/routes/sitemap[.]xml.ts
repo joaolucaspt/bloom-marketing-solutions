@@ -10,8 +10,8 @@ interface SitemapEntry {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async ({ request }) => {
-        const baseUrl = new URL(request.url).origin;
+      GET: async () => {
+        const baseUrl = "https://lsagenciademarketing.com";
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/politica-de-privacidade", changefreq: "yearly", priority: "0.3" },

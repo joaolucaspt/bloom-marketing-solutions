@@ -17,8 +17,9 @@ export const Route = createFileRoute("/politica-de-privacidade")({
           "Informações sobre os dados tratados neste site, o agendamento online e os canais de contato da LS Agência de Marketing.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://lsagenciademarketing.com/politica-de-privacidade" },
     ],
-    links: [],
+    links: [{ rel: "canonical", href: "https://lsagenciademarketing.com/politica-de-privacidade" }],
   }),
   component: PrivacyPage,
 });

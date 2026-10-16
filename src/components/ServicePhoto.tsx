@@ -75,7 +75,7 @@ export default function ServicePhoto({ variant }: { variant: ServicePhotoVariant
         aria-hidden="true"
       />
       <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4 md:p-5">
-        <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-md">
+        <span className="rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-md">
           {photo.eyebrow}
         </span>
         <span className="h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_14px_rgba(212,175,55,0.65)]" aria-hidden="true" />

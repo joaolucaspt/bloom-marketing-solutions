@@ -134,6 +134,47 @@ check(
     styles.includes("@media (prefers-reduced-motion: reduce)"),
 );
 
+const expectedServiceSlugs = [
+  "google-ads",
+  "meta-ads",
+  "landing-pages",
+  "presenca-digital",
+  "acompanhamento",
+  "jornada-paciente",
+];
+const actualServiceSlugs = [
+  ...home.matchAll(/\bid: "(google-ads|meta-ads|landing-pages|presenca-digital|acompanhamento|jornada-paciente)"/g),
+].map((match) => match[1]);
+check(
+  "Each service has one stable, unique navigation slug",
+  actualServiceSlugs.length === expectedServiceSlugs.length &&
+    new Set(actualServiceSlugs).size === expectedServiceSlugs.length &&
+    expectedServiceSlugs.every((slug) => actualServiceSlugs.includes(slug)),
+);
+
+const footerStart = home.indexOf("function Footer()");
+const footerEnd = home.indexOf("\nfunction FloatingWhatsApp", footerStart);
+const footer = home.slice(footerStart, footerEnd < 0 ? undefined : footerEnd);
+check(
+  "Footer service shortcuts link to each specific service slug",
+  footer.includes("const servicos = SERVICES.map(({ id, t }) => ({") &&
+    footer.includes('href: `#servicos-${id}`') &&
+    footer.includes("label: t"),
+);
+check(
+  "Each service tab provides the matching footer anchor",
+  home.includes('id={`servicos-${s.id}`}'),
+);
+check(
+  "Opening a service fragment selects its tab and tracks hash navigation",
+  home.includes('const prefix = "#servicos-";') &&
+    home.includes("const hash = window.location.hash;") &&
+    home.includes("const slug = hash.slice(prefix.length)") &&
+    home.includes("SERVICES.findIndex((service) => service.id === slug)") &&
+    home.includes('window.addEventListener("hashchange", syncActiveFromHash)') &&
+    home.includes('window.removeEventListener("hashchange", syncActiveFromHash)'),
+);
+
 const failures = checks.filter((result) => !result.pass);
 for (const result of checks) {
   const suffix = result.detail ? ` — ${result.detail}` : "";

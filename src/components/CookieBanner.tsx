@@ -10,7 +10,8 @@ export default function CookieBanner() {
     try {
       if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
     } catch {
-      /* storage indisponível */
+      // O aviso ainda precisa aparecer quando o navegador bloqueia o armazenamento.
+      setVisible(true);
     }
   }, []);
 

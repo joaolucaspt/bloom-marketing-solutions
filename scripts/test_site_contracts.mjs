@@ -64,6 +64,41 @@ check(
 );
 
 check(
+  "Landing page visual uses the supplied screenshot instead of the conceptual skeleton",
+  (() => {
+    const start = serviceVisual.indexOf("function LandingVisual()");
+    const end = serviceVisual.indexOf("\\nfunction PresenceVisual()", start);
+    const landingVisual = serviceVisual.slice(start, end < 0 ? undefined : end);
+    return start >= 0 &&
+      end > start &&
+      landingVisual.includes('src="/images/bonassi-landing-page.webp"') &&
+      landingVisual.includes('loading="lazy"') &&
+      landingVisual.includes('decoding="async"') &&
+      !landingVisual.includes("Mensagem principal") &&
+      !landingVisual.includes("Solicitar contato") &&
+      fs.existsSync(path.join(root, "public/images/bonassi-landing-page.webp"));
+  })(),
+);
+check(
+  "Second founder portrait uses the new supplied image as the right-hand avatar",
+  booking.includes('[fundador1.url, "/images/fundador-2.webp"].map((src, i) => (') &&
+    booking.includes("src={src}") &&
+    !booking.includes('import fundador2 from "@/assets/fundador-2.png.asset.json"') &&
+    fs.existsSync(path.join(root, "public/images/fundador-2.webp")),
+);
+check(
+  "Booking and contact card are displayed before FAQ",
+  (() => {
+    const bookingIndex = home.indexOf("<Booking />");
+    const faqIndex = home.indexOf("<FAQ />");
+    return bookingIndex >= 0 &&
+      faqIndex > bookingIndex &&
+      booking.includes("Card de contato") &&
+      booking.indexOf("Card de contato") > booking.indexOf("Coluna direita — Cal.com");
+  })(),
+);
+
+check(
   "Landing page featured-card Gem icon is hidden from assistive technology",
   (() => {
     const icon = landingPages.match(/<Gem\b[^>]*\/>/)?.[0] ?? "";

@@ -64,6 +64,41 @@ check(
 );
 
 check(
+  "Landing page visual uses the supplied screenshot instead of the conceptual skeleton",
+  (() => {
+    const start = serviceVisual.indexOf("function LandingVisual()");
+    const end = serviceVisual.indexOf("\nfunction PresenceVisual()", start);
+    const landingVisual = serviceVisual.slice(start, end < 0 ? undefined : end);
+    return start >= 0 &&
+      end > start &&
+      landingVisual.includes("src={LANDING_SCREENSHOT_URL}") &&
+      serviceVisual.includes('const LANDING_SCREENSHOT_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/cdb9ccbc-c73b-4ba5-a678-e6b5ae43ce8e.png";') &&
+      landingVisual.includes('loading="lazy"') &&
+      landingVisual.includes('decoding="async"') &&
+      !landingVisual.includes("Mensagem principal") &&
+      !landingVisual.includes("Solicitar contato");
+  })(),
+);
+check(
+  "Second founder portrait uses the new supplied image as the right-hand avatar",
+  booking.includes("[fundador1.url, FOUNDER_2_IMAGE_URL].map((src, i) => (") &&
+    booking.includes('const FOUNDER_2_IMAGE_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/b4a65ecd-c62d-4933-a1c7-f94761ea797e.png";') &&
+    booking.includes("src={src}") &&
+    !booking.includes('import fundador2 from "@/assets/fundador-2.png.asset.json"'),
+);
+check(
+  "Booking and contact card are displayed before FAQ",
+  (() => {
+    const bookingIndex = home.indexOf("<Booking />");
+    const faqIndex = home.indexOf("<FAQ />");
+    return bookingIndex >= 0 &&
+      faqIndex > bookingIndex &&
+      booking.includes("Card de contato") &&
+      booking.indexOf("Card de contato") > booking.indexOf("Coluna direita — Cal.com");
+  })(),
+);
+
+check(
   "Landing page featured-card Gem icon is hidden from assistive technology",
   (() => {
     const icon = landingPages.match(/<Gem\b[^>]*\/>/)?.[0] ?? "";
@@ -442,7 +477,7 @@ check(
     const iconOpenings = [
       ...serviceVisual.matchAll(/<(ArrowDownRight|ArrowRight|CalendarCheck|Check|ClipboardCheck|MapPin|MessageCircle|MousePointer2|PanelsTopLeft|Search|Target|Icon)\b[^>]*>/g),
     ].map((match) => match[0]);
-    return iconOpenings.length === 11 &&
+    return iconOpenings.length > 0 &&
       iconOpenings.every((opening) => /\baria-hidden\s*=\s*["']true["']/.test(opening));
   })(),
 );

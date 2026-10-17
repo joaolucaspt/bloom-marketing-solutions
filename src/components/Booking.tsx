@@ -4,9 +4,9 @@ import { Instagram, Mail } from "lucide-react";
 
 import { LogoMark } from "@/components/Logo";
 import fundador1 from "@/assets/fundador-1.png.asset.json";
-import fundador2 from "@/assets/fundador-2.png.asset.json";
 
 const PHONE_DISPLAY = "(31) 97116-9912";
+const FOUNDER_2_IMAGE_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/b4a65ecd-c62d-4933-a1c7-f94761ea797e.png";
 const WHATSAPP_URL =
   "https://wa.me/5531971169912?text=" +
   encodeURIComponent(
@@ -64,10 +64,10 @@ export default function Booking() {
             {/* Fundadores */}
             <div className="mt-8 flex items-center gap-4">
               <div className="flex items-center -space-x-3">
-                {[fundador1, fundador2].map((f, i) => (
+                {[fundador1.url, FOUNDER_2_IMAGE_URL].map((src, i) => (
                   <img
                     key={i}
-                    src={f.url}
+                    src={src}
                     alt={`Fundador ${i + 1} da LS Agência de Marketing`}
                     loading="lazy"
                     className="h-12 w-12 rounded-full border border-primary object-cover"

@@ -8,10 +8,11 @@ import {
   MapPin,
   MessageCircle,
   MousePointer2,
-  PanelsTopLeft,
   Search,
   Target,
 } from "lucide-react";
+
+const LANDING_SCREENSHOT_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/cdb9ccbc-c73b-4ba5-a678-e6b5ae43ce8e.png";
 
 export type ServiceVisualVariant =
   | "google"
@@ -116,43 +117,15 @@ function MetaVisual() {
 
 function LandingVisual() {
   return (
-    <Frame label="Página de conversão">
+    <Frame label="Exemplo de landing page odontológica">
       <div className="overflow-hidden rounded-xl border border-[#343434] bg-[#0e0e0e]">
-        <div className="flex items-center justify-between border-b border-[#292929] px-4 py-3">
-          <span className="text-[11px] font-semibold tracking-wide text-white">CLÍNICA ODONTOLÓGICA</span>
-          <span className="rounded-full border border-[#49402b] px-3 py-1 text-[10px] text-primary">Contato</span>
-        </div>
-        <div className="grid gap-5 p-5 sm:grid-cols-[1.1fr_0.9fr] sm:items-center sm:p-6">
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-primary">
-              Mensagem principal
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">
-              Cuidado odontológico com informação clara.
-            </h3>
-            <p className="mt-3 text-xs leading-relaxed text-[#a9a9a9]">
-              Conteúdo alinhado à especialidade, à região e à proposta de atendimento.
-            </p>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-[11px] font-semibold text-[#080808]">
-              Falar com a equipe <ArrowRight aria-hidden="true" size={13} />
-            </div>
-          </div>
-          <div className="rounded-xl border border-[#333] bg-[#151515] p-4">
-            <div className="h-2 w-20 rounded bg-[#454545]" />
-            <div className="mt-4 h-2 w-full rounded bg-[#292929]" />
-            <div className="mt-2 h-2 w-4/5 rounded bg-[#292929]" />
-            <div className="mt-5 space-y-2">
-              <div className="rounded-md border border-[#353535] px-3 py-2 text-[10px] text-[#8e8e8e]">Nome</div>
-              <div className="rounded-md border border-[#353535] px-3 py-2 text-[10px] text-[#8e8e8e]">Contato</div>
-              <div className="rounded-md bg-[#292929] px-3 py-2 text-center text-[10px] font-medium text-white">
-                Solicitar contato
-              </div>
-            </div>
-          </div>
-        </div>
-        <p className="border-t border-[#292929] px-4 py-2.5 text-[10px] text-[#8e8e8e]">
-          Estrutura de conversão · contato direto.
-        </p>
+        <img
+          src={LANDING_SCREENSHOT_URL}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="block h-auto w-full object-contain"
+        />
       </div>
     </Frame>
   );

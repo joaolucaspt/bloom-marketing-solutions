@@ -8,7 +8,6 @@ import {
   MapPin,
   MessageCircle,
   MousePointer2,
-  PanelsTopLeft,
   Search,
   Target,
 } from "lucide-react";

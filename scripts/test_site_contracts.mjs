@@ -71,20 +71,20 @@ check(
     const landingVisual = serviceVisual.slice(start, end < 0 ? undefined : end);
     return start >= 0 &&
       end > start &&
-      landingVisual.includes('src="/images/bonassi-landing-page.webp"') &&
+      landingVisual.includes("src={LANDING_SCREENSHOT_URL}") &&
+      serviceVisual.includes('const LANDING_SCREENSHOT_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/cdb9ccbc-c73b-4ba5-a678-e6b5ae43ce8e.png";') &&
       landingVisual.includes('loading="lazy"') &&
       landingVisual.includes('decoding="async"') &&
       !landingVisual.includes("Mensagem principal") &&
-      !landingVisual.includes("Solicitar contato") &&
-      fs.existsSync(path.join(root, "public/images/bonassi-landing-page.webp"));
+      !landingVisual.includes("Solicitar contato");
   })(),
 );
 check(
   "Second founder portrait uses the new supplied image as the right-hand avatar",
-  booking.includes('[fundador1.url, "/images/fundador-2.webp"].map((src, i) => (') &&
+  booking.includes("[fundador1.url, FOUNDER_2_IMAGE_URL].map((src, i) => (") &&
+    booking.includes('const FOUNDER_2_IMAGE_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/b4a65ecd-c62d-4933-a1c7-f94761ea797e.png";') &&
     booking.includes("src={src}") &&
-    !booking.includes('import fundador2 from "@/assets/fundador-2.png.asset.json"') &&
-    fs.existsSync(path.join(root, "public/images/fundador-2.webp")),
+    !booking.includes('import fundador2 from "@/assets/fundador-2.png.asset.json"'),
 );
 check(
   "Booking and contact card are displayed before FAQ",

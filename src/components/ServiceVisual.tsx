@@ -13,6 +13,8 @@ import {
   Target,
 } from "lucide-react";
 
+const LANDING_SCREENSHOT_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_3KbxWz1tI4fun2yetahPElTpbzV/cdb9ccbc-c73b-4ba5-a678-e6b5ae43ce8e.png";
+
 export type ServiceVisualVariant =
   | "google"
   | "meta"
@@ -119,7 +121,7 @@ function LandingVisual() {
     <Frame label="Exemplo de landing page odontológica">
       <div className="overflow-hidden rounded-xl border border-[#343434] bg-[#0e0e0e]">
         <img
-          src="/images/bonassi-landing-page.webp"
+          src={LANDING_SCREENSHOT_URL}
           alt=""
           loading="lazy"
           decoding="async"

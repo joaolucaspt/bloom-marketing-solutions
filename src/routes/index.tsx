@@ -798,8 +798,8 @@ function Index() {
         <Services />
         <Belief />
         <Methodology />
-        <FAQ />
         <Booking />
+        <FAQ />
       </main>
       <Footer />
       <FloatingWhatsApp />

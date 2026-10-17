@@ -67,7 +67,7 @@ check(
   "Landing page visual uses the supplied screenshot instead of the conceptual skeleton",
   (() => {
     const start = serviceVisual.indexOf("function LandingVisual()");
-    const end = serviceVisual.indexOf("\\nfunction PresenceVisual()", start);
+    const end = serviceVisual.indexOf("\nfunction PresenceVisual()", start);
     const landingVisual = serviceVisual.slice(start, end < 0 ? undefined : end);
     return start >= 0 &&
       end > start &&
